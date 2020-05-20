@@ -1,0 +1,1 @@
+export var isSmallScreen = window.screen.width < 992;

@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'assets/variables';
+@import 'assets/twofourdefault';
+
+html, body { height: 100%; }
+body {
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", sans-serif; 
+        font-size: $standard_size !important;
+        overflow-y: hidden; 
+        overflow-x: hidden;
+    }
+
+    /* sm */
+@media only screen and  (max-device-width : 991px) and (orientation : portrait) {
+    @import "./assets/twofour_phone_portrait";
+ }
+ @media only screen and (max-device-width: 991px) and (max-device-height: 991px) and (orientation : landscape){
+  @import "./assets/twofour_phone_landscape";
+             
+ }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

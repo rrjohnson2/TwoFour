@@ -8,16 +8,21 @@ import { FourDigitCodeComponent } from './four-digit-code/four-digit-code.compon
 import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { AuthGuard } from './auth.guard';
-import { RouterModule } from '@angular/router';
-
+import { FooterComponent } from './footer/footer.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent],
+  declarations: [
+    HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent, FooterComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    RouterModule
+    MatSidenavModule, MatToolbarModule, MatListModule,
+    NgbProgressbarModule
   ],
   providers:[AuthGuard]
 })

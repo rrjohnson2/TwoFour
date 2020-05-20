@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UIService } from '../service/ui.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutComponent implements OnInit {
 
   
-  constructor() { }
+  constructor(private ui:UIService) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +21,10 @@ export class LayoutComponent implements OnInit {
     else{
       sidenav.open();
     }
+  }
+  get render_class()
+  {
+    return  this.ui.container_or_fluid();
   }
 
 }

@@ -15,7 +15,9 @@
                         </a>
                 </nav>
                 
-                <router-outlet></router-outlet>
+                <div [class]="render_class">
+                    <router-outlet></router-outlet>
+                </div>
                 <app-footer></app-footer>
 
             </div>

@@ -11,3 +11,12 @@ body {
         overflow-y: hidden; 
         overflow-x: hidden;
     }
+
+    /* sm */
+@media only screen and  (max-device-width : 991px) and (orientation : portrait) {
+    @import "./assets/twofour_phone_portrait";
+ }
+ @media only screen and (max-device-width: 991px) and (max-device-height: 991px) and (orientation : landscape){
+  @import "./assets/twofour_phone_landscape";
+             
+ }

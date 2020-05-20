@@ -12,10 +12,12 @@ import { FooterComponent } from './footer/footer.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import {NgbProgressbar } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
+    
     HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent, FooterComponent],
   imports: [
     CommonModule,

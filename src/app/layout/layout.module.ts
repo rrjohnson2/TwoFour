@@ -7,7 +7,6 @@ import { SignupComponent } from './signup/signup.component';
 import { FourDigitCodeComponent } from './four-digit-code/four-digit-code.component';
 import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
-import { AuthGuard } from './auth.guard';
 
 
 
@@ -16,7 +15,6 @@ import { AuthGuard } from './auth.guard';
   imports: [
     CommonModule,
     LayoutRoutingModule
-  ],
-  providers:[AuthGuard]
+  ]
 })
 export class LayoutModule { }

@@ -16,7 +16,7 @@ const routes: Routes = [
         component: LayoutComponent,
         children:[
                     { path: '', redirectTo:'home', pathMatch:"prefix"},
-                    { path: '**', redirectTo:'home', pathMatch:"prefix"},
+                   
 
                     {
                         path:"home",
@@ -39,7 +39,8 @@ const routes: Routes = [
                         path:"update",
                         component: UpdateComponent,
                         canActivate: [AuthGuard]
-                    }
+                    },
+                    { path: '**', redirectTo:'home', pathMatch:"prefix"},
         ]
     }
 

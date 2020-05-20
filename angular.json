@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TwoFourViral"
+    }
+  },
+  "defaultProject": "TwoFourViral",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -7,6 +7,8 @@ import { SignupComponent } from './signup/signup.component';
 import { FourDigitCodeComponent } from './four-digit-code/four-digit-code.component';
 import { LayoutComponent } from './layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
+import { AuthGuard } from './auth.guard';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +16,9 @@ import { LayoutRoutingModule } from './layout-routing.module';
   declarations: [HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent],
   imports: [
     CommonModule,
-    LayoutRoutingModule
-  ]
+    LayoutRoutingModule,
+    RouterModule
+  ],
+  providers:[AuthGuard]
 })
 export class LayoutModule { }

@@ -15,31 +15,30 @@ const routes: Routes = [
         path:'',
         component: LayoutComponent,
         children:[
-                    { path: '', redirectTo:'home', pathMatch:"prefix"},
-                    { path: '**', redirectTo:'home', pathMatch:"prefix"},
-
+                    { path: '', redirectTo:'home', pathMatch:'prefix'},
                     {
-                        path:"home",
+                        path:'home',
                         component: HomeComponent,
                     },
                     {
-                        path:"login",
+                        path:'login',
                         component: LoginComponent
                     }
                     ,
                     {
-                        path:"signup",
+                        path:'signup',
                         component: SignupComponent
                     },
                     {
-                        path:"authenticate",
+                        path:'authenticate',
                         component: FourDigitCodeComponent
                     },
                     {
-                        path:"update",
+                        path:'update',
                         component: UpdateComponent,
                         canActivate: [AuthGuard]
-                    }
+                    },
+                    { path: '**', redirectTo:'home', pathMatch:'prefix'},
         ]
     }
 
@@ -49,11 +48,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+],
 })
 export class LayoutRoutingModule { }
-
-
-
-
-// canActivate: [AuthGuard]

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TwoFourViral": {
+    "twofourviral": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TwoFourViral",
+            "outputPath": "dist/twofourviral",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TwoFourViral:build"
+            "browserTarget": "twofourviral:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "TwoFourViral:build:production"
+              "browserTarget": "twofourviral:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TwoFourViral:build"
+            "browserTarget": "twofourviral:build"
           }
         },
         "test": {
@@ -114,18 +114,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TwoFourViral:serve"
+            "devServerTarget": "twofourviral:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "TwoFourViral:serve:production"
+              "devServerTarget": "twofourviral:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "TwoFourViral",
+  "defaultProject": "twofourviral",
   "cli": {
     "analytics": false
   }

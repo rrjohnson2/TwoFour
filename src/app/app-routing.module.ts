@@ -4,7 +4,9 @@ import { LayoutModule } from './layout/layout.module';
 
 
 const routes: Routes = [
-  { path: '', loadChildren: './layout/layout.module#LayoutModule' },
+  { path: 'layout', loadChildren: () => LayoutModule },
+  { path: '', redirectTo:'layout', pathMatch:'prefix'},
+  { path: '**', redirectTo:'layout', pathMatch:'prefix'},
 ];
 
 @NgModule({
@@ -12,5 +14,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-//"./layout/layout.module#LayoutModule"

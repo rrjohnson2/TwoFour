@@ -1,9 +1,23 @@
-<nav class="navbar">
-    <div class="container">
-        TwoFour
-    </div>
-</nav>
-<div class="card">
-    <router-outlet></router-outlet>
-</div>
-<footer class="foter"> Footer</footer>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push" opened="false">
+        <mat-toolbar color="#79D9CF">
+            Profile
+           </mat-toolbar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+            <div class="layout">
+                <nav class="navbar navbar-light" style="background-color: #79D9CF;" >
+                        <a (click)="toggle(sidenav)">
+                            <img class="nav_img" src="assets/icons/hamburger.png">
+                        </a>
+                        <a class="active_link"  routerLink="/home" >
+                            Two Four
+                        </a>
+                </nav>
+                
+                <router-outlet></router-outlet>
+                <app-footer></app-footer>
+
+            </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

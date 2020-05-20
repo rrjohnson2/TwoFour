@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+  toggle(sidenav){
+    if(sidenav.opened)
+    {
+      sidenav.close();
+    }
+    else{
+      sidenav.open();
+    }
   }
 
 }

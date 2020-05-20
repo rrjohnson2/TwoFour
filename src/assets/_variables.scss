@@ -1,0 +1,101 @@
+// Color system
+
+$standard_size :20px;
+
+$white:    #fff !default;
+$gray-100: #f6f9fc !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #8898aa !default;   // Line footer color
+$gray-700: #525f7f !default;   // Line p color
+$gray-800: #32325d !default;   // Line heading color
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+), $grays);
+
+$blue:    #79D9CF !default;
+$indigo:  #5603ad !default;
+$purple:  #8965e0 !default;
+$pink:    #f3a4b5 !default;
+$red:     #FF7B7C !default;
+$orange:  #FDAB24 !default;
+$yellow:  #FFCA00 !default;
+$green:   #2dce89 !default;
+$teal:    #11cdef !default;
+$cyan:    #2bffc6 !default;
+
+$colors: () !default;
+$colors: map-merge((
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "light":      $gray-400,
+  "lighter":    $gray-200,
+  "gray-dark":  $gray-800
+), $colors);
+
+$default:       #172b4d !default;
+$primary:       #78BF91 !default;
+$primary-darker:rgb(89, 139, 107)  !default;
+$secondary:     #8AD2CF!default;
+$success:       $green !default;
+$info:          $teal !default;
+$warning:       $orange !default;
+$danger:        $red !default;
+$light:         $gray-500 !default;
+$dark:          $gray-900 !default;
+$darker:        darken($gray-900, 15%) !default;
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: $primary !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $primary !important;
+  outline: 0 none !important;
+}
+
+
+.dropdown-toggle::after {
+  display:none;
+}
+
+p  {
+  font-size: inherit !important;
+}
+

@@ -4,6 +4,7 @@ import { AppVariablesService } from '../service/app-variables.service';
 import { Member } from '../model/member';
 import { UpdateComponent } from './update/update.component';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -12,11 +13,20 @@ import { Observable } from 'rxjs';
 })
 export class LayoutComponent implements OnInit {
 
-  member:Observable<Member>;
-  constructor(private ui:UIService,private variables:AppVariablesService) { }
+  member:Observable<Member>= new Observable<Member>();
+  init_boolean =false;
+  constructor(private router:Router, private ui:UIService,private variables:AppVariablesService) { }
 
   ngOnInit(): void {
-    this.getMember()
+    this.init();
+  }
+  init(){
+      if(!this.init_boolean)
+      {
+        this.variables.setup();
+        this.getMember();
+        this.init_boolean=true;
+      }
   }
   toggle(sidenav){
     if(sidenav.opened)
@@ -38,8 +48,8 @@ export class LayoutComponent implements OnInit {
   {
     if(event instanceof UpdateComponent)
     {
+      this.init();
       var thing = <UpdateComponent> event;
-
       this.member.subscribe(data=> thing.member=data);
     }
   }

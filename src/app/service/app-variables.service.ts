@@ -17,7 +17,6 @@ export class AppVariablesService {
   current_member_ob:Observable<Member> = this.current_member_bs.asObservable();
 
   constructor(private glob:GlobalService) {
-    console.log("here");
    }
 
   setup()
@@ -50,7 +49,6 @@ export class AppVariablesService {
   }
   fillMember(mem:Member,ticket:Ticket)
   {
-    console.log(mem)
         this.current_member_id = ticket.id;
         localStorage.setItem("current_member_id", ticket.id);
         localStorage.setItem("current_member_encrypted_password", this.encrypt(ticket.data));   

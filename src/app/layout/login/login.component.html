@@ -1,29 +1,30 @@
 <div class="row justify-content-center two_four_card_holder">
-<div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
-    <div class="card two_four_card">
-        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card two_four_card">
+            <form [formGroup]="loginForm" (ngSubmit)="submit()">
 
-            <div class="card-body">
-                <div class="row">
-                    <fieldset class="col-12">
-                        <input class="form-control" placeholder="Email or Phone Number or Username" formControlName="email_phone_username"
-                            type="text">
-                    </fieldset>
-                    <fieldset class="col-12">
-                        <input class="form-control" placeholder="Password" formControlName="password" type="password">
-                    </fieldset>
-                    <div class="col-12">
-                        <button class="long_12_button" type="submit">Login</button>
+                <div class="card-body">
+                    <div class="row">
+                        <fieldset class="col-12">
+                            <input class="form-control" placeholder="Email or Phone Number or Username"
+                                formControlName="email_phone_username" type="text">
+                        </fieldset>
+                        <fieldset class="col-12">
+                            <input class="form-control" placeholder="Password" formControlName="password"
+                                type="password">
+                        </fieldset>
+                        <div class="col-12">
+                            <button class="long_12_button" type="submit">Login</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button (click)="signUp()">Create</button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button (click)="signUp()">Create</button>
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 </div>

@@ -28,14 +28,12 @@ export class AppVariablesService {
         id: this.current_member_id,
         data: this.decrypt(this.current_member_encrypted_password)
       }
-      this.login(ticket)
+      this.glob.login(ticket).subscribe(data=>{
+        this.fillMember(<Member>data,ticket)
+      })
     }
   }
-  login(ticket: Ticket) {
-    this.glob.login(ticket).subscribe(data=>{
-      this.fillMember(<Member>data,ticket);
-  });
-  }
+  
 
   encrypt(value)
   {
@@ -52,6 +50,7 @@ export class AppVariablesService {
   }
   fillMember(mem:Member,ticket:Ticket)
   {
+    console.log(mem)
         this.current_member_id = ticket.id;
         localStorage.setItem("current_member_id", ticket.id);
         localStorage.setItem("current_member_encrypted_password", this.encrypt(ticket.data));   

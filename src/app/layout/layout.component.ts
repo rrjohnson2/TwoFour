@@ -3,6 +3,7 @@ import { UIService } from '../service/ui.service';
 import { AppVariablesService } from '../service/app-variables.service';
 import { Member } from '../model/member';
 import { UpdateComponent } from './update/update.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-layout',
@@ -11,10 +12,11 @@ import { UpdateComponent } from './update/update.component';
 })
 export class LayoutComponent implements OnInit {
 
-  member:Member
+  member:Observable<Member>;
   constructor(private ui:UIService,private variables:AppVariablesService) { }
 
   ngOnInit(): void {
+    this.getMember()
   }
   toggle(sidenav){
     if(sidenav.opened)
@@ -30,12 +32,7 @@ export class LayoutComponent implements OnInit {
     return  this.ui.container_or_fluid();
   }
   getMember(){
-      this.variables.current_member_ob.subscribe(
-        data =>
-        {
-            this.member = data;
-        }
-      )
+      this.member = this.variables.current_member_ob;
   }
   onActivate(event)
   {
@@ -43,7 +40,7 @@ export class LayoutComponent implements OnInit {
     {
       var thing = <UpdateComponent> event;
 
-      thing.member = this.member;
+      this.member.subscribe(data=> thing.member=data);
     }
   }
 

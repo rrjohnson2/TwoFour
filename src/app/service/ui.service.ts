@@ -14,7 +14,6 @@ export class UIService {
   }
 
   container_or_fluid() {
-
     if(isSmallScreen) return "container-fluid"
     return "container"
   }

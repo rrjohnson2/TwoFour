@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppVariablesService } from 'src/app/service/app-variables.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
-  constructor(private router:Router) { }
+  constructor(private router:Router,) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  updatePage(){
+  signUp(){
     this.router.navigate(['/layout/signup'])
   }
 

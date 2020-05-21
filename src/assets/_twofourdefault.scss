@@ -1,7 +1,11 @@
 
-.navbar{
+.custom_navbar{
     justify-content: left !important;
     height: 5vh;
+    background-color: $white;
+}
+.custom_navbar a{
+  color: $primary;
 }
 .layout{
     height: 100vh;

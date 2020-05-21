@@ -1,25 +1,36 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push" opened="false">
-        <mat-toolbar color="#79D9CF">
+        <mat-toolbar color="primary">
             Profile
-           </mat-toolbar>
+        </mat-toolbar>
     </mat-sidenav>
     <mat-sidenav-content>
-            <div class="layout">
-                <nav class="navbar navbar-light" style="background-color: #79D9CF;" >
+        <div class="layout">
+            <nav class="custom_navbar">
+                <div class="row">
+                    <div class="col-4">
                         <a (click)="toggle(sidenav)">
                             <img class="nav_img" src="assets/icons/hamburger.png">
                         </a>
-                        <a class="active_link"  routerLink="/home" >
+                    </div>
+                    <div class="col-4 text-center">
+                        <a routerLink="/home">
                             Two Four
                         </a>
-                </nav>
-                
-                <div [class]="render_class">
-                    <router-outlet></router-outlet>
+                    </div>
                 </div>
-                <app-footer></app-footer>
+            </nav>
 
+            <div [class]="render_class">
+
+                <div class="row justify-content-center two_four_card">
+                    <div class="col-lg-9 col-sm-12 sm_reduce_col_12_padding">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
             </div>
+            <app-footer></app-footer>
+
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

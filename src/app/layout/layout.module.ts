@@ -13,6 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,8 @@ import {NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSidenavModule, MatToolbarModule, MatListModule,
     NgbProgressbarModule
   ],

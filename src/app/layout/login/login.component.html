@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="card two_four_card">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+        <div class="card-body">
+            <div class="row">
+                <fieldset class="col-12">
+                    <input class="form-control" placeholder="Email or Phone Number" formControlName="email_phone"
+                        type="text">
+                </fieldset>
+                <fieldset class="col-12">
+                    <input class="form-control" placeholder="Password" formControlName="password" type="password">
+                </fieldset>
+                <div class="col-12">
+                    <button class="long_12_button" type="submit">Login</button>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-12 text-center">
+                        <button >Create</button>
+                    </div>
+            </div>
+        </div>
+    </form>
+</div>

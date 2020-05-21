@@ -33,17 +33,23 @@
   margin-left: -$standard_size;
   max-height:400px;
 }
-.two_four_card{
+.two_four_card_holder{
   position: relative;
   top : 50%;
   height: 85vh;
   overflow-y: scroll;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
-.two_four_card::-webkit-scrollbar {
+.two_four_card_holder::-webkit-scrollbar {
   display: none;
 }
 /* Hide scrollbar for IE and Edge */
-.two_four_card {
+.two_four_card_holder {
   -ms-overflow-style: none;
+}
+.two_four_card{
+  height: 100%;
+}
+.long_12_button{
+  width:100%;
 }

@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FourDigitCodeComponent } from './four-digit-code/four-digit-code.component';
 import { LayoutComponent } from './layout.component';
+import { ReverseAuthGuard } from './reverse.auth.guard';
 
 
 const routes: Routes = [
@@ -23,16 +24,19 @@ const routes: Routes = [
                     },
                     {
                         path:"login",
-                        component: LoginComponent
+                        component: LoginComponent,
+                        canActivate:[ReverseAuthGuard]
                     }
                     ,
                     {
                         path:"signup",
-                        component: SignupComponent
+                        component: SignupComponent,
+                        canActivate:[ReverseAuthGuard]
                     },
                     {
                         path:"authenticate",
-                        component: FourDigitCodeComponent
+                        component: FourDigitCodeComponent,
+                        canActivate:[ReverseAuthGuard]
                     },
                     {
                         path:"update",

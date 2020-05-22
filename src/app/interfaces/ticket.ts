@@ -1,6 +1,6 @@
 
 export interface Ticket {
-    id: string;
+    id?: string;
     data:any;
 
 }

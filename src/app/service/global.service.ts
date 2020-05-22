@@ -20,5 +20,9 @@ export class GlobalService {
   {
      return this.http.post(backendUrl+"generateCode",mem);
   }
+  authenticate(ticket:Ticket)
+  {
+      return this.http.post(backendUrl+"authenticateCode",ticket);
+  }
 
 }

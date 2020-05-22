@@ -3,16 +3,16 @@ import { Router, CanActivate } from "@angular/router";
 import { AppVariablesService } from '../service/app-variables.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class ReverseAuthGuard implements CanActivate {
   path: import("@angular/router").ActivatedRouteSnapshot;
   route: import("@angular/router").ActivatedRouteSnapshot;
 
   constructor(private router: Router,private appVariables:AppVariablesService) { }
 
   canActivate() {
-    if(this.appVariables.current_member==null)
+    if(this.appVariables.current_member!=null)
     {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/layout/home']);
       return false;
     }
     else{

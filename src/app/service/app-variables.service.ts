@@ -16,6 +16,9 @@ export class AppVariablesService {
   current_member_bs:BehaviorSubject<Member> = new BehaviorSubject<Member>(this.current_member);
   current_member_ob:Observable<Member> = this.current_member_bs.asObservable();
 
+  temp_member:Member
+  temp_ticket:Ticket;
+
   constructor(private glob:GlobalService) {
    }
 
@@ -57,6 +60,7 @@ export class AppVariablesService {
 
 
   }
+  
   reloadBS(mem:Member)
   {
     this.current_member = mem;
@@ -66,8 +70,9 @@ export class AppVariablesService {
   {
     this.current_member_id = null;
     localStorage.removeItem("current_member_id");
-    localStorage.removeItem("current_member_encrypted_password");   
-     
+    localStorage.removeItem("current_member_encrypted_password");  
+    this.temp_member = null
+    this.temp_ticket= null;
     this.reloadBS(null);
   }
   

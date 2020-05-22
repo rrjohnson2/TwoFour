@@ -10,6 +10,7 @@ export class Member {
     newsletter:boolean;
     messageMedium:string;
     notify:boolean
+    password:string
 
 
     constructor(

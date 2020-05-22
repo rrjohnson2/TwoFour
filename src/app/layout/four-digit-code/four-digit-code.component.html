@@ -1,1 +1,25 @@
-<p>four-digit-code works!</p>
+<div class="row justify-content-center two_four_card_holder">
+    <div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card two_four_card">
+            <form [formGroup]="codeForm" (ngSubmit)="submit()">
+
+                <div class="card-body">
+                    <div class="row">
+                        <fieldset class="col-12">
+                            <input matInput class="form-control" placeholder="Enter Code Check Email or Phone"
+                                formControlName="code" type="number">
+                        </fieldset>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 ">
+                            <button (click)="resendCode()"  mat-raised-button color="accent">Resend Code</button>
+                        </div>
+                        <div class="col-6 text-right">
+                            <button type="submit" mat-raised-button color="primary">Submit Code</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

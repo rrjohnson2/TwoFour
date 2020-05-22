@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ReverseAuthGuard } from './reverse.auth.guard';
 
 
 @NgModule({
@@ -35,6 +36,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatButtonModule,MatIconModule,MatProgressBarModule,
     MatCheckboxModule
   ],
-  providers:[AuthGuard]
+  providers:[AuthGuard, ReverseAuthGuard]
 })
 export class LayoutModule { }

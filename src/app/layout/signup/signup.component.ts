@@ -4,6 +4,7 @@ import { MyErrorStateMatcher } from 'src/app/constants/error.state.matches';
 import { GlobalService } from 'src/app/service/global.service';
 import { Member } from 'src/app/models/member';
 import { Router } from '@angular/router';
+import { AppVariablesService } from 'src/app/service/app-variables.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   matcher = new MyErrorStateMatcher;
   email_regex = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
   phoneno = /\d/g;
-  constructor(private router:Router,private glob:GlobalService) { }
+  constructor(private router: Router, private glob: GlobalService, private appvariables: AppVariablesService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -36,14 +37,13 @@ export class SignupComponent implements OnInit {
   submit() {
     var messageMedium = this.email_or_phone();
 
-    if(messageMedium !=null)
-    {
-      var member:Member = new Member(
+    if (messageMedium != null) {
+      var member: Member = new Member(
         this.signUpForm.get("username").value,
         null,
         null,
         false,
-        null,
+        1,
         null,
         null,
         null,
@@ -51,18 +51,23 @@ export class SignupComponent implements OnInit {
         messageMedium,
         this.signUpForm.get("notify").value,
       )
-
-      if(messageMedium == "EMAIL")
-      {
+      member.password = this.signUpForm.get("password").value;
+      var choice_id
+      if (messageMedium == "EMAIL") {
         member.email = this.signUpForm.get("email_phone").value;
+        choice_id = member.email
       }
-      else{
+      else {
         member.phone = this.signUpForm.get("email_phone").value;
+        choice_id = member.phone
       }
-      console.log(member);
-      this.glob.generateCode(member).subscribe(data=>{
-
-          this.router.navigate(['/layout/code']);
+      this.glob.generateCode(member).subscribe(data => {
+        this.appvariables.temp_member = member;
+        this.appvariables.temp_ticket = {
+          id: choice_id,
+          data: member.password
+          }
+        this.router.navigate(['/layout/authenticate']);
       })
     }
     // failed
@@ -75,18 +80,14 @@ export class SignupComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
-  email_or_phone()
-  {
-      var emailPhone:string = this.signUpForm.get("email_phone").value
-      if(emailPhone.match(this.email_regex))
-      {
-        return 'EMAIL'
-      }
-      else if(emailPhone.match(this.phoneno).length===10)
-      {
-        console.log("phone");
-          return 'PHONE'
-      }
+  email_or_phone() {
+    var emailPhone: string = this.signUpForm.get("email_phone").value
+    if (emailPhone.match(this.email_regex)) {
+      return 'EMAIL'
+    }
+    else if (emailPhone.match(this.phoneno).length === 10) {
+      return 'PHONE'
+    }
   }
 
 }

@@ -6,21 +6,24 @@
                 <div class="card-body">
                     <div class="row">
                         <fieldset class="col-12">
-                            <input class="form-control" placeholder="Email or Phone Number or Username"
+                            <input matInput class="form-control" placeholder="Email or Phone Number or Username"
                                 formControlName="email_phone_username" type="text">
                         </fieldset>
                         <fieldset class="col-12">
-                            <input class="form-control" placeholder="Password" formControlName="password"
+                            <input matInput class="form-control" placeholder="Password" formControlName="password"
                                 type="password">
                         </fieldset>
                         <div class="col-12">
-                            <button class="long_12_button" type="submit">Login</button>
+                            <button *ngIf="loginForm.valid" class="long_12_button" type="" mat-raised-button
+                                color="primary">Login</button>
+                            <button *ngIf="loginForm.invalid" class="long_12_button" mat-raised-button
+                                disabled>Login</button>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-12 text-center">
-                            <button (click)="signUp()">Create</button>
+                            <button (click)="signUp()" mat-raised-button color="accent">Create Account</button>
                         </div>
                     </div>
                 </div>

@@ -23,9 +23,9 @@
             <nav class="custom_navbar">
                 <div class="row">
                     <div class="col-4">
-                        <a (click)="toggle(sidenav)">
-                            <img class="nav_img" src="assets/icons/hamburger.png">
-                        </a>
+                        <button (click)="toggle(sidenav)" mat-icon-button color="primary">
+                            <mat-icon>menu</mat-icon>
+                        </button>
                     </div>
                     <div class="col-4 text-center">
                         <a routerLink="/home">

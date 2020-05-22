@@ -1,1 +1,32 @@
-<p>signup works!</p>
+<div class="row justify-content-center two_four_card_holder">
+    <div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card two_four_card">
+            <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+
+                <div class="card-body">
+                    <div class="row">
+                        <fieldset class="col-12">
+                            <input matInput class="form-control" placeholder="Username"
+                                formControlName="username" type="text">
+                        </fieldset>
+                        <fieldset class="col-12">
+                            <input matInput class="form-control" placeholder="Email or Phone Number"
+                                formControlName="email_phone" type="text">
+                        </fieldset>
+                        <fieldset class="col-12">
+                            <input  matInput class="form-control" placeholder="Password" formControlName="password"
+                                type="password">
+                        </fieldset>
+                        <fieldset class="col-12">
+                            <input class="form-control" matInput placeholder="Confirm password" formControlName="password_check" [errorStateMatcher]="matcher">
+                        </fieldset>
+                        <div class="col-12">
+                            <button *ngIf="signUpForm.valid"  class="long_12_button" mat-raised-button color="primary">Sign up</button>
+                            <button *ngIf="signUpForm.invalid"  class="long_12_button" mat-raised-button disabled>Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

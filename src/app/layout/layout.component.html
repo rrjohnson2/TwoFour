@@ -4,6 +4,19 @@
             <a routerLink="/update">{{(member |async)?.username}}</a>
             <a *ngIf="(member | async) == null" routerLink="/update">Login</a>
         </mat-toolbar>
+        <mat-selection-list #links [multiple]="false">
+            <mat-list-option>
+                <a mat-list-item  routerLink="/about" >
+                    <legend>About</legend>
+                </a>
+            </mat-list-option>
+            <mat-list-option *ngIf="(member | async) != null">
+                <a mat-list-item  (click)="logOff()" >
+                    <legend>Log Off</legend>
+                </a>
+            </mat-list-option>
+          </mat-selection-list>
+        
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="layout">

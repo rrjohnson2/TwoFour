@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppVariablesService } from 'src/app/service/app-variables.service';
 import { GlobalService } from 'src/app/service/global.service';
-import { Member } from 'src/app/model/member';
+import { Member } from 'src/app/models/member';
 import { Ticket } from 'src/app/interfaces/ticket';
 
 @Component({

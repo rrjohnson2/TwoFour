@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UIService } from '../service/ui.service';
 import { AppVariablesService } from '../service/app-variables.service';
-import { Member } from '../model/member';
+import { Member } from '../models/member';
 import { UpdateComponent } from './update/update.component';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -52,6 +52,10 @@ export class LayoutComponent implements OnInit {
       var thing = <UpdateComponent> event;
       this.member.subscribe(data=> thing.member=data);
     }
+  }
+  logOff()
+  {
+    this.variables.logOff()
   }
 
 }

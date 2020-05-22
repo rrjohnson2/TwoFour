@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Member } from '../model/member';
+import { Member } from '../models/member';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { GlobalService } from './global.service';
 import { Ticket } from '../interfaces/ticket';
@@ -57,10 +57,18 @@ export class AppVariablesService {
 
 
   }
-  public reloadBS(mem:Member)
+  reloadBS(mem:Member)
   {
     this.current_member = mem;
     this.current_member_bs.next(mem);
+  }
+  logOff()
+  {
+    this.current_member_id = null;
+    localStorage.removeItem("current_member_id");
+    localStorage.removeItem("current_member_encrypted_password");   
+     
+    this.reloadBS(null);
   }
   
 }

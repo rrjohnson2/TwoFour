@@ -21,12 +21,12 @@
                             <input type="password" class="form-control" matInput placeholder="Confirm password" formControlName="password_check" [errorStateMatcher]="matcher">
                         </fieldset>
                         <fieldset class="col-12">
-                            <mat-checkbox class="col-6" color="primary" checked="true" >
+                            <mat-checkbox formControlName="newsletter" class="col-6" color="primary"  >
                                 <small>
                                     Sign Up For Newsletter
                                 </small>
                             </mat-checkbox>
-                            <mat-checkbox  class="col-6" color="primary" checked="true" >
+                            <mat-checkbox formControlName="notify" class="col-6" color="primary"  >
                                 <small>
                                     Two Four Notifications
                                 </small>

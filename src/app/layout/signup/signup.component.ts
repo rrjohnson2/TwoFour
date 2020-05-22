@@ -29,8 +29,8 @@ export class SignupComponent implements OnInit {
         email_phone: new FormControl(null, [Validators.required]),
         password: new FormControl(null, [Validators.required]),
         password_check: new FormControl(null, [Validators.required]),
-        newsletter: new FormControl(null, []),
-        notify: new FormControl(null, [])
+        newsletter: new FormControl(true, []),
+        notify: new FormControl(true, [])
       }, { validators: this.checkPasswords }
     )
   }
@@ -61,9 +61,10 @@ export class SignupComponent implements OnInit {
         member.phone = this.signUpForm.get("email_phone").value;
         choice_id = member.phone
       }
+      console.log(member)
       this.glob.generateCode(member).subscribe(data => {
-        this.appvariables.temp_member = member;
-        this.appvariables.temp_ticket = {
+      this.appvariables.temp_member = member;
+      this.appvariables.temp_ticket = {
           id: choice_id,
           data: member.password
           }

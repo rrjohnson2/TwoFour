@@ -18,7 +18,19 @@
                                 type="password">
                         </fieldset>
                         <fieldset class="col-12">
-                            <input class="form-control" matInput placeholder="Confirm password" formControlName="password_check" [errorStateMatcher]="matcher">
+                            <input type="password" class="form-control" matInput placeholder="Confirm password" formControlName="password_check" [errorStateMatcher]="matcher">
+                        </fieldset>
+                        <fieldset class="col-12">
+                            <mat-checkbox class="col-6" color="primary" checked="true" >
+                                <small>
+                                    Sign Up For Newsletter
+                                </small>
+                            </mat-checkbox>
+                            <mat-checkbox  class="col-6" color="primary" checked="true" >
+                                <small>
+                                    Two Four Notifications
+                                </small>
+                            </mat-checkbox>
                         </fieldset>
                         <div class="col-12">
                             <button *ngIf="signUpForm.valid"  class="long_12_button" mat-raised-button color="primary">Sign up</button>

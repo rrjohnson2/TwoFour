@@ -11,11 +11,15 @@
                         </fieldset>
                     </div>
                     <div class="row">
-                        <div class="col-6 ">
-                            <button (click)="resendCode()"  mat-raised-button color="accent">Resend Code</button>
-                        </div>
-                        <div class="col-6 text-right">
+                        <div class="col-12 text-center">
                             <button type="submit" mat-raised-button color="primary">Submit Code</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a (click)="resendCode()" color="accent">
+                                <small>Resend Code</small>
+                            </a>
                         </div>
                     </div>
                 </div>

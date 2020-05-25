@@ -2,8 +2,8 @@
     <div class="col-lg-9 col-sm-12 sm_reduce_col_12_padding">
         <div class="card ">
             <div class="card-header">
-                <span>Time</span>
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <app-countdown [time]="seconds_differ" [progress]="progress"></app-countdown>  
+                </mat-progress-bar>
             </div>
             <div class="card-body">
                 <video class="preview" src="assets/video/placeholder.mp4" controls></video>
@@ -12,7 +12,7 @@
                 <div class="row ">
                     <div class="col-12 text-center">
                         <span>Subs</span>
-                        <button>Submit</button>
+                        <button class="long_12_button" mat-raised-button color="primary">Submit Lottery</button>
                     </div>
                 </div>
                 <p>

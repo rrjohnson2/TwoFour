@@ -20,11 +20,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ReverseAuthGuard } from './reverse.auth.guard';
+import { CountTimePipe } from '../pipe/count-time.pipe';
+import { CountdownComponent } from './home/countdown/countdown.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent, FooterComponent],
+    
+    CountTimePipe,
+    HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent, FooterComponent, CountdownComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,

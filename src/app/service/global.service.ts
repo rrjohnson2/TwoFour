@@ -24,5 +24,9 @@ export class GlobalService {
   {
       return this.http.post(backendUrl+"authenticateCode",ticket);
   }
+  getContest()
+  {
+    return this.http.get(backendUrl+"getContest");
+  }
 
 }

@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { GlobalService } from './global.service';
 import { Ticket } from '../interfaces/ticket';
 import { LayoutModule } from '../layout/layout.module';
+import { Contest } from '../models/contest';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class AppVariablesService {
   current_member:Member;
   current_member_bs:BehaviorSubject<Member> = new BehaviorSubject<Member>(this.current_member);
   current_member_ob:Observable<Member> = this.current_member_bs.asObservable();
+
+  currentContest:Contest;
+  currentContest_bs:BehaviorSubject<Contest> = new BehaviorSubject<Contest>(this.currentContest);
+  currentContest_ob:Observable<Contest> =  this.currentContest_bs.asObservable();
 
   temp_member:Member
   temp_ticket:Ticket;
@@ -34,6 +39,10 @@ export class AppVariablesService {
         this.fillMember(<Member>data,ticket)
       })
     }
+
+    this.glob.getContest().subscribe(data=>{
+        this.populateContest(data);
+    })
   }
   
 
@@ -74,6 +83,12 @@ export class AppVariablesService {
     this.temp_member = null
     this.temp_ticket= null;
     this.reloadBS(null);
+  }
+
+  populateContest(data)
+  {
+      this.currentContest= data;
+      this.currentContest_bs.next(data);
   }
   
 }

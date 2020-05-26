@@ -40,9 +40,13 @@ export class AppVariablesService {
       })
     }
 
+    this.reload_contest()
+  }
+  reload_contest() {
+    console.log("here");
     this.glob.getContest().subscribe(data=>{
-        this.populateContest(data);
-    })
+      this.populateContest(data);
+  })
   }
   
 

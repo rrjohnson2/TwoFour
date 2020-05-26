@@ -24,6 +24,7 @@ import { CountTimePipe } from '../pipe/count-time.pipe';
 import { CountdownComponent } from './home/countdown/countdown.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { SubmitModalComponent } from './home/submit-modal/submit-modal.component';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     CountTimePipe,
     HomeComponent, UpdateComponent, LoginComponent, 
     SignupComponent, FourDigitCodeComponent, LayoutComponent,
-    FooterComponent, CountdownComponent],
+    FooterComponent, CountdownComponent, SubmitModalComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,

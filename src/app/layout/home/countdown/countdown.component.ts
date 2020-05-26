@@ -37,12 +37,11 @@ export class CountdownComponent implements OnInit {
         }
       for(const i in times)
       {
-        // tslint:disable-next-line: no-trailing-whitespace
-        
-        times[i] = Math.floor(times[i]);
-        if(times[i]== undefined) times[i] = "00";
-        if(times[i]<10) times[i] = "0"+times[i];
+          times[i] = Math.floor(times[i]);
+          if(times[i]<10) times[i] = "0"+times[i];
       }
+      
+      if(times[pos]== undefined) return "00";
       return times[pos];
   }
 

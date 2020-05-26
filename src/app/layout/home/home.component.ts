@@ -19,26 +19,21 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.variables.currentContest_ob.subscribe(data=> {
       this.contest = data
-      console.log(data)
-      this.countdown();
     });
+
+    this.countdown();
     
   }
 
   countdown()
   {
       setInterval(()=>{
-          this.today = new Date();
-          this.seconds_differ = Math.abs(this.today.getTime() - new Date(this.contest.calendar).getTime()) / 1000;
-          this.progress = this.seconds_differ / this.hours_to_secs_24 *100;
+        if(this.seconds_differ < 0) return;
+        this.today = new Date();
+        this.seconds_differ =  (new Date(this.contest.calendar).getTime() - this.today.getTime() )/ 1000;
+        this.progress = this.seconds_differ / this.hours_to_secs_24 *100;
+        console.log("here")
       },1000)
-  }
-
-  get countTime()
-  {
-    var res;
-    
-    return res;
   }
 
 }

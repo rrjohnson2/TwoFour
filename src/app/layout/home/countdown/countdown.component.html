@@ -1,1 +1,55 @@
-<p>countdown works!</p>
+<div class="row">
+    <div class="col-6 ">
+        <a  
+        matTooltip="Time Left For Submissions" 
+        [matTooltipPosition]="'after'"
+        #tooltiptime="matTooltip"
+        (click)="tooltiptime.toggle()">
+            <button mat-mini-fab color="accent">
+                {{getSplitTime(0)}}hr
+            </button>
+            <button mat-mini-fab color="accent">
+                {{getSplitTime(1)}}m
+            </button>
+            <button mat-mini-fab color="accent">
+                {{getSplitTime(2)}}s
+            </button>
+        </a>
+    </div>
+
+    <div class="col-6 text-right">
+        <button mat-mini-fab color="accent"
+         matTooltip="Submissions" 
+         [matTooltipPosition]="'after'"
+         #tooltip="matTooltip"
+         (click)="tooltip.toggle()">
+            {{subs}}
+        </button>
+    </div>
+</div>
+
+
+<div class="">
+    <div class="row">
+        <div class="col-12">
+            <div *ngIf="winner!=null ;else welcome">
+                Winner info
+            </div>
+            <ng-template #welcome>
+                <p>
+                    Welcome To TWOFOUR Viral the firts and only
+                    viral lottey.
+                    evarery day we choose a user submission
+                    that will ber choosen at random
+                    the winner will be featured on the site for 24 hours during which the next
+                    competition will be running to the nexct day winner
+                    your first submissions are free; you only get one submission but you
+                    will be able to change it before the winner is annouce.
+                    once the winnner is annouced a notification will be sent to your text or email.
+                    ytou can alos cvhange notoficcations at any time
+                    have fun and good luck
+                </p>
+            </ng-template>
+        </div>
+    </div>
+</div>

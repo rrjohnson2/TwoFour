@@ -22,13 +22,17 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ReverseAuthGuard } from './reverse.auth.guard';
 import { CountTimePipe } from '../pipe/count-time.pipe';
 import { CountdownComponent } from './home/countdown/countdown.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
   declarations: [
     
     CountTimePipe,
-    HomeComponent, UpdateComponent, LoginComponent, SignupComponent, FourDigitCodeComponent, LayoutComponent, FooterComponent, CountdownComponent],
+    HomeComponent, UpdateComponent, LoginComponent, 
+    SignupComponent, FourDigitCodeComponent, LayoutComponent,
+    FooterComponent, CountdownComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule,
@@ -38,7 +42,7 @@ import { CountdownComponent } from './home/countdown/countdown.component';
     MatToolbarModule,
     MatListModule,MatFormFieldModule,MatInputModule,
     MatButtonModule,MatIconModule,MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,MatChipsModule,MatTooltipModule
   ],
   providers:[AuthGuard, ReverseAuthGuard]
 })

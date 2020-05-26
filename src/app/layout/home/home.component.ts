@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.variables.currentContest_ob.subscribe(data=> {
       this.contest = data
+      console.log(data)
       this.countdown();
     });
     

@@ -14,7 +14,7 @@ import { SubmissionTicket } from 'src/app/models/submission-ticket';
   templateUrl: './submit-modal.component.html',
   styleUrls: ['./submit-modal.component.scss']
 })
-export class SubmitModalComponent implements OnInit,AfterViewInit {
+export class SubmitModalComponent implements OnInit, AfterViewInit {
 
   member: Member;
   @ViewChild('classic1') modal: ElementRef;
@@ -26,18 +26,18 @@ export class SubmitModalComponent implements OnInit,AfterViewInit {
   extension: string;
 
   constructor(private router: Router, private uiService: UIService,
-     private variables: AppVariablesService,
-     private submitService:SubmitModalService
-     ) { }
+    private variables: AppVariablesService,
+    private submitService: SubmitModalService
+  ) { }
   ngAfterViewInit(): void {
     this.uiService.auto_size_text_area();
     this.uiService.upload_button();
-    this.submission  ={
-      content_extension:"",
-      content_url:"",
-      description:"",
-      member:this.member,
-      rolls:1
+    this.submission = {
+      content_extension: "",
+      content_url: "",
+      description: "",
+      member: this.member,
+      rolls: 1
     };
   }
 
@@ -53,32 +53,30 @@ export class SubmitModalComponent implements OnInit,AfterViewInit {
     })
   }
   submit() {
-      this.submitService.submit(this.submission).subscribe(
-        data => {
-            var subTicket:SubmissionTicket = <SubmissionTicket> data;
-            if(this.content_file !=null)
-            {
-              if(subTicket.win)
-              {  
-                var winnerFile:File = new File([this.content_file],subTicket.win,{type:this.content_file.type});
-                this.submitService.uploadSubmission(winnerFile).subscribe();
-              }
-              if(subTicket.backupSlot)
-              {
-                var backupFile:File = new File([this.content_file],subTicket.backupSlot,{type:this.content_file.type});
-                this.submitService.uploadSubmission(backupFile).subscribe();
-              }
-            }
+    this.submission.description = this.submitForm.get("description").value;
+    this.submitService.submit(this.submission).subscribe(
+      data => {
+        var subTicket: SubmissionTicket = <SubmissionTicket>data;
+        if (this.content_file != null) {
+          if (subTicket.win) {
+            var winnerFile: File = new File([this.content_file], subTicket.win, { type: this.content_file.type });
+            this.submitService.uploadSubmission(winnerFile).subscribe();
+          }
+          if (subTicket.backupSlot) {
+            var backupFile: File = new File([this.content_file], subTicket.backupSlot, { type: this.content_file.type });
+            this.submitService.uploadSubmission(backupFile).subscribe();
+          }
         }
-      )
+      }
+    )
 
   }
   fileChangeEvent(event) {
     var old_file = event.target.files[0];
 
-    this.submission.content_extension = "."+ old_file.name.split('.').pop();
+    this.submission.content_extension = "." + old_file.name.split('.').pop();
 
-    
+
     this.bitComp.init(old_file);
     this.content_file = new File([old_file], "temp", { type: old_file.type });
 

@@ -15,12 +15,12 @@
                             " />
                     <button class="long_12_button button_upload" mat-raised-button color="accent"
                         matTooltip="Photo/Audio/Video" [matTooltipPosition]="'after'" #tooltip="matTooltip"
-                        (click)="tooltip.toggle()">
+                        (click)="tooltip.toggle()" type="button">
                         Upload Photo/Image/Video
                     </button>
                 </div>
-                <div class="col-12">
-                    <button *ngIf="submitForm.valid" class="long_12_button" mat-raised-button
+                <div class="col-12 ">
+                    <button type="submit" *ngIf="submitForm.valid" class="long_12_button" mat-raised-button
                         color="primary">Submit</button>
                     <button *ngIf="submitForm.invalid" class="long_12_button" mat-raised-button disabled>Submit</button>
                 </div>

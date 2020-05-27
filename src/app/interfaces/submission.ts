@@ -4,6 +4,6 @@ export interface Submission {
     description:string;
 	member:Member;
 	content_url:string;
-	content_type:string;
+	content_extension:string;
 	rolls:number;
 }

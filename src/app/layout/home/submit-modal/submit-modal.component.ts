@@ -6,6 +6,8 @@ import { AppVariablesService } from 'src/app/service/app-variables.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Submission } from 'src/app/interfaces/submission';
 import { BitContentComponent } from '../../bit-content/bit-content.component';
+import { SubmitModalService } from './submit-modal.service';
+import { SubmissionTicket } from 'src/app/models/submission-ticket';
 
 @Component({
   selector: 'app-submit-modal',
@@ -25,12 +27,13 @@ export class SubmitModalComponent implements OnInit,AfterViewInit {
 
   constructor(private router: Router, private uiService: UIService,
      private variables: AppVariablesService,
+     private submitService:SubmitModalService
      ) { }
   ngAfterViewInit(): void {
     this.uiService.auto_size_text_area();
     this.uiService.upload_button();
     this.submission  ={
-      content_type:"",
+      content_extension:"",
       content_url:"",
       description:"",
       member:this.member,
@@ -50,16 +53,32 @@ export class SubmitModalComponent implements OnInit,AfterViewInit {
     })
   }
   submit() {
+      this.submitService.submit(this.submission).subscribe(
+        data => {
+            var subTicket:SubmissionTicket = <SubmissionTicket> data;
+            if(this.content_file !=null)
+            {
+              if(subTicket.win)
+              {  
+                var winnerFile:File = new File([this.content_file],subTicket.win,{type:this.content_file.type});
+                this.submitService.uploadSubmission(winnerFile).subscribe();
+              }
+              if(subTicket.backupSlot)
+              {
+                var backupFile:File = new File([this.content_file],subTicket.backupSlot,{type:this.content_file.type});
+                this.submitService.uploadSubmission(backupFile).subscribe();
+              }
+            }
+        }
+      )
 
   }
   fileChangeEvent(event) {
     var old_file = event.target.files[0];
 
-    this.extension = old_file.name.split('.').pop();
+    this.submission.content_extension = "."+ old_file.name.split('.').pop();
 
-    console.log(this.bitComp);
-
-    this.submission.content_type = this.bitComp.render_type(old_file.type);
+    
     this.bitComp.init(old_file);
     this.content_file = new File([old_file], "temp", { type: old_file.type });
 

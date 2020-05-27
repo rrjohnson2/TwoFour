@@ -1,7 +1,8 @@
-import { Member } from '../models/member';
-import { AppVariablesService } from '../service/app-variables.service';
+
 
 export var isSmallScreen = window.screen.width < 992;
 
 export var backendUrl = "http://localhost:8080/"
+
+export var image_server_url = "http://localhost:8082/"
 

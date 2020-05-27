@@ -1,39 +1,30 @@
-<div class="modal">
-    <ng-template #classic1 let-c="close" let-d="dismiss">
-        <div class="modal-content">
-            <div class="modal-body ">
-                <form [formGroup]="submitForm" (ngSubmit)="submit()">
-
-                    <div class="card-body">
-                        <div class="row">
-                            <fieldset class="col-12">
-                                <legend>Description</legend>
-                                <textarea formControlName="description" class="form-control textarea"
-                                    rows="1"></textarea>
-                            </fieldset>
-                            <div class=" offset-1 col-10  textarea_icon_container  ">
-                                <input hidden class="target_input" type="file" (change)="fileChangeEvent($event)"
-                                    accept="
-                                        video/*,
-                                        audio/*,
-                                        image/*
-                                        " />
-                                <button class="long_12_button button_upload" mat-raised-button color="primary"
-                                    matTooltip="Photo/Audio/Video" [matTooltipPosition]="'after'" #tooltip="matTooltip"
-                                    (click)="tooltip.toggle()">
-                                    Upload Photo/Image/Video
-                                </button>
-                            </div>
-                            <div class="col-12">
-                                <button *ngIf="submitForm.valid" class="long_12_button" mat-raised-button
-                                    color="primary">Submit</button>
-                                <button *ngIf="submitForm.invalid" class="long_12_button" mat-raised-button
-                                    disabled>Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+<div class="card">
+    <form [formGroup]="submitForm" (ngSubmit)="submit()">
+        <div class="card-body">
+            <div class="row">
+                <fieldset class="col-12">
+                    <legend>Description</legend>
+                    <textarea formControlName="description" class="form-control textarea" rows="1"></textarea>
+                </fieldset>
+                <div class=" offset-1 col-10  textarea_icon_container  ">
+                    <app-bit-content></app-bit-content>
+                    <input hidden class="target_input" type="file" (change)="fileChangeEvent($event)" accept="
+                            video/*,
+                            audio/*,
+                            image/*
+                            " />
+                    <button class="long_12_button button_upload" mat-raised-button color="accent"
+                        matTooltip="Photo/Audio/Video" [matTooltipPosition]="'after'" #tooltip="matTooltip"
+                        (click)="tooltip.toggle()">
+                        Upload Photo/Image/Video
+                    </button>
+                </div>
+                <div class="col-12">
+                    <button *ngIf="submitForm.valid" class="long_12_button" mat-raised-button
+                        color="primary">Submit</button>
+                    <button *ngIf="submitForm.invalid" class="long_12_button" mat-raised-button disabled>Submit</button>
+                </div>
             </div>
         </div>
-    </ng-template>
+    </form>
 </div>

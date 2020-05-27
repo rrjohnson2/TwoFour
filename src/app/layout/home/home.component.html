@@ -7,12 +7,13 @@
                 <div class="row ">
                     <div class="col-12">
                         <app-countdown [winner]="contest?.winner" [subs]="contest?.sub_count" [time]="seconds_differ" [progress]="progress"></app-countdown>
+                        
                     </div>
                 </div>
 
                 <div class="row ">
                     <div class="col-12 text-center ">
-                        <button class="long_12_button" mat-raised-button color="primary" (click)="openModal()">Submit Lottery</button>
+                        <button class="long_12_button" mat-raised-button color="primary" routerLink="/layout/submit">Submit Lottery</button>
                     </div>
                 </div>
             </div>
@@ -20,8 +21,6 @@
 
     </div>
 </div>
-
-<app-submit-modal></app-submit-modal>
 
 
 

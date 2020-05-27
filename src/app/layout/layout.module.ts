@@ -25,15 +25,20 @@ import { CountdownComponent } from './home/countdown/countdown.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { SubmitModalComponent } from './home/submit-modal/submit-modal.component';
+import { BitContentComponent } from './bit-content/bit-content.component';
+import { SafeHtmlPipe } from '../pipe/safe-html.pipe';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     
-    CountTimePipe,
+    CountTimePipe,SafeHtmlPipe,
     HomeComponent, UpdateComponent, LoginComponent, 
     SignupComponent, FourDigitCodeComponent, LayoutComponent,
-    FooterComponent, CountdownComponent, SubmitModalComponent],
+    FooterComponent, CountdownComponent, SubmitModalComponent,
+    BitContentComponent
+  ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
@@ -43,7 +48,8 @@ import { SubmitModalComponent } from './home/submit-modal/submit-modal.component
     MatToolbarModule,
     MatListModule,MatFormFieldModule,MatInputModule,
     MatButtonModule,MatIconModule,MatProgressBarModule,
-    MatCheckboxModule,MatChipsModule,MatTooltipModule
+    MatCheckboxModule,MatChipsModule,MatTooltipModule,
+    MatDialogModule
   ],
   providers:[AuthGuard, ReverseAuthGuard]
 })

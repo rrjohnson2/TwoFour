@@ -1,0 +1,18 @@
+<div *ngIf="src !=null">
+  <div *ngIf="render_type(type) == 'image';else video">
+    <img class="preview" [src]="src | safeHtml: 'resourceUrl'" >
+  </div>
+  
+  <ng-template #video>
+    <div *ngIf="render_type(type) =='video';else audio">
+      <video class="preview" [src]="src | safeHtml: 'resourceUrl'"  controls></video>
+    </div>
+  </ng-template>
+  
+  <ng-template #audio>
+    <div *ngIf="render_type(type) =='audio'">
+      <audio class="preview" controls [src]="src | safeHtml: 'resourceUrl'" >
+        </audio>
+    </div>
+  </ng-template>
+</div>

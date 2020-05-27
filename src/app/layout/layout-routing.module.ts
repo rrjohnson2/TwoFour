@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FourDigitCodeComponent } from './four-digit-code/four-digit-code.component';
 import { LayoutComponent } from './layout.component';
 import { ReverseAuthGuard } from './reverse.auth.guard';
+import { SubmitModalComponent } from './home/submit-modal/submit-modal.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,11 @@ const routes: Routes = [
                     {
                         path:"update",
                         component: UpdateComponent,
+                        canActivate: [AuthGuard]
+                    },
+                    {
+                        path:"submit",
+                        component: SubmitModalComponent,
                         canActivate: [AuthGuard]
                     },
                     

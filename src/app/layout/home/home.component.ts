@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   countdown()
-  {
+   {
      var interval = setInterval(()=>{
         if(this.seconds_differ <= 0 && !this.reloading) {
           this.reloading = true;
@@ -54,9 +54,6 @@ export class HomeComponent implements OnInit {
       },1000)
   }
 
-  openModal()
-  {
-    this.submit.open();
-  }
+  
 
 }

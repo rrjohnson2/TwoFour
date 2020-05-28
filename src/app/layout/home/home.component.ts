@@ -12,7 +12,6 @@ import { SubmitModalComponent } from './submit-modal/submit-modal.component';
 export class HomeComponent implements OnInit {
 
   @ViewChild(SubmitModalComponent) submit: SubmitModalComponent;
-  progress:number;
   contest:Contest;
   today:Date = new Date();
   hours_to_secs_24 :number = 86400;
@@ -45,7 +44,6 @@ export class HomeComponent implements OnInit {
           console.log("here");
           this.today = new Date();
           this.seconds_differ =  (new Date(this.contest.calendar).getTime() - this.today.getTime() )/ 1000;
-          this.progress = this.seconds_differ / this.hours_to_secs_24 *100;
           this.countdown();
         }
       },1000)

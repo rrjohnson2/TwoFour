@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
    {
      var interval = setInterval(()=>{
         if(this.seconds_differ <= 0 && !this.reloading) {
+          console.log("here")
           this.reloading = true;
           this.glob.getContest().subscribe(data=>{
           this.variables.populateContest(data);
@@ -47,6 +48,7 @@ export class HomeComponent implements OnInit {
         }
         else if(!this.reloading)
         {
+          console.log("there")
           this.today = new Date();
           this.seconds_differ =  (new Date(this.contest.calendar).getTime() - this.today.getTime() )/ 1000;
           this.progress = this.seconds_differ / this.hours_to_secs_24 *100;

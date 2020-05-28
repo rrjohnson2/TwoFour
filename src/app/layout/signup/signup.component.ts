@@ -69,6 +69,9 @@ export class SignupComponent implements OnInit {
           data: member.password
           }
         this.router.navigate(['/layout/authenticate']);
+      },
+      error =>{
+        //errorhandling
       })
     }
     // failed

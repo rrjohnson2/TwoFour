@@ -13,46 +13,46 @@ import { Ticket } from 'src/app/interfaces/ticket';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup;
-  constructor(private router:Router,private appVariables:AppVariablesService, private glob:GlobalService) { }
+  loginForm: FormGroup;
+  constructor(private router: Router, private appVariables: AppVariablesService, private glob: GlobalService) { }
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  initForm()
-  {
+  initForm() {
     this.loginForm = new FormGroup(
       {
-        email_phone_username: new FormControl(null,[
-            Validators.required
-        ]),
-        password: new FormControl(null,[
+        email_phone_username: new FormControl(null, [
           Validators.required
-         ])
+        ]),
+        password: new FormControl(null, [
+          Validators.required
+        ])
       }
     );
   }
 
 
-  submit()
-  {
-     if(this.loginForm.valid)
-     {
-       var ticket:Ticket ={
-        id:this.loginForm.get("email_phone_username").value,
-        data:this.loginForm.get("password").value
+  submit() {
+    if (this.loginForm.valid) {
+      var ticket: Ticket = {
+        id: this.loginForm.get("email_phone_username").value,
+        data: this.loginForm.get("password").value
       };
-        this.glob.login(ticket).subscribe(data=>
-          {
-           
-            this.appVariables.fillMember(<Member>data,ticket);
-            this.router.navigate(['layout/home']);
-          });
-     }
+      this.glob.login(ticket).subscribe(data => {
+
+        this.appVariables.fillMember(<Member>data, ticket);
+        this.router.navigate(['layout/home']);
+        // good
+      },
+        error => {
+          // errorhandling
+        });
+    }
   }
 
-  signUp(){
+  signUp() {
     this.router.navigate(['/layout/signup'])
   }
 

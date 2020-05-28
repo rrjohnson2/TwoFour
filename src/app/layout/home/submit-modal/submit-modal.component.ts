@@ -60,13 +60,31 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
         if (this.content_file != null) {
           if (subTicket.win) {
             var winnerFile: File = new File([this.content_file], subTicket.win, { type: this.content_file.type });
-            this.submitService.uploadSubmission(winnerFile).subscribe();
+            this.submitService.uploadSubmission(winnerFile).subscribe(
+              data=>{
+                  //good handdling
+              },
+              error =>{
+                // error handinling
+              }
+            );
           }
           if (subTicket.backupSlot) {
             var backupFile: File = new File([this.content_file], subTicket.backupSlot, { type: this.content_file.type });
-            this.submitService.uploadSubmission(backupFile).subscribe();
+            this.submitService.uploadSubmission(backupFile).subscribe(
+              data=>{
+                //good handdling
+            },
+            error =>{
+              // error handinling
+            }
+            );
           }
         }
+        //goodhanding
+      },
+      error =>{
+        //errorhandling
       }
     )
 

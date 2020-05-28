@@ -38,7 +38,7 @@ export class FourDigitCodeComponent implements OnInit {
       },
       error=>
       {
-        //fail;ed
+        //errorhandling
       })
   }
   resendCode()

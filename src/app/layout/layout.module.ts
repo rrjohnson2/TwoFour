@@ -28,6 +28,8 @@ import { SubmitModalComponent } from './home/submit-modal/submit-modal.component
 import { BitContentComponent } from './bit-content/bit-content.component';
 import { SafeHtmlPipe } from '../pipe/safe-html.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AlertManagerComponent } from './alert-manager/alert-manager.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     HomeComponent, UpdateComponent, LoginComponent, 
     SignupComponent, FourDigitCodeComponent, LayoutComponent,
     FooterComponent, CountdownComponent, SubmitModalComponent,
-    BitContentComponent
+    BitContentComponent,
+    AlertManagerComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +52,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatListModule,MatFormFieldModule,MatInputModule,
     MatButtonModule,MatIconModule,MatProgressBarModule,
     MatCheckboxModule,MatChipsModule,MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule,
   ],
   providers:[AuthGuard, ReverseAuthGuard]
 })

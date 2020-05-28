@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   today:Date = new Date();
   hours_to_secs_24 :number = 86400;
   seconds_differ: number= this.hours_to_secs_24;
-  reloading=false
   constructor(private variables:AppVariablesService, private glob :GlobalService) { }
 
   ngOnInit(): void {
@@ -29,29 +28,25 @@ export class HomeComponent implements OnInit {
     this.variables.currentContest_ob.subscribe(data=> {
       this.contest = data
       this.countdown();
-      this.reloading=false;
     });
   }
 
   countdown()
    {
-     var interval = setInterval(()=>{
-        if(this.seconds_differ <= 0 && !this.reloading) {
-          console.log("here")
-          this.reloading = true;
+      setTimeout(()=>{
+        if(this.seconds_differ <= 0) {
           this.glob.getContest().subscribe(data=>{
           this.variables.populateContest(data);
-          clearInterval(interval);
           this.seconds_differ =this.hours_to_secs_24;
-          })
-          return
+          });
         }
-        else if(!this.reloading)
+        else if(this.contest != null && this.contest.calendar !=null )
         {
-          console.log("there")
+          console.log("here");
           this.today = new Date();
           this.seconds_differ =  (new Date(this.contest.calendar).getTime() - this.today.getTime() )/ 1000;
           this.progress = this.seconds_differ / this.hours_to_secs_24 *100;
+          this.countdown();
         }
       },1000)
   }

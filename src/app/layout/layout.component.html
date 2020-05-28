@@ -6,17 +6,17 @@
         </mat-toolbar>
         <mat-selection-list #links [multiple]="false">
             <mat-list-option>
-                <a mat-list-item  routerLink="/about" >
+                <a mat-list-item routerLink="/about">
                     <legend>About</legend>
                 </a>
             </mat-list-option>
             <mat-list-option *ngIf="(member | async) != null">
-                <a mat-list-item  (click)="logOff()" >
+                <a mat-list-item (click)="logOff()">
                     <legend>Log Off</legend>
                 </a>
             </mat-list-option>
-          </mat-selection-list>
-        
+        </mat-selection-list>
+
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="layout">
@@ -38,6 +38,9 @@
             <div [class]="render_class">
                 <router-outlet (activate)='onActivate($event)'></router-outlet>
             </div>
+
+
+            <app-alert-manager></app-alert-manager>
             <app-footer></app-footer>
 
         </div>

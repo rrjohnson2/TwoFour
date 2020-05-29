@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
@@ -7,43 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CountdownComponent implements OnInit {
 
-  @Input() time;
+  @Input() time:Date;
   @Input() progress;
   @Input() subs;
   @Input() winner;
   @Input() description;
+  @Output() reload:EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getSplitTime(pos)
-  {
-    const intervals = [
-      3600,60,1
-    ];
-        
-
-        var val = this.time;
-        var place = 0;
-        var times = [];
-        // tslint:disable-next-line: align
-        while(val > 0 && place < intervals.length)
-        {
-           var  amount = val/intervals[place]
-
-           val = val - Math.floor(amount)*intervals[place];
-           times.push(amount);
-           place++;
-        }
-      for(const i in times)
-      {
-          times[i] = Math.floor(times[i]);
-          if(times[i]<10) times[i] = "0"+times[i];
-      }
-      
-      if(times[pos]== undefined) return "00";
-      return times[pos];
+  refresh_contest(){
+    this.reload.emit(null);
   }
+
 
 }

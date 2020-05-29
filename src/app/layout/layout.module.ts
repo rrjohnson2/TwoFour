@@ -30,6 +30,8 @@ import { SafeHtmlPipe } from '../pipe/safe-html.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertManagerComponent } from './alert-manager/alert-manager.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -52,7 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatListModule,MatFormFieldModule,MatInputModule,
     MatButtonModule,MatIconModule,MatProgressBarModule,
     MatCheckboxModule,MatChipsModule,MatTooltipModule,
-    MatDialogModule,
+    MatDialogModule, MatBadgeModule, MatMenuModule,
     NgbModule,
   ],
   providers:[AuthGuard, ReverseAuthGuard]

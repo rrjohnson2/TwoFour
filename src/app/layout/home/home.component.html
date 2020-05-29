@@ -1,12 +1,12 @@
 <div class="row justify-content-center two_four_card_holder">
-    <div class="col-lg-9 col-sm-12 sm_reduce_col_12_padding">
+    <div class="col-lg-7 col-sm-12 sm_reduce_col_12_padding">
         <div class="card two_four_card">
             <div class="card-body">
                 
                 <app-bit-content></app-bit-content>
                 <div class="row ">
                     <div class="col-12">
-                        <app-countdown [description]="previousContest?.winning_description" [winner]="previousContest?.winner" [subs]="contest?.sub_count" [time]="seconds_differ" ></app-countdown>
+                        <app-countdown (reload)="nextContest($event)" [description]="previousContest?.winning_description" [winner]="previousContest?.winner" [subs]="contest?.sub_count" [time]="contest?.calendar" ></app-countdown>
                         
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { AppVariablesService } from 'src/app/service/app-variables.service';
 import { Contest } from 'src/app/models/contest';
 import { GlobalService } from 'src/app/service/global.service';
@@ -20,9 +20,8 @@ export class HomeComponent implements OnInit {
   previousContest: Contest;
   today: Date = new Date();
   hours_to_secs_24: number = 86400;
-  seconds_differ: number = this.hours_to_secs_24;
-  loading = false;
   constructor(private variables: AppVariablesService, private glob: GlobalService) { }
+ 
 
   ngOnInit(): void {
     this.init();
@@ -31,8 +30,6 @@ export class HomeComponent implements OnInit {
   init() {
     this.variables.currentContest_ob.subscribe(data => {
       this.contest = data
-      this.loading=false;
-      this.countdown();
     });
     this.variables.previousContest_ob.subscribe(data => {
       this.previousContest = data;
@@ -41,23 +38,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  countdown() {
-    setTimeout(() => {
-      if (this.seconds_differ <= 0) {
-        
-        this.nextContest();
-      }
-      else if (this.contest != null && this.contest.calendar != null) {
-        this.today = new Date();
-        this.seconds_differ = (new Date(this.contest.calendar).getTime() - this.today.getTime()) / 1000;
-        this.countdown();
-      }
-    }, 1000)
-  }
+  
 
-  nextContest() {
-    if(this.loading) return;
-    this.loading = true;
+  nextContest(event) {
+    console.log("here");
     this.variables.current_member.post_count = 0;
     this.variables.reloadBS(this.variables.current_member);
 
@@ -77,7 +61,7 @@ export class HomeComponent implements OnInit {
         this.variables.addAlert(alert_ticket)
       })
 
-    this.seconds_differ = this.hours_to_secs_24;
+    
   }
   populateBit(data:Contest) {
     if (data!=null && data.winning_content_url != null) {

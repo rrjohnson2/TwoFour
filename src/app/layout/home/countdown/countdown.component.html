@@ -8,30 +8,31 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    {{winner.username}}
+                                    <mat-icon>account_circle</mat-icon>
+                                    <strong>{{winner.username}}</strong>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
-                            <mat-list>
-                                <mat-list-item>
-                                    <a target="_blank" href="https://facebook.com/{{winner.facebook}}">
+                            <mat-selection-list  [multiple]="false">
+                                <mat-list-option>
+                                    <a mat-list-item target="_blank" href="https://facebook.com/{{winner.facebook}}">
                                         <fa-icon [icon]="facebook" size="lg"></fa-icon>
+                                        <strong>{{winner.facebook}}</strong>
                                     </a>
-                                    <strong>Facebok</strong>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <a target="_blank" href="https://instagram.com/{{winner.instagram}}">
+                                </mat-list-option>
+                                <mat-list-option>
+                                    <a mat-list-item target="_blank" href="https://instagram.com/{{winner.instagram}}">
                                         <fa-icon [icon]="instagram" size="lg"></fa-icon>
+                                        <strong>{{winner.twitter}}</strong>
                                     </a>
-                                    <strong>Twitter</strong>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <a target="_blank" href="https://twitter.com/{{winner.twitter}}">
+                                </mat-list-option>
+                                <mat-list-option>
+                                    <a mat-list-item target="_blank" href="https://twitter.com/{{winner.twitter}}">
                                         <fa-icon [icon]="twitter" size="lg"></fa-icon>
+                                        <strong>{{winner.instagram}}</strong>
                                     </a>
-                                    <strong>Instagram</strong>
-                                </mat-list-item>
-                            </mat-list>
+                                </mat-list-option>
+                            </mat-selection-list>
 
                         </mat-expansion-panel>
                     </mat-accordion>

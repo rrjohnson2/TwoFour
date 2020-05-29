@@ -8,6 +8,8 @@ import { Submission } from 'src/app/interfaces/submission';
 import { BitContentComponent } from '../../bit-content/bit-content.component';
 import { SubmitModalService } from './submit-modal.service';
 import { SubmissionTicket } from 'src/app/models/submission-ticket';
+import { AlertTicket } from 'src/app/interfaces/alert-ticket';
+import { Actions } from 'src/app/constants/app.constant';
 
 @Component({
   selector: 'app-submit-modal',
@@ -61,30 +63,46 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
           if (subTicket.win) {
             var winnerFile: File = new File([this.content_file], subTicket.win, { type: this.content_file.type });
             this.submitService.uploadSubmission(winnerFile).subscribe(
-              data=>{
-                  //good handdling
+              data => {
+                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
+
+                this.variables.addAlert(alert_ticket);
               },
-              error =>{
-                // error handinling
+              error => {
+                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit Fieloo', type: 'danger' };
+
+                this.variables.addAlert(alert_ticket);
               }
             );
           }
           if (subTicket.backupSlot) {
             var backupFile: File = new File([this.content_file], subTicket.backupSlot, { type: this.content_file.type });
             this.submitService.uploadSubmission(backupFile).subscribe(
-              data=>{
-                //good handdling
-            },
-            error =>{
-              // error handinling
-            }
+              data => {
+                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
+
+                this.variables.addAlert(alert_ticket);
+              },
+              error => {
+                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit', type: 'danger' };
+
+                this.variables.addAlert(alert_ticket);
+              }
             );
           }
         }
-        //goodhanding
+        var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Post submitted', type: 'success' };
+
+        this.variables.addAlert(alert_ticket);
+        this.variables.setup();
+        this.router.navigate(['/layout/home']);
       },
-      error =>{
-        //errorhandling
+      error => {
+        var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit', type: 'danger' };
+
+        this.variables.addAlert(alert_ticket);
+        this.submitForm.reset();
+        this.bitComp.init(null);
       }
     )
 

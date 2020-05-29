@@ -11,6 +11,7 @@ export class CountdownComponent implements OnInit {
   @Input() progress;
   @Input() subs;
   @Input() winner;
+  @Input() description;
   constructor() { }
 
   ngOnInit(): void {

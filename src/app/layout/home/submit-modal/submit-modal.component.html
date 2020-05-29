@@ -7,7 +7,7 @@
                     <textarea formControlName="description" class="form-control textarea" rows="1"></textarea>
                 </fieldset>
                 <div class=" offset-1 col-10  textarea_icon_container  ">
-                    <app-bit-content></app-bit-content>
+                    <app-bit-content [placeholder]="true"></app-bit-content>
                     <input hidden class="target_input" type="file" (change)="fileChangeEvent($event)" accept="
                             video/*,
                             audio/*,

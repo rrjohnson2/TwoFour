@@ -2,11 +2,11 @@
     <div class="col-lg-9 col-sm-12 sm_reduce_col_12_padding">
         <div class="card two_four_card">
             <div class="card-body">
-                <video class="preview" src="assets/video/placeholder.mp4" controls></video>
                 
+                <app-bit-content></app-bit-content>
                 <div class="row ">
                     <div class="col-12">
-                        <app-countdown [winner]="contest?.winner" [subs]="contest?.sub_count" [time]="seconds_differ" ></app-countdown>
+                        <app-countdown [description]="previousContest?.winning_description" [winner]="previousContest?.winner" [subs]="contest?.sub_count" [time]="seconds_differ" ></app-countdown>
                         
                     </div>
                 </div>

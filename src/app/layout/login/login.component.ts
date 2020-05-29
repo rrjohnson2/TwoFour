@@ -5,6 +5,8 @@ import { AppVariablesService } from 'src/app/service/app-variables.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { Member } from 'src/app/models/member';
 import { Ticket } from 'src/app/interfaces/ticket';
+import { Actions } from 'src/app/constants/app.constant';
+import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 
 @Component({
   selector: 'app-login',
@@ -44,10 +46,14 @@ export class LoginComponent implements OnInit {
 
         this.appVariables.fillMember(<Member>data, ticket);
         this.router.navigate(['layout/home']);
-        // good
+        var alert_ticket:AlertTicket= {action_attempted:Actions.login,msg:'Login Worked',type:'success'};
+
+        this.appVariables.addAlert(alert_ticket);
       },
         error => {
-          // errorhandling
+          var alert_ticket:AlertTicket= {action_attempted:Actions.login,msg:'Login Failed',type:'danger'};
+
+        this.appVariables.addAlert(alert_ticket);
         });
     }
   }

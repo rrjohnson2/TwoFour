@@ -28,5 +28,9 @@ export class GlobalService {
   {
     return this.http.get(backendUrl+"getContest");
   }
+  getPreviousContest()
+  {
+    return this.http.get(backendUrl+"getPreviousContest");
+  }
 
 }

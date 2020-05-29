@@ -5,6 +5,8 @@ import { GlobalService } from 'src/app/service/global.service';
 import { Member } from 'src/app/models/member';
 import { Router } from '@angular/router';
 import { AppVariablesService } from 'src/app/service/app-variables.service';
+import { Actions } from 'src/app/constants/app.constant';
+import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 
 @Component({
   selector: 'app-signup',
@@ -61,7 +63,6 @@ export class SignupComponent implements OnInit {
         member.phone = this.signUpForm.get("email_phone").value;
         choice_id = member.phone
       }
-      console.log(member)
       this.glob.generateCode(member).subscribe(data => {
       this.appvariables.temp_member = member;
       this.appvariables.temp_ticket = {
@@ -71,10 +72,16 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/layout/authenticate']);
       },
       error =>{
-        //errorhandling
+        var alert_ticket:AlertTicket= {action_attempted:Actions.signup,msg:'Sign Up Failed',type:'danger'};
+
+        this.appvariables.addAlert(alert_ticket);
       })
     }
-    // failed
+   else{
+    var alert_ticket:AlertTicket= {action_attempted:Actions.signup,msg:'enter phone number or email',type:'danger'};
+
+    this.appvariables.addAlert(alert_ticket);
+   } 
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -89,7 +96,7 @@ export class SignupComponent implements OnInit {
     if (emailPhone.match(this.email_regex)) {
       return 'EMAIL'
     }
-    else if (emailPhone.match(this.phoneno).length === 10) {
+    else if (emailPhone.match(this.phoneno) &&emailPhone.match(this.phoneno).length === 10) {
       return 'PHONE'
     }
   }

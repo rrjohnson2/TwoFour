@@ -10,6 +10,8 @@ export class BitContentComponent implements OnInit {
    @Input()type;
    @Input()src;
 
+   @Input()placeholder=false;
+
   constructor() { }
 
   ngOnInit() {

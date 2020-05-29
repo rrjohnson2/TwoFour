@@ -10,6 +10,9 @@ export enum Actions {
     logOff,
     login,
     signup,
-    shareIdea,
-    update
+    submit,
+    generateCode,
+    authenicateCode,
+    currrentContest,
+    previousContest
   }

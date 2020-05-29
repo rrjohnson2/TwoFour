@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GlobalService } from 'src/app/service/global.service';
 import { Ticket } from 'src/app/interfaces/ticket';
 import { Router } from '@angular/router';
+import { Actions } from 'src/app/constants/app.constant';
+import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 
 @Component({
   selector: 'app-four-digit-code',
@@ -35,10 +37,15 @@ export class FourDigitCodeComponent implements OnInit {
       this.glob.authenticate(ticket).subscribe(data=>{
         this.appvariables.fillMember(this.appvariables.temp_member,this.appvariables.temp_ticket);
         this.router.navigate(['/layout/home'])
+        var alert_ticket:AlertTicket= {action_attempted:Actions.authenicateCode,msg:'Authenicate Code Success',type:'success'};
+
+        this.appvariables.addAlert(alert_ticket);
       },
       error=>
       {
-        //errorhandling
+        var alert_ticket:AlertTicket= {action_attempted:Actions.authenicateCode,msg:'Could not Authenicate Code',type:'danger'};
+
+        this.appvariables.addAlert(alert_ticket);
       })
   }
   resendCode()
@@ -46,10 +53,14 @@ export class FourDigitCodeComponent implements OnInit {
     this.glob.generateCode(this.appvariables.temp_member).subscribe(
       data=>
       {
-        // passed
+        var alert_ticket:AlertTicket= {action_attempted:Actions.authenicateCode,msg:'Code Generated',type:'success'};
+
+        this.appvariables.addAlert(alert_ticket);
       },
       error =>{
-        // failed
+        var alert_ticket:AlertTicket= {action_attempted:Actions.authenicateCode,msg:'Could not Generate Code',type:'danger'};
+
+        this.appvariables.addAlert(alert_ticket);
       }
     )
   }

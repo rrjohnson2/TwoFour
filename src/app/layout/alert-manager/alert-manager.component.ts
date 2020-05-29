@@ -24,7 +24,7 @@ export class AlertManagerComponent implements OnInit {
   }
 
   close(alert: IAlert) {
-    this.variable.close(alert)
+    this.variable.closeAlert(alert)
   }
   
 }

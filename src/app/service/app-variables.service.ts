@@ -3,10 +3,10 @@ import { Member } from '../models/member';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { GlobalService } from './global.service';
 import { Ticket } from '../interfaces/ticket';
-import { LayoutModule } from '../layout/layout.module';
 import { Contest } from '../models/contest';
 import { IAlert,Type } from '../layout/alert-manager/alert-manager.component';
 import { AlertTicket } from '../interfaces/alert-ticket';
+import { Actions } from '../constants/app.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,10 @@ export class AppVariablesService {
   currentContest:Contest;
   currentContest_bs:BehaviorSubject<Contest> = new BehaviorSubject<Contest>(this.currentContest);
   currentContest_ob:Observable<Contest> =  this.currentContest_bs.asObservable();
+
+  previousContest:Contest;
+  previousContest_bs:BehaviorSubject<Contest> = new BehaviorSubject<Contest>(this.previousContest);
+  previousContest_ob:Observable<Contest> =  this.previousContest_bs.asObservable();
 
   temp_member:Member
   temp_ticket:Ticket;
@@ -75,16 +79,38 @@ export class AppVariablesService {
       }
       this.glob.login(ticket).subscribe(data=>{
         this.fillMember(<Member>data,ticket)
+        var alert_ticket:AlertTicket= {action_attempted:Actions.login,msg:'Login Succesful',type:'success'};
+
+        this.addAlert(alert_ticket)
+      },
+      error =>{
+        var alert_ticket:AlertTicket= {action_attempted:Actions.login,msg:'Login Failed',type:'danger'};
+
+        this.addAlert(alert_ticket)
       })
     }
 
     this.reload_contest()
   }
   reload_contest() {
-    console.log("here");
     this.glob.getContest().subscribe(data=>{
       this.populateContest(data);
-  })
+  },
+  error =>{
+    var alert_ticket:AlertTicket= {action_attempted:Actions.currrentContest,msg:'Could Load Current Contest',type:'danger'};
+
+        this.addAlert(alert_ticket)
+  });
+
+  this.glob.getPreviousContest().subscribe(data=>{
+    this.populatePreviousContest(data);
+},
+error =>{
+  var alert_ticket:AlertTicket= {action_attempted:Actions.currrentContest,msg:'Could Load Prev Contest',type:'danger'};
+
+      this.addAlert(alert_ticket)
+});
+
   }
   
 
@@ -133,7 +159,13 @@ export class AppVariablesService {
       this.currentContest_bs.next(data);
   }
 
-  add(alert_ticket:AlertTicket)
+  populatePreviousContest(data)
+  {
+      this.previousContest= data;
+      this.previousContest_bs.next(data);
+  }
+
+  addAlert(alert_ticket:AlertTicket)
   {
       var type:Type ;
       switch (alert_ticket.type) {
@@ -165,13 +197,13 @@ export class AppVariablesService {
       setTimeout(
         ()=>
         {
-          this.close(alert);
+          this.closeAlert(alert);
         },
         this.popup
       );
   }
 
-  close(alert: IAlert) {
+  closeAlert(alert: IAlert) {
     this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
   

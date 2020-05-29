@@ -32,7 +32,8 @@ import { AlertManagerComponent } from './alert-manager/alert-manager.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,11 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,MatIconModule,MatProgressBarModule,
     MatCheckboxModule,MatChipsModule,MatTooltipModule,
     MatDialogModule, MatBadgeModule, MatMenuModule,
-    NgbModule,
+    NgbModule,FontAwesomeModule,MatExpansionModule
   ],
   providers:[AuthGuard, ReverseAuthGuard]
 })
-export class LayoutModule { }
+export class LayoutModule {
+  constructor(){
+  }
+ }

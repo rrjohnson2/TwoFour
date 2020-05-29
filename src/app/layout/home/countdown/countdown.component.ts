@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {  faFacebook, faTwitter,faInstagram } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-countdown',
@@ -12,6 +14,9 @@ export class CountdownComponent implements OnInit {
   @Input() subs;
   @Input() winner;
   @Input() description;
+  facebook = faFacebook;
+  instagram = faInstagram;
+  twitter = faTwitter;
   @Output() reload:EventEmitter<any> = new EventEmitter<any>();
   constructor() { }
 

@@ -1,42 +1,88 @@
 <div class="row">
-    <div class="col-9">
-        <a matTooltip="Contest End" [matTooltipPosition]="'after'" #tooltiptime="matTooltip"
-            (click)="tooltiptime.toggle()">
-            <button class="long_12_button " mat-raised-button color="accent">
-                {{time | date:'long'}}
-            </button>
-        </a>
-    </div>
-    <div class="col-3">
-        <a matTooltip="Submission Count" [matTooltipPosition]="'after'" #tooltip="matTooltip"
-            (click)="tooltip.toggle()">
-            <button class="long_12_button " mat-raised-button color="accent">
-                    Submissions {{subs}}
-            </button>
-        </a>
+    <div class="col-12">
+        <div class="row">
+            <div *ngIf="winner!=null ;else welcome">
+
+                <div class="col-6">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{winner.username}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <mat-list>
+                                <mat-list-item>
+                                    <a target="_blank" href="https://facebook.com/{{winner.facebook}}">
+                                        <fa-icon [icon]="facebook" size="lg"></fa-icon>
+                                    </a>
+                                    <strong>Facebok</strong>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <a target="_blank" href="https://instagram.com/{{winner.instagram}}">
+                                        <fa-icon [icon]="instagram" size="lg"></fa-icon>
+                                    </a>
+                                    <strong>Twitter</strong>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <a target="_blank" href="https://twitter.com/{{winner.twitter}}">
+                                        <fa-icon [icon]="twitter" size="lg"></fa-icon>
+                                    </a>
+                                    <strong>Instagram</strong>
+                                </mat-list-item>
+                            </mat-list>
+
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+
+                <div class="col-12">
+                    <p>{{description}}</p>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #welcome>
+            <p>
+                Welcome to Two Four Viral the first and only viral lottery.
+                Everyday a user's submission is chosen at random.
+                The chosen submission will be featured on the site for 24 hours,
+                during which the next lottery will be running for the following day.
+                One submission per lottery.
+                but you will be able to change it before the winner is announced for the lottery
+                to which you are submitting. Once the winner is announced a notification will be sent to your phone
+                or email. You can also change notifications at any time.
+            </p>
+        </ng-template>
     </div>
 </div>
 
 
-<div class="">
-    <div class="row">
-        <div class="col-12">
-            <div *ngIf="winner!=null ;else welcome">
-                <strong> Winner: {{winner.username}}</strong>
-                <p>{{description}}</p>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-8">
+                <a matTooltip="Contest End" [matTooltipPosition]="'after'" #tooltiptime="matTooltip"
+                    (click)="tooltiptime.toggle()">
+                    <button class="long_12_button " mat-raised-button color="accent">
+                        {{time | date:'short'}} EST
+                    </button>
+                </a>
+
             </div>
-            <ng-template #welcome>
-                <p>
-                    Welcome to Two Four Viral the first and only viral lottery.
-                    Everyday a user's submission is chosen at random.
-                    The chosen submission will be featured on the site for 24 hours,
-                    during which the next lottery will be running for the following day.
-                    One submission per lottery.
-                    but you will be able to change it before the winner is announced for the lottery
-                    to which you are submitting. Once the winner is announced a notification will be sent to your phone
-                    or email. You can also change notifications at any time.
-                </p>
-            </ng-template>
+            <div class="col-4">
+                <a matTooltip="Submission Count" [matTooltipPosition]="'after'" #tooltip="matTooltip"
+                    (click)="tooltip.toggle()">
+                    <button class="long_12_button " mat-raised-button color="accent">
+                        {{subs}}
+                    </button>
+                </a>
+            </div>
         </div>
+
     </div>
 </div>

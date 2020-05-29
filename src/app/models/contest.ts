@@ -5,7 +5,8 @@ export class Contest {
     calendar:Date;
     sub_count:number;
     winning_description:string;
-    wiining_content_url:string;
+    winning_content_url:string;
+    winning_content_type:string;
     content_type:string;
 
 }

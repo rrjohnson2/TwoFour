@@ -36,6 +36,7 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
     this.uiService.upload_button();
     this.submission = {
       content_extension: "",
+      content_type:"",
       content_url: "",
       description: "",
       member: this.member,
@@ -112,7 +113,7 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
 
     this.submission.content_extension = "." + old_file.name.split('.').pop();
 
-
+    this.submission.content_type=old_file.type;
     this.bitComp.init(old_file);
     this.content_file = new File([old_file], "temp", { type: old_file.type });
 

@@ -31,12 +31,13 @@ export class HomeComponent implements OnInit {
   init() {
     this.variables.currentContest_ob.subscribe(data => {
       this.contest = data
+      this.loading=false;
       this.countdown();
     });
     this.variables.previousContest_ob.subscribe(data => {
       this.previousContest = data;
       this.populateBit(<Contest>data);
-      this.loading=false;
+      
     });
   }
 
@@ -50,14 +51,12 @@ export class HomeComponent implements OnInit {
         this.today = new Date();
         this.seconds_differ = (new Date(this.contest.calendar).getTime() - this.today.getTime()) / 1000;
         this.countdown();
-        console.log("log");
       }
     }, 1000)
   }
 
   nextContest() {
     if(this.loading) return;
-    console.log("here");
     this.loading = true;
     this.variables.current_member.post_count = 0;
     this.variables.reloadBS(this.variables.current_member);
@@ -81,9 +80,10 @@ export class HomeComponent implements OnInit {
     this.seconds_differ = this.hours_to_secs_24;
   }
   populateBit(data:Contest) {
-    console.log(data);
-    if (data&& data.wiining_content_url != null) {
-      this.bitComp.src = image_server_url + "getSubmission?sub=" + data.wiining_content_url;
+    if (data!=null && data.winning_content_url != null) {
+
+      this.bitComp.type=data.winning_content_type;
+      this.bitComp.src = image_server_url + "getSubmission?sub=" + data.winning_content_url;
     }
   }
 

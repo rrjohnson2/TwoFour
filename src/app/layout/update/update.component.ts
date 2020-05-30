@@ -28,6 +28,7 @@ export class UpdateComponent implements OnInit {
   instagramForm: FormGroup;
   twitterForm: FormGroup;
   passwordForm: FormGroup;
+  noticeForm: FormGroup;
 
   matcher = new MyErrorStateMatcher;
 
@@ -90,6 +91,12 @@ export class UpdateComponent implements OnInit {
 
         }, { validators: this.confirming });
         break;
+      case 'notifications':
+        this.noticeForm = new FormGroup({
+          notify: new FormControl(this.member.notify),
+          newsletter: new FormControl(this.member.newsletter)
+        });
+        break;
     }
 
   }
@@ -100,7 +107,6 @@ export class UpdateComponent implements OnInit {
   }
 
   submit() {
-    console.log("here")
     var temp: Member = new Member(
       this.member.username,
       this.member.email,
@@ -115,6 +121,10 @@ export class UpdateComponent implements OnInit {
       this.member.notify
     )
     switch (this.choice) {
+      case 'notifications':
+        temp.newsletter = this.noticeForm.get("newsletter").value;
+        temp.notify = this.noticeForm.get("notify").value;
+        break;
       case 'username':
         temp.username = this.usernameForm.get("username").value;
         break;

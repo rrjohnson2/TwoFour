@@ -3,7 +3,7 @@
         <mat-toolbar color="primary">
             <a routerLink="/update">
                 <mat-icon>account_circle</mat-icon>
-                <span>{{(member| async).username}}</span>
+                <span>{{(member| async)?.username}}</span>
             </a>
             <a *ngIf="(member | async) == null" routerLink="/update">Login</a>
         </mat-toolbar>

@@ -51,7 +51,15 @@
                                 <span>Password</span>
                             </a>
                         </mat-list-option>
+
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('notifications')">
+                                <mat-icon>notification_important</mat-icon>
+                                <span>Notification</span>
+                            </a>
+                        </mat-list-option>
                     </mat-selection-list>
+
                 </div>
             </div>
         </div>
@@ -86,7 +94,8 @@
                         </mat-form-field>
                         <mat-form-field class="long_12_button">
                             <mat-label>Confim {{choice | titlecase}} </mat-label>
-                            <input formControlName="confirm" matInput placeholder="Confirm Email" [errorStateMatcher]="matcher">
+                            <input formControlName="confirm" matInput placeholder="Confirm Email"
+                                [errorStateMatcher]="matcher">
                         </mat-form-field>
                         <button type="submit" *ngIf="emailForm.valid" class="long_12_button" mat-raised-button
                             color="primary">Submit</button>
@@ -140,22 +149,42 @@
                     </form>
                 </ng-template>
                 <ng-template #password>
-                    <form *ngIf="choice=='password'" [formGroup]="passwordForm" (ngSubmit)="submit()">
+                    <form *ngIf="choice=='password' else notifications" [formGroup]="passwordForm" (ngSubmit)="submit()">
                         <mat-form-field class="long_12_button">
                             <mat-label>Old {{choice | titlecase}}</mat-label>
-                            <input type="password" formControlName="old_password" matInput placeholder="Enter Old Password">
+                            <input type="password" formControlName="old_password" matInput
+                                placeholder="Enter Old Password">
                         </mat-form-field>
                         <mat-form-field class="long_12_button">
                             <mat-label>New {{choice | titlecase}}</mat-label>
-                            <input type="password"  formControlName="target" matInput placeholder="New Password">
+                            <input type="password" formControlName="target" matInput placeholder="New Password">
                         </mat-form-field>
                         <mat-form-field class="long_12_button">
                             <mat-label>Confim {{choice | titlecase}} </mat-label>
-                            <input type="password"  formControlName="confirm" matInput placeholder="Confirm Password" [errorStateMatcher]="matcher">
+                            <input type="password" formControlName="confirm" matInput placeholder="Confirm Password"
+                                [errorStateMatcher]="matcher">
                         </mat-form-field>
                         <button type="submit" *ngIf="passwordForm.valid" class="long_12_button" mat-raised-button
                             color="primary">Submit</button>
                         <button *ngIf="passwordForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+                <ng-template #notifications>
+                    <form *ngIf="choice=='notifications';" [formGroup]="noticeForm" (ngSubmit)="submit()">
+                        <mat-checkbox formControlName="newsletter" class="col-6" color="primary"  >
+                            <small>
+                                Sign Up For Newsletter
+                            </small>
+                        </mat-checkbox>
+                        <mat-checkbox formControlName="notify" class="col-6" color="primary"  >
+                            <small>
+                                Two Four Notifications
+                            </small>
+                        </mat-checkbox>
+                        <button type="submit" *ngIf="noticeForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="noticeForm.invalid" class="long_12_button" mat-raised-button
                             disabled>Submit</button>
                     </form>
                 </ng-template>

@@ -1,31 +1,165 @@
 <div class="row justify-content-center two_four_card_holder">
-    <div class="col-lg-7 col-sm-12 sm_reduce_col_12_padding">
-        <div class="card two_four_card">
-            {{member?.username}}
-            <!-- <form [formGroup]="loginForm" (ngSubmit)="submit()">
-
-                <div class="card-body">
-                    <div class="row">
-                        <fieldset class="col-12">
-                            <input class="form-control" placeholder="Email or Phone Number or Username"
-                                formControlName="email_phone_username" type="text">
-                        </fieldset>
-                        <fieldset class="col-12">
-                            <input class="form-control" placeholder="Password" formControlName="password"
-                                type="password">
-                        </fieldset>
-                        <div class="col-12">
-                            <button class="long_12_button" type="submit">Login</button>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <button (click)="signUp()">Create</button>
-                        </div>
-                    </div>
+    <div class="col-lg-4 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card">
+            <div class="row">
+                <div class="col-12">
+                    <mat-selection-list class="text-center" [multiple]="false">
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('username')">
+                                <mat-icon>account_circle</mat-icon>
+                                <span>{{member.username}}</span>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('email')">
+                                <mat-icon>email</mat-icon>
+                                <span *ngIf="member.email; else noEmail">{{member.email}}</span>
+                                <ng-template #noEmail>Email</ng-template>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('phone')">
+                                <mat-icon>phone</mat-icon>
+                                <span *ngIf="member.phone; else noPhone">{{member.phone}}</span>
+                                <ng-template #noPhone>Phone</ng-template>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('facebook')">
+                                <fa-icon [icon]="facebook" size="lg"></fa-icon>
+                                <span *ngIf="member.facebook; else noFacebook">{{member.facebook}}</span>
+                                <ng-template #noFacebook>Facebook</ng-template>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('twitter')">
+                                <fa-icon [icon]="twitter" size="lg"></fa-icon>
+                                <span *ngIf="member.twitter; else noTwitter">{{member.twitter}}</span>
+                                <ng-template #noTwitter>Twitter</ng-template>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('instagram')">
+                                <fa-icon [icon]="instagram" size="lg"></fa-icon>
+                                <span *ngIf="member.instagram; else noInstagram">{{member.instagram}}</span>
+                                <ng-template #noInstagram>Instagram</ng-template>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item (click)="choose('password')">
+                                <mat-icon>lock</mat-icon>
+                                <span>Password</span>
+                            </a>
+                        </mat-list-option>
+                    </mat-selection-list>
                 </div>
-            </form> -->
+            </div>
         </div>
     </div>
+</div>
+
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+<div class="modal">
+    <ng-template #classic1 let-c="close" let-d="dismiss">
+        <strong class="modal-title">Update ~ {{message | titlecase}}</strong>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form *ngIf="choice=='username'; else email" [formGroup]="usernameForm" (ngSubmit)="submit()">
+                    <mat-form-field class="long_12_button">
+                        <mat-label>{{choice | titlecase}}</mat-label>
+                        <input formControlName="username" matInput placeholder="Enter Username">
+                    </mat-form-field>
+                    <button type="submit" *ngIf="usernameForm.valid" class="long_12_button" mat-raised-button
+                        color="primary">Submit</button>
+                    <button *ngIf="usernameForm.invalid" class="long_12_button" mat-raised-button
+                        disabled>Submit</button>
+                </form>
+                <ng-template #email>
+                    <form *ngIf="choice=='email' else phone" [formGroup]="emailForm" (ngSubmit)="submit()">
+                        <mat-form-field class="long_12_button">
+                            <mat-label>{{choice | titlecase}}</mat-label>
+                            <input formControlName="target" matInput placeholder="Enter Email">
+                        </mat-form-field>
+                        <mat-form-field class="long_12_button">
+                            <mat-label>Confim {{choice | titlecase}} </mat-label>
+                            <input formControlName="confirm" matInput placeholder="Confirm Email" [errorStateMatcher]="matcher">
+                        </mat-form-field>
+                        <button type="submit" *ngIf="emailForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="emailForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+                <ng-template #phone>
+                    <form *ngIf="choice=='phone' else facebook" [formGroup]="phoneForm" (ngSubmit)="submit()">
+                        <mat-form-field class="long_12_button">
+                            <mat-label>{{choice | titlecase}}</mat-label>
+                            <input formControlName="phone" matInput placeholder="Enter Phone">
+                        </mat-form-field>
+                        <button type="submit" *ngIf="phoneForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="phoneForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+                <ng-template #facebook>
+                    <form *ngIf="choice=='facebook' else twitter" [formGroup]="facebookForm" (ngSubmit)="submit()">
+                        <mat-form-field class="long_12_button">
+                            <input formControlName="facebook" matInput placeholder="Fill In Route facebook.com/">
+                        </mat-form-field>
+                        <button type="submit" *ngIf="facebookForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="facebookForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+                <ng-template #twitter>
+                    <form *ngIf="choice=='twitter' else instagram" [formGroup]="twitterForm" (ngSubmit)="submit()">
+                        <mat-form-field class="long_12_button">
+                            <input formControlName="twitter" matInput placeholder="Fill In Route twitter.com/">
+                        </mat-form-field>
+                        <button type="submit" *ngIf="twitterForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="twitterForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+                <ng-template #instagram>
+                    <form *ngIf="choice=='instagram' else password" [formGroup]="instagramForm" (ngSubmit)="submit()">
+                        <mat-form-field class="long_12_button">
+                            <input formControlName="instagram" matInput placeholder="Fill In Route instagram.com/">
+                        </mat-form-field>
+                        <button type="submit" *ngIf="instagramForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="instagramForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+                <ng-template #password>
+                    <form *ngIf="choice=='password'" [formGroup]="passwordForm" (ngSubmit)="submit()">
+                        <mat-form-field class="long_12_button">
+                            <mat-label>Old {{choice | titlecase}}</mat-label>
+                            <input type="password" formControlName="old_password" matInput placeholder="Enter Old Password">
+                        </mat-form-field>
+                        <mat-form-field class="long_12_button">
+                            <mat-label>New {{choice | titlecase}}</mat-label>
+                            <input type="password"  formControlName="target" matInput placeholder="New Password">
+                        </mat-form-field>
+                        <mat-form-field class="long_12_button">
+                            <mat-label>Confim {{choice | titlecase}} </mat-label>
+                            <input type="password"  formControlName="confirm" matInput placeholder="Confirm Password" [errorStateMatcher]="matcher">
+                        </mat-form-field>
+                        <button type="submit" *ngIf="passwordForm.valid" class="long_12_button" mat-raised-button
+                            color="primary">Submit</button>
+                        <button *ngIf="passwordForm.invalid" class="long_12_button" mat-raised-button
+                            disabled>Submit</button>
+                    </form>
+                </ng-template>
+            </div>
+        </div>
+    </ng-template>
 </div>

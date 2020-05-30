@@ -34,6 +34,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { UpdateService } from './update/update.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule, MatBadgeModule, MatMenuModule,
     NgbModule,FontAwesomeModule,MatExpansionModule
   ],
-  providers:[AuthGuard, ReverseAuthGuard]
+  providers:[AuthGuard, ReverseAuthGuard,UpdateService]
 })
 export class LayoutModule {
   constructor(){

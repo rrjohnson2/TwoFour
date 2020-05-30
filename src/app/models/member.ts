@@ -5,7 +5,7 @@ export class Member {
     verified: boolean;
     post_count: number;
     facebook: string;
-    instgram: string;
+    instagram: string;
     twitter: string;
     newsletter:boolean;
     messageMedium:string;
@@ -33,7 +33,7 @@ export class Member {
                 this.verified = verified;
                 this.post_count = post_count;
                 this.facebook = facebook;
-                this.instgram = instagram;
+                this.instagram = instagram;
                 this.twitter = twitter;
                 this.newsletter = newsletter;
                 this.messageMedium = messageMedium;

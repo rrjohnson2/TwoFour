@@ -102,4 +102,8 @@ export class UIService {
 
   }
 
+  dismissAll() {
+    this.modalService.dismissAll();
+         }
+
 }

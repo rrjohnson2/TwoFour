@@ -17,7 +17,7 @@ export class UpdateService {
   updatePassword(ticket:Ticket) {
     return this.http.post(backendUrl+"updatePassword",ticket);
   }
-  update(temp:Member) {
-    return this.http.post(backendUrl+"update",temp);
+  update(ticket:Ticket) {
+    return this.http.post(backendUrl+"update",ticket);
   }
 }

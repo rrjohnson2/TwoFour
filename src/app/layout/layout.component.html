@@ -1,7 +1,10 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push" opened="false">
         <mat-toolbar color="primary">
-            <a routerLink="/update">{{(member |async)?.username}}</a>
+            <a routerLink="/update">
+                <mat-icon>account_circle</mat-icon>
+                <span>{{(member| async).username}}</span>
+            </a>
             <a *ngIf="(member | async) == null" routerLink="/update">Login</a>
         </mat-toolbar>
         <mat-selection-list #links [multiple]="false">

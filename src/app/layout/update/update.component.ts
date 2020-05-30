@@ -74,7 +74,7 @@ export class UpdateComponent implements OnInit {
         break;
       case 'twitter':
         this.twitterForm = new FormGroup({
-          instagram: new FormControl(this.member.twitter, Validators.required)
+          twitter: new FormControl(this.member.twitter, Validators.required)
         });
         break;
       case 'instagram':
@@ -101,7 +101,19 @@ export class UpdateComponent implements OnInit {
 
   submit() {
     console.log("here")
-    var temp = this.member;
+    var temp: Member = new Member(
+      this.member.username,
+      this.member.email,
+      this.member.phone,
+      this.member.verified,
+      this.member.post_count,
+      this.member.facebook,
+      this.member.instagram,
+      this.member.twitter,
+      this.member.newsletter,
+      this.member.messageMedium,
+      this.member.notify
+    )
     switch (this.choice) {
       case 'username':
         temp.username = this.usernameForm.get("username").value;
@@ -148,13 +160,14 @@ export class UpdateComponent implements OnInit {
 
           },
           error => {
-           this.message="Failed"
+            this.message = "Failed"
           }
         )
         return;
     }
 
-    this.updateServe.update(temp).subscribe(
+    var ticket: Ticket = { id: this.member.username, data: temp }
+    this.updateServe.update(ticket).subscribe(
       data => {
         this.variables.reloadBS(temp);
         var alert_ticket: AlertTicket = {
@@ -167,7 +180,7 @@ export class UpdateComponent implements OnInit {
         this.cancel();
       },
       error => {
-        this.message="Failed"
+        this.message = "Failed"
       }
     )
 

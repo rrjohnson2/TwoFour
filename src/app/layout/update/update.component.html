@@ -7,41 +7,41 @@
                         <mat-list-option>
                             <a mat-list-item (click)="choose('username')">
                                 <mat-icon>account_circle</mat-icon>
-                                <span>{{member.username}}</span>
+                                <span>{{member?.username}}</span>
                             </a>
                         </mat-list-option>
                         <mat-list-option>
                             <a mat-list-item (click)="choose('email')">
                                 <mat-icon>email</mat-icon>
-                                <span *ngIf="member.email; else noEmail">{{member.email}}</span>
+                                <span *ngIf="member?.email; else noEmail">{{member.email}}</span>
                                 <ng-template #noEmail>Email</ng-template>
                             </a>
                         </mat-list-option>
                         <mat-list-option>
                             <a mat-list-item (click)="choose('phone')">
                                 <mat-icon>phone</mat-icon>
-                                <span *ngIf="member.phone; else noPhone">{{member.phone}}</span>
+                                <span *ngIf="member?.phone; else noPhone">{{member.phone}}</span>
                                 <ng-template #noPhone>Phone</ng-template>
                             </a>
                         </mat-list-option>
                         <mat-list-option>
                             <a mat-list-item (click)="choose('facebook')">
                                 <fa-icon [icon]="facebook" size="lg"></fa-icon>
-                                <span *ngIf="member.facebook; else noFacebook">{{member.facebook}}</span>
+                                <span *ngIf="member?.facebook; else noFacebook">{{member.facebook}}</span>
                                 <ng-template #noFacebook>Facebook</ng-template>
                             </a>
                         </mat-list-option>
                         <mat-list-option>
                             <a mat-list-item (click)="choose('twitter')">
                                 <fa-icon [icon]="twitter" size="lg"></fa-icon>
-                                <span *ngIf="member.twitter; else noTwitter">{{member.twitter}}</span>
+                                <span *ngIf="member?.twitter; else noTwitter">{{member.twitter}}</span>
                                 <ng-template #noTwitter>Twitter</ng-template>
                             </a>
                         </mat-list-option>
                         <mat-list-option>
                             <a mat-list-item (click)="choose('instagram')">
                                 <fa-icon [icon]="instagram" size="lg"></fa-icon>
-                                <span *ngIf="member.instagram; else noInstagram">{{member.instagram}}</span>
+                                <span *ngIf="member?.instagram; else noInstagram">{{member.instagram}}</span>
                                 <ng-template #noInstagram>Instagram</ng-template>
                             </a>
                         </mat-list-option>

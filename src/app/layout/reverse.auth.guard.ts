@@ -10,8 +10,9 @@ export class ReverseAuthGuard implements CanActivate {
   constructor(private router: Router,private appVariables:AppVariablesService) { }
 
   canActivate() {
-    if(this.appVariables.current_member!=null)
+    if(localStorage.getItem("current_member_id") !=null)
     {
+      
       this.router.navigate(['/layout/home']);
       return false;
     }

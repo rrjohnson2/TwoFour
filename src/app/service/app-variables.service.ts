@@ -67,6 +67,7 @@ export class AppVariablesService {
  
 
   constructor(private glob:GlobalService) {
+    this.setup();
    }
 
   setup()

@@ -48,3 +48,5 @@ Thumbs.db
 src/assets/video/placeholder.mp4
 hidden/dist/twofourviral/favicon.ico
 hidden/
+dist/
+e2e/

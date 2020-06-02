@@ -15,4 +15,4 @@ export enum Actions {
   authenicateCode,
   currrentContest,
   previousContest
-}
+}  

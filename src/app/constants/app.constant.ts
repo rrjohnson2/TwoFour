@@ -2,9 +2,9 @@
 
 export var isSmallScreen = window.screen.width < 992;
 
-export var backendUrl = "http://localhost:8080/"
+export var backendUrl = "http://twofourbackend-env.eba-n4ismnaa.us-east-2.elasticbeanstalk.com/"
 
-export var image_server_url = "http://localhost:8082/"
+export var image_server_url = "http://smsemail-env.eba-tbvf2xp5.us-east-2.elasticbeanstalk.com/"
 
 export enum Actions {
     logOff,

@@ -331,7 +331,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var isSmallScreen = window.screen.width < 992;
     var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/";
-    var image_server_url = "http://smsemail-env.eba-tbvf2xp5.us-east-2.elasticbeanstalk.com/";
+    var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/";
     var Actions;
 
     (function (Actions) {

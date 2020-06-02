@@ -170,7 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Actions", function() { return Actions; });
 var isSmallScreen = window.screen.width < 992;
 var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/";
-var image_server_url = "http://smsemail-env.eba-tbvf2xp5.us-east-2.elasticbeanstalk.com/";
+var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/";
 var Actions;
 (function (Actions) {
     Actions[Actions["logOff"] = 0] = "logOff";

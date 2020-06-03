@@ -37,6 +37,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateService } from './update/update.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AppVariablesService } from '../service/app-variables.service';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AppVariablesService } from '../service/app-variables.service';
     SignupComponent, FourDigitCodeComponent, LayoutComponent,
     FooterComponent, CountdownComponent, SubmitModalComponent,
     BitContentComponent,
-    AlertManagerComponent
+    AlertManagerComponent,
+    WelcomeComponent
   ],
   imports: [
     CommonModule,

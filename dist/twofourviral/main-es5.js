@@ -1370,6 +1370,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @fortawesome/angular-fontawesome */
     "./node_modules/@fortawesome/angular-fontawesome/__ivy_ngcc__/fesm2015/angular-fontawesome.js");
+    /* harmony import */
+
+
+    var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ../../welcome/welcome.component */
+    "./src/app/layout/welcome/welcome.component.ts");
 
     function CountdownComponent_div_3_Template(rf, ctx) {
       if (rf & 1) {
@@ -1527,11 +1533,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function CountdownComponent_ng_template_4_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-welcome", 15);
+      }
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Welcome to Two Four Viral the first and only viral lottery. Everyday a user's submission is chosen at random. The chosen submission will be featured on the site for 24 hours, during which the next lottery will be running for the following day. One submission per lottery. but you will be able to change it before the winner is announced for the lottery to which you are submitting. Once the winner is announced a notification will be sent to your phone or email. You can also change notifications at any time. ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("placeholder", true);
       }
     }
 
@@ -1577,7 +1583,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       decls: 20,
       vars: 9,
-      consts: [[1, "row"], [1, "col-12"], [4, "ngIf", "ngIfElse"], ["welcome", ""], [1, "col-8"], ["matTooltip", "Contest End", 3, "matTooltipPosition", "click"], ["tooltiptime", "matTooltip"], ["mat-raised-button", "", "color", "accent", 1, "long_12_button"], [1, "col-4"], ["matTooltip", "Submission Count", 3, "matTooltipPosition", "click"], ["tooltip", "matTooltip"], [1, "col-lg-6", "col-sm-12"], [3, "multiple"], ["mat-list-item", "", "target", "_blank", 3, "href"], ["size", "lg", 3, "icon"]],
+      consts: [[1, "row"], [1, "col-12"], [4, "ngIf", "ngIfElse"], ["welcome", ""], [1, "col-8"], ["matTooltip", "Contest End", 3, "matTooltipPosition", "click"], ["tooltiptime", "matTooltip"], ["mat-raised-button", "", "color", "accent", 1, "long_12_button"], [1, "col-4"], ["matTooltip", "Submission Count", 3, "matTooltipPosition", "click"], ["tooltip", "matTooltip"], [1, "col-lg-6", "col-sm-12"], [3, "multiple"], ["mat-list-item", "", "target", "_blank", 3, "href"], ["size", "lg", 3, "icon"], [3, "placeholder"]],
       template: function CountdownComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -1592,7 +1598,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, CountdownComponent_ng_template_4_Template, 2, 0, "ng-template", null, 3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, CountdownComponent_ng_template_4_Template, 1, 1, "ng-template", null, 3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1681,7 +1687,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.subs, " ");
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_3__["MatTooltip"], _angular_material_button__WEBPACK_IMPORTED_MODULE_4__["MatButton"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatAccordion"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatExpansionPanel"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatExpansionPanelHeader"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatExpansionPanelTitle"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__["MatIcon"], _angular_material_list__WEBPACK_IMPORTED_MODULE_7__["MatSelectionList"], _angular_material_list__WEBPACK_IMPORTED_MODULE_7__["MatListOption"], _angular_material_list__WEBPACK_IMPORTED_MODULE_7__["MatListItem"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FaIconComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_3__["MatTooltip"], _angular_material_button__WEBPACK_IMPORTED_MODULE_4__["MatButton"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatAccordion"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatExpansionPanel"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatExpansionPanelHeader"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_5__["MatExpansionPanelTitle"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__["MatIcon"], _angular_material_list__WEBPACK_IMPORTED_MODULE_7__["MatSelectionList"], _angular_material_list__WEBPACK_IMPORTED_MODULE_7__["MatListOption"], _angular_material_list__WEBPACK_IMPORTED_MODULE_7__["MatListItem"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FaIconComponent"], _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_9__["WelcomeComponent"]],
       pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DatePipe"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9ob21lL2NvdW50ZG93bi9jb3VudGRvd24uY29tcG9uZW50LnNjc3MifQ== */"]
     });
@@ -2583,6 +2589,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ./home/submit-modal/submit-modal.component */
     "./src/app/layout/home/submit-modal/submit-modal.component.ts");
+    /* harmony import */
+
+
+    var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ./welcome/welcome.component */
+    "./src/app/layout/welcome/welcome.component.ts");
 
     var routes = [{
       path: '',
@@ -2614,6 +2626,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         path: "submit",
         component: _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_10__["SubmitModalComponent"],
         canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
+      }, {
+        path: "about",
+        component: _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_11__["WelcomeComponent"]
       }, {
         path: '**',
         redirectTo: 'home',
@@ -3295,6 +3310,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
     /*! @angular/material/stepper */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/stepper.js");
+    /* harmony import */
+
+
+    var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(
+    /*! ./welcome/welcome.component */
+    "./src/app/layout/welcome/welcome.component.ts");
 
     var LayoutModule = function LayoutModule() {
       _classCallCheck(this, LayoutModule);
@@ -3313,7 +3334,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](LayoutModule, {
-        declarations: [_pipe_count_time_pipe__WEBPACK_IMPORTED_MODULE_22__["CountTimePipe"], _pipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_28__["SafeHtmlPipe"], _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], _update_update_component__WEBPACK_IMPORTED_MODULE_3__["UpdateComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"], _four_digit_code_four_digit_code_component__WEBPACK_IMPORTED_MODULE_6__["FourDigitCodeComponent"], _layout_component__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _home_countdown_countdown_component__WEBPACK_IMPORTED_MODULE_23__["CountdownComponent"], _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_26__["SubmitModalComponent"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_27__["BitContentComponent"], _alert_manager_alert_manager_component__WEBPACK_IMPORTED_MODULE_30__["AlertManagerComponent"]],
+        declarations: [_pipe_count_time_pipe__WEBPACK_IMPORTED_MODULE_22__["CountTimePipe"], _pipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_28__["SafeHtmlPipe"], _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], _update_update_component__WEBPACK_IMPORTED_MODULE_3__["UpdateComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"], _four_digit_code_four_digit_code_component__WEBPACK_IMPORTED_MODULE_6__["FourDigitCodeComponent"], _layout_component__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _home_countdown_countdown_component__WEBPACK_IMPORTED_MODULE_23__["CountdownComponent"], _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_26__["SubmitModalComponent"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_27__["BitContentComponent"], _alert_manager_alert_manager_component__WEBPACK_IMPORTED_MODULE_30__["AlertManagerComponent"], _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_38__["WelcomeComponent"]],
         imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"]]
       });
     })();
@@ -3324,7 +3345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LayoutModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-          declarations: [_pipe_count_time_pipe__WEBPACK_IMPORTED_MODULE_22__["CountTimePipe"], _pipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_28__["SafeHtmlPipe"], _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], _update_update_component__WEBPACK_IMPORTED_MODULE_3__["UpdateComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"], _four_digit_code_four_digit_code_component__WEBPACK_IMPORTED_MODULE_6__["FourDigitCodeComponent"], _layout_component__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _home_countdown_countdown_component__WEBPACK_IMPORTED_MODULE_23__["CountdownComponent"], _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_26__["SubmitModalComponent"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_27__["BitContentComponent"], _alert_manager_alert_manager_component__WEBPACK_IMPORTED_MODULE_30__["AlertManagerComponent"]],
+          declarations: [_pipe_count_time_pipe__WEBPACK_IMPORTED_MODULE_22__["CountTimePipe"], _pipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_28__["SafeHtmlPipe"], _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], _update_update_component__WEBPACK_IMPORTED_MODULE_3__["UpdateComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"], _four_digit_code_four_digit_code_component__WEBPACK_IMPORTED_MODULE_6__["FourDigitCodeComponent"], _layout_component__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _home_countdown_countdown_component__WEBPACK_IMPORTED_MODULE_23__["CountdownComponent"], _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_26__["SubmitModalComponent"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_27__["BitContentComponent"], _alert_manager_alert_manager_component__WEBPACK_IMPORTED_MODULE_30__["AlertManagerComponent"], _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_38__["WelcomeComponent"]],
           imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"]],
           providers: [_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"], _reverse_auth_guard__WEBPACK_IMPORTED_MODULE_21__["ReverseAuthGuard"], _update_update_service__WEBPACK_IMPORTED_MODULE_36__["UpdateService"]]
         }]
@@ -5665,6 +5686,124 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
         }];
       }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/layout/welcome/welcome.component.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/layout/welcome/welcome.component.ts ***!
+    \*****************************************************/
+
+  /*! exports provided: WelcomeComponent */
+
+  /***/
+  function srcAppLayoutWelcomeWelcomeComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "WelcomeComponent", function () {
+      return WelcomeComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ../bit-content/bit-content.component */
+    "./src/app/layout/bit-content/bit-content.component.ts");
+
+    var WelcomeComponent = /*#__PURE__*/function () {
+      function WelcomeComponent() {
+        _classCallCheck(this, WelcomeComponent);
+
+        this.placeholder = false;
+      }
+
+      _createClass(WelcomeComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return WelcomeComponent;
+    }();
+
+    WelcomeComponent.ɵfac = function WelcomeComponent_Factory(t) {
+      return new (t || WelcomeComponent)();
+    };
+
+    WelcomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: WelcomeComponent,
+      selectors: [["app-welcome"]],
+      inputs: {
+        placeholder: "placeholder"
+      },
+      decls: 7,
+      vars: 1,
+      consts: [[1, "row", "justify-content-center", "two_four_card_holder"], [1, "col-lg-7", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card", "two_four_card"], [1, "card-body"], [3, "placeholder"]],
+      template: function WelcomeComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-bit-content", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Welcome to Two Four Viral the first and only viral lottery. Everyday a user's submission is chosen at random. The chosen submission will be featured on the site for 24 hours, during which the next lottery will be running for the following day. One submission per lottery. but you will be able to change it before the winner is announced for the lottery to which you are submitting. Once the winner is announced a notification will be sent to your phone or email. You can also change notifications at any time. ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("placeholder", ctx.placeholder);
+        }
+      },
+      directives: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_1__["BitContentComponent"]],
+      styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC93ZWxjb21lL3dlbGNvbWUuY29tcG9uZW50LnNjc3MifQ== */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](WelcomeComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-welcome',
+          templateUrl: './welcome.component.html',
+          styleUrls: ['./welcome.component.scss']
+        }]
+      }], function () {
+        return [];
+      }, {
+        placeholder: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }]
+      });
     })();
     /***/
 

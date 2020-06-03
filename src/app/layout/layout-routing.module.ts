@@ -9,6 +9,7 @@ import { FourDigitCodeComponent } from './four-digit-code/four-digit-code.compon
 import { LayoutComponent } from './layout.component';
 import { ReverseAuthGuard } from './reverse.auth.guard';
 import { SubmitModalComponent } from './home/submit-modal/submit-modal.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,10 @@ const routes: Routes = [
                         path:"submit",
                         component: SubmitModalComponent,
                         canActivate: [AuthGuard]
+                    },
+                    {
+                        path:"about",
+                        component:WelcomeComponent
                     },
                     
                     { path: '**', redirectTo:'home', pathMatch:"prefix"},

@@ -9,8 +9,9 @@ export class Member {
     twitter: string;
     newsletter:boolean;
     messageMedium:string;
-    notify:boolean
-    password:string
+    notify:boolean;
+    password:string;
+    role:string;
 
 
     constructor(
@@ -24,7 +25,8 @@ export class Member {
                 twitter:string,
                 newsletter:boolean,
                 messageMedium:string,
-                notify:boolean
+                notify:boolean,
+                role:string
              )
             {
                 this.username = username;
@@ -38,6 +40,7 @@ export class Member {
                 this.newsletter = newsletter;
                 this.messageMedium = messageMedium;
                 this. notify = notify
+                this.role = role;
             }
 }
 

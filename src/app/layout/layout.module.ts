@@ -38,6 +38,8 @@ import { UpdateService } from './update/update.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AppVariablesService } from '../service/app-variables.service';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminAuthGuard } from './admin.auth.guard';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FooterComponent, CountdownComponent, SubmitModalComponent,
     BitContentComponent,
     AlertManagerComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +67,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     NgbModule, FontAwesomeModule, MatExpansionModule,
     MatStepperModule
   ],
-  providers: [AuthGuard, ReverseAuthGuard, UpdateService]
+  providers: [AuthGuard, ReverseAuthGuard, UpdateService,AdminAuthGuard]
 })
 export class LayoutModule {
   constructor() {

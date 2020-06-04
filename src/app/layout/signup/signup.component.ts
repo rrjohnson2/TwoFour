@@ -52,6 +52,7 @@ export class SignupComponent implements OnInit {
         this.signUpForm.get("newsletter").value,
         messageMedium,
         this.signUpForm.get("notify").value,
+        null
       )
       member.password = this.signUpForm.get("password").value;
       var choice_id

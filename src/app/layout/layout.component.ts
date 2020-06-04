@@ -42,7 +42,7 @@ export class LayoutComponent implements OnInit {
     if (event instanceof UpdateComponent) {
       this.init();
       let thing = <UpdateComponent>event;
-      this.member.subscribe(data => thing.member = data);
+      this.member.subscribe(data => console.log());
     }
   }
   logOff() {

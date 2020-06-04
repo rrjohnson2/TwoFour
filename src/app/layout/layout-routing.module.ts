@@ -10,6 +10,8 @@ import { LayoutComponent } from './layout.component';
 import { ReverseAuthGuard } from './reverse.auth.guard';
 import { SubmitModalComponent } from './home/submit-modal/submit-modal.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminAuthGuard } from './admin.auth.guard';
 
 
 const routes: Routes = [
@@ -53,6 +55,11 @@ const routes: Routes = [
                     {
                         path:"about",
                         component:WelcomeComponent
+                    },
+                    {
+                        path:"admin",
+                        component:AdminComponent,
+                        canActivate:[AdminAuthGuard]
                     },
                     
                     { path: '**', redirectTo:'home', pathMatch:"prefix"},

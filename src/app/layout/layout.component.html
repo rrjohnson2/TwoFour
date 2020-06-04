@@ -18,6 +18,11 @@
                     <legend>Log Off</legend>
                 </a>
             </mat-list-option>
+            <mat-list-option>
+                <a mat-list-item  *ngIf="(member | async)!=null && (member | async).role=='admin'" routerLink="/admin">
+                        <legend>Admin</legend>
+                </a>
+            </mat-list-option>
         </mat-selection-list>
 
     </mat-sidenav>

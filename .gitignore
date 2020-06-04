@@ -46,6 +46,6 @@ testem.log
 .DS_Store
 Thumbs.db
 src/assets/video/placeholder.mp4
-hidden/dist/twofourviral/favicon.ico
+hidden/dist/blumorel/favicon.ico
 hidden/
 /e2e

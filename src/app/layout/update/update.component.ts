@@ -118,7 +118,8 @@ export class UpdateComponent implements OnInit {
       this.member.twitter,
       this.member.newsletter,
       this.member.messageMedium,
-      this.member.notify
+      this.member.notify,
+      null
     )
     switch (this.choice) {
       case 'notifications':

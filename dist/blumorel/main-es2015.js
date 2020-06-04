@@ -169,8 +169,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "image_server_url", function() { return image_server_url; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Actions", function() { return Actions; });
 var isSmallScreen = window.screen.width < 992;
-var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/";
+// export var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/"
+var backendUrl = "http://localhost:5000/";
 var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/";
+// export var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/"
 var Actions;
 (function (Actions) {
     Actions[Actions["logOff"] = 0] = "logOff";
@@ -1474,7 +1476,7 @@ class LayoutComponent {
         if (event instanceof _update_update_component__WEBPACK_IMPORTED_MODULE_1__["UpdateComponent"]) {
             this.init();
             let thing = event;
-            this.member.subscribe(data => console.log());
+            this.member.subscribe(data => thing.member = data);
         }
     }
     logOff() {

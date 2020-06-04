@@ -329,9 +329,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Actions;
     });
 
-    var isSmallScreen = window.screen.width < 992;
-    var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/";
-    var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/";
+    var isSmallScreen = window.screen.width < 992; // export var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/"
+
+    var backendUrl = "http://localhost:5000/";
+    var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/"; // export var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/"
+
     var Actions;
 
     (function (Actions) {
@@ -3043,7 +3045,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.init();
             var thing = event;
             this.member.subscribe(function (data) {
-              return console.log();
+              return thing.member = data;
             });
           }
         }

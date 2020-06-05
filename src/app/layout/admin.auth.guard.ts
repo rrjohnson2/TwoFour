@@ -10,7 +10,7 @@ export class AdminAuthGuard implements CanActivate {
   constructor(private router: Router, private appVariables: AppVariablesService) { }
 
   canActivate() {
-    if (this.appVariables.current_member.role != "admin") {
+    if (this.appVariables.current_member !=null &&  this.appVariables.current_member.role != "admin") {
 
       this.router.navigate(['/layout/home']);
       return false;

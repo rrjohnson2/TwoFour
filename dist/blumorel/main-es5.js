@@ -329,10 +329,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return Actions;
     });
 
-    var isSmallScreen = window.screen.width < 992; // export var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/"
+    var isSmallScreen = window.screen.width < 992;
+    var backendUrl = "http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/"; //export var backendUrl = "http://localhost:5000/"
 
-    var backendUrl = "http://localhost:5000/";
-    var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/"; // export var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/"
+    var image_server_url = "http://twofourpicture-env.eba-avytpez6.us-east-2.elasticbeanstalk.com/"; //export var image_server_url = "http://localhost:8082/"
 
     var Actions;
 
@@ -439,7 +439,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AdminAuthGuard, [{
         key: "canActivate",
         value: function canActivate() {
-          if (this.appVariables.current_member.role != "admin") {
+          if (this.appVariables.current_member != null && this.appVariables.current_member.role != "admin") {
             this.router.navigate(['/layout/home']);
             return false;
           } else {
@@ -501,38 +501,400 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/constants/app.constant */
+    "./src/app/constants/app.constant.ts");
+    /* harmony import */
+
+
+    var _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @fortawesome/free-brands-svg-icons */
+    "./node_modules/@fortawesome/free-brands-svg-icons/index.es.js");
+    /* harmony import */
+
+
+    var src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/service/app-variables.service */
+    "./src/app/service/app-variables.service.ts");
+    /* harmony import */
+
+
+    var _admin_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./admin.service */
+    "./src/app/layout/admin/admin.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../bit-content/bit-content.component */
+    "./src/app/layout/bit-content/bit-content.component.ts");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+    /* harmony import */
+
+
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/material/icon */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
+    /* harmony import */
+
+
+    var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/material/expansion */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/expansion.js");
+    /* harmony import */
+
+
+    var _angular_material_list__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/material/list */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/list.js");
+    /* harmony import */
+
+
+    var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @fortawesome/angular-fontawesome */
+    "./node_modules/@fortawesome/angular-fontawesome/__ivy_ngcc__/fesm2015/angular-fontawesome.js");
+    /* harmony import */
+
+
+    var _angular_material_chips__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @angular/material/chips */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/chips.js");
+
+    function AdminComponent_div_2_mat_chip_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-chip");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Winner");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+    }
+
+    function AdminComponent_div_2_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-bit-content", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AdminComponent_div_2_mat_chip_4_Template, 2, 0, "mat-chip", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AdminComponent_div_2_Template_button_click_5_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4);
+
+          var sub_r1 = ctx.$implicit;
+
+          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r3.choose(sub_r1);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "check");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "mat-accordion");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "mat-expansion-panel");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-expansion-panel-header");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-panel-title");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "account_circle");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "strong");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-selection-list", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "mat-list-option");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "a", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "fa-icon", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "strong");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "mat-list-option");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "a", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "fa-icon", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "strong");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "mat-list-option");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "a", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "fa-icon", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "strong");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var sub_r1 = ctx.$implicit;
+
+        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("type", sub_r1.type)("src", ctx_r0.renderSrc(sub_r1));
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", sub_r1.description, " ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", sub_r1.winner);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](sub_r1.member.username);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("multiple", false);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("href", "https://facebook.com/", sub_r1.member.facebook, "", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", ctx_r0.facebook);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](sub_r1.member.facebook);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("href", "https://instagram.com/", sub_r1.member.instagram, "", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", ctx_r0.instagram);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](sub_r1.member.twitter);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("href", "https://twitter.com/", sub_r1.member.twitter, "", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", ctx_r0.twitter);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](sub_r1.member.instagram);
+      }
+    }
 
     var AdminComponent = /*#__PURE__*/function () {
-      function AdminComponent() {
+      function AdminComponent(variables, adminS) {
         _classCallCheck(this, AdminComponent);
+
+        this.variables = variables;
+        this.adminS = adminS;
+        this.facebook = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faFacebook"];
+        this.instagram = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faInstagram"];
+        this.twitter = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faTwitter"];
+        this.isLinear = false;
+        this.subs = [];
       }
 
       _createClass(AdminComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this = this;
+
+          this.variables.currentContest_ob.subscribe(function (data) {
+            if (data != null) {
+              if (data.winner != null) {
+                var winner = _this.dataToEntry(data, true);
+
+                _this.subs.push(winner);
+              }
+
+              data.backups.forEach(function (backup) {
+                _this.subs.push(_this.subToEntry(backup));
+              });
+            }
+
+            console.log(data);
+            console.log(_this.subs);
+          });
+        }
+      }, {
+        key: "subToEntry",
+        value: function subToEntry(backup) {
+          return {
+            url: backup.content_url,
+            type: backup.content_type,
+            description: backup.description,
+            member: backup.member,
+            winner: false,
+            id: backup.id
+          };
+        }
+      }, {
+        key: "dataToEntry",
+        value: function dataToEntry(data, winner) {
+          return {
+            url: data.winning_content_url,
+            type: data.winning_content_type,
+            description: data.winning_description,
+            member: data.winner,
+            winner: winner
+          };
+        }
+      }, {
+        key: "renderSrc",
+        value: function renderSrc(sub) {
+          return src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "getSubmission?sub=" + sub.url;
+        }
+      }, {
+        key: "choose",
+        value: function choose(i) {
+          var _this2 = this;
+
+          var index;
+
+          if (i.winner) {
+            index = -1;
+          } else {
+            index = i.id;
+          }
+
+          this.adminS.choose(index).subscribe(function (data) {
+            var alert_ticket = {
+              action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["Actions"].signup,
+              msg: "".concat(i.description, " was choosen"),
+              type: 'success'
+            };
+
+            _this2.variables.addAlert(alert_ticket);
+          }, function (error) {
+            var alert_ticket = {
+              action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["Actions"].signup,
+              msg: 'Did Not Work',
+              type: 'danger'
+            };
+
+            _this2.variables.addAlert(alert_ticket);
+          });
+        }
       }]);
 
       return AdminComponent;
     }();
 
     AdminComponent.ɵfac = function AdminComponent_Factory(t) {
-      return new (t || AdminComponent)();
+      return new (t || AdminComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_3__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_admin_service__WEBPACK_IMPORTED_MODULE_4__["AdminService"]));
     };
 
     AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: AdminComponent,
       selectors: [["app-admin"]],
-      decls: 2,
-      vars: 0,
+      decls: 3,
+      vars: 1,
+      consts: [[1, "row", "justify-content-center", "two_four_card_holder"], [1, "col-lg-6", "col-sm-12", "sm_reduce_col_12_padding"], ["class", "card admin_card", 4, "ngFor", "ngForOf"], [1, "card", "admin_card"], [3, "type", "src"], [4, "ngIf"], ["mat-mini-fab", "", "color", "primary", 3, "click"], [3, "multiple"], ["mat-list-item", "", "target", "_blank", 3, "href"], ["size", "lg", 3, "icon"]],
       template: function AdminComponent_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "admin works!");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AdminComponent_div_2_Template, 32, 15, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.subs);
+        }
       },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_6__["BitContentComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIcon"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatAccordion"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionPanel"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionPanelHeader"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionPanelTitle"], _angular_material_list__WEBPACK_IMPORTED_MODULE_10__["MatSelectionList"], _angular_material_list__WEBPACK_IMPORTED_MODULE_10__["MatListOption"], _angular_material_list__WEBPACK_IMPORTED_MODULE_10__["MatListItem"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FaIconComponent"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_12__["MatChip"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9hZG1pbi9hZG1pbi5jb21wb25lbnQuc2NzcyJ9 */"]
     });
     /*@__PURE__*/
@@ -546,7 +908,93 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           styleUrls: ['./admin.component.scss']
         }]
       }], function () {
-        return [];
+        return [{
+          type: src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_3__["AppVariablesService"]
+        }, {
+          type: _admin_service__WEBPACK_IMPORTED_MODULE_4__["AdminService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/layout/admin/admin.service.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/layout/admin/admin.service.ts ***!
+    \***********************************************/
+
+  /*! exports provided: AdminService */
+
+  /***/
+  function srcAppLayoutAdminAdminServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdminService", function () {
+      return AdminService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/constants/app.constant */
+    "./src/app/constants/app.constant.ts");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+
+    var AdminService = /*#__PURE__*/function () {
+      function AdminService(http) {
+        _classCallCheck(this, AdminService);
+
+        this.http = http;
+      }
+
+      _createClass(AdminService, [{
+        key: "choose",
+        value: function choose(choice) {
+          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["backendUrl"] + "chooseWinner", choice);
+        }
+      }]);
+
+      return AdminService;
+    }();
+
+    AdminService.ɵfac = function AdminService_Factory(t) {
+      return new (t || AdminService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]));
+    };
+
+    AdminService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: AdminService,
+      factory: AdminService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AdminService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [{
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+        }];
       }, null);
     })();
     /***/
@@ -688,10 +1136,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AlertManagerComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this3 = this;
 
           this.variable.alerts_ob.subscribe(function (data) {
-            _this.alerts = data;
+            _this3.alerts = data;
           });
         }
       }, {
@@ -1288,7 +1736,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this2 = this;
+          var _this4 = this;
 
           var ticket = {
             data: {
@@ -1297,9 +1745,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           };
           this.glob.authenticate(ticket).subscribe(function (data) {
-            _this2.appvariables.fillMember(_this2.appvariables.temp_member, _this2.appvariables.temp_ticket);
+            _this4.appvariables.fillMember(_this4.appvariables.temp_member, _this4.appvariables.temp_ticket);
 
-            _this2.router.navigate(['/layout/home']);
+            _this4.router.navigate(['/layout/home']);
 
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1307,7 +1755,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this2.appvariables.addAlert(alert_ticket);
+            _this4.appvariables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1315,13 +1763,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this2.appvariables.addAlert(alert_ticket);
+            _this4.appvariables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "resendCode",
         value: function resendCode() {
-          var _this3 = this;
+          var _this5 = this;
 
           this.glob.generateCode(this.appvariables.temp_member).subscribe(function (data) {
             var alert_ticket = {
@@ -1330,7 +1778,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this3.appvariables.addAlert(alert_ticket);
+            _this5.appvariables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1338,7 +1786,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this3.appvariables.addAlert(alert_ticket);
+            _this5.appvariables.addAlert(alert_ticket);
           });
         }
       }]);
@@ -1982,27 +2430,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "init",
         value: function init() {
-          var _this4 = this;
+          var _this6 = this;
 
           this.variables.currentContest_ob.subscribe(function (data) {
-            _this4.contest = data;
+            _this6.contest = data;
           });
           this.variables.previousContest_ob.subscribe(function (data) {
-            _this4.previousContest = data;
+            _this6.previousContest = data;
 
-            _this4.populateBit(data);
+            _this6.populateBit(data);
           });
         }
       }, {
         key: "nextContest",
         value: function nextContest(event) {
-          var _this5 = this;
+          var _this7 = this;
 
           console.log("here");
           this.variables.current_member.post_count = 0;
           this.variables.reloadBS(this.variables.current_member);
           this.glob.getPreviousContest().subscribe(function (data) {
-            _this5.variables.populatePreviousContest(data);
+            _this7.variables.populatePreviousContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -2010,10 +2458,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this5.variables.addAlert(alert_ticket);
+            _this7.variables.addAlert(alert_ticket);
           });
           this.glob.getContest().subscribe(function (data) {
-            _this5.variables.populateContest(data);
+            _this7.variables.populateContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -2021,13 +2469,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this5.variables.addAlert(alert_ticket);
+            _this7.variables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "populateBit",
         value: function populateBit(data) {
-          var _this6 = this;
+          var _this8 = this;
 
           if (data != null && data.winning_content_url != null) {
             if (this.bitComp != null) {
@@ -2035,7 +2483,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.bitComp.src = src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["image_server_url"] + "getSubmission?sub=" + data.winning_content_url;
             } else {
               setTimeout(function () {
-                _this6.populateBit(data);
+                _this8.populateBit(data);
               }, 1);
             }
           }
@@ -2295,10 +2743,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this7 = this;
+          var _this9 = this;
 
           this.variables.current_member_ob.subscribe(function (data) {
-            return _this7.member = data;
+            return _this9.member = data;
           });
           this.createForm();
         }
@@ -2312,26 +2760,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this8 = this;
+          var _this10 = this;
 
           this.submission.description = this.submitForm.get("description").value;
           this.submitService.submit(this.submission).subscribe(function (data) {
             var subTicket = data;
 
-            if (_this8.content_file != null) {
+            if (_this10.content_file != null) {
               if (subTicket.win) {
-                var winnerFile = new File([_this8.content_file], subTicket.win, {
-                  type: _this8.content_file.type
+                var winnerFile = new File([_this10.content_file], subTicket.win, {
+                  type: _this10.content_file.type
                 });
 
-                _this8.submitService.uploadSubmission(winnerFile).subscribe(function (data) {
+                _this10.submitService.uploadSubmission(winnerFile).subscribe(function (data) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
                     msg: 'File Uploaded',
                     type: 'success'
                   };
 
-                  _this8.variables.addAlert(alert_ticket);
+                  _this10.variables.addAlert(alert_ticket);
                 }, function (error) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
@@ -2339,23 +2787,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     type: 'danger'
                   };
 
-                  _this8.variables.addAlert(alert_ticket);
+                  _this10.variables.addAlert(alert_ticket);
                 });
               }
 
               if (subTicket.backupSlot) {
-                var backupFile = new File([_this8.content_file], subTicket.backupSlot, {
-                  type: _this8.content_file.type
+                var backupFile = new File([_this10.content_file], subTicket.backupSlot, {
+                  type: _this10.content_file.type
                 });
 
-                _this8.submitService.uploadSubmission(backupFile).subscribe(function (data) {
+                _this10.submitService.uploadSubmission(backupFile).subscribe(function (data) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
                     msg: 'File Uploaded',
                     type: 'success'
                   };
 
-                  _this8.variables.addAlert(alert_ticket);
+                  _this10.variables.addAlert(alert_ticket);
                 }, function (error) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
@@ -2363,7 +2811,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     type: 'danger'
                   };
 
-                  _this8.variables.addAlert(alert_ticket);
+                  _this10.variables.addAlert(alert_ticket);
                 });
               }
             }
@@ -2374,11 +2822,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this8.variables.addAlert(alert_ticket);
+            _this10.variables.addAlert(alert_ticket);
 
-            _this8.variables.setup();
+            _this10.variables.setup();
 
-            _this8.router.navigate(['/layout/home']);
+            _this10.router.navigate(['/layout/home']);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
@@ -2386,11 +2834,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this8.variables.addAlert(alert_ticket);
+            _this10.variables.addAlert(alert_ticket);
 
-            _this8.submitForm.reset();
+            _this10.submitForm.reset();
 
-            _this8.bitComp.init(null);
+            _this10.bitComp.init(null);
           });
         }
       }, {
@@ -3531,6 +3979,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _admin_auth_guard__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(
     /*! ./admin.auth.guard */
     "./src/app/layout/admin.auth.guard.ts");
+    /* harmony import */
+
+
+    var _angular_material_table__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(
+    /*! @angular/material/table */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/table.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js");
 
     var LayoutModule = function LayoutModule() {
       _classCallCheck(this, LayoutModule);
@@ -3544,13 +4004,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return new (t || LayoutModule)();
       },
       providers: [_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"], _reverse_auth_guard__WEBPACK_IMPORTED_MODULE_21__["ReverseAuthGuard"], _update_update_service__WEBPACK_IMPORTED_MODULE_36__["UpdateService"], _admin_auth_guard__WEBPACK_IMPORTED_MODULE_40__["AdminAuthGuard"]],
-      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"]]]
+      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_41__["MatTableModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_42__["MatRippleModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](LayoutModule, {
         declarations: [_pipe_count_time_pipe__WEBPACK_IMPORTED_MODULE_22__["CountTimePipe"], _pipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_28__["SafeHtmlPipe"], _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], _update_update_component__WEBPACK_IMPORTED_MODULE_3__["UpdateComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"], _four_digit_code_four_digit_code_component__WEBPACK_IMPORTED_MODULE_6__["FourDigitCodeComponent"], _layout_component__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _home_countdown_countdown_component__WEBPACK_IMPORTED_MODULE_23__["CountdownComponent"], _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_26__["SubmitModalComponent"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_27__["BitContentComponent"], _alert_manager_alert_manager_component__WEBPACK_IMPORTED_MODULE_30__["AlertManagerComponent"], _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_38__["WelcomeComponent"], _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"]]
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_41__["MatTableModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_42__["MatRippleModule"]]
       });
     })();
     /*@__PURE__*/
@@ -3561,7 +4021,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
           declarations: [_pipe_count_time_pipe__WEBPACK_IMPORTED_MODULE_22__["CountTimePipe"], _pipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_28__["SafeHtmlPipe"], _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"], _update_update_component__WEBPACK_IMPORTED_MODULE_3__["UpdateComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], _signup_signup_component__WEBPACK_IMPORTED_MODULE_5__["SignupComponent"], _four_digit_code_four_digit_code_component__WEBPACK_IMPORTED_MODULE_6__["FourDigitCodeComponent"], _layout_component__WEBPACK_IMPORTED_MODULE_7__["LayoutComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_10__["FooterComponent"], _home_countdown_countdown_component__WEBPACK_IMPORTED_MODULE_23__["CountdownComponent"], _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_26__["SubmitModalComponent"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_27__["BitContentComponent"], _alert_manager_alert_manager_component__WEBPACK_IMPORTED_MODULE_30__["AlertManagerComponent"], _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_38__["WelcomeComponent"], _admin_admin_component__WEBPACK_IMPORTED_MODULE_39__["AdminComponent"]],
-          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"]],
+          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _layout_routing_module__WEBPACK_IMPORTED_MODULE_8__["LayoutRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_11__["MatSidenavModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_13__["MatListModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_15__["MatFormFieldModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButtonModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_19__["MatProgressBarModule"], _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_20__["MatCheckboxModule"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_24__["MatChipsModule"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_25__["MatTooltipModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_29__["MatDialogModule"], _angular_material_badge__WEBPACK_IMPORTED_MODULE_32__["MatBadgeModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_33__["MatMenuModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_31__["NgbModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_34__["FontAwesomeModule"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_35__["MatExpansionModule"], _angular_material_stepper__WEBPACK_IMPORTED_MODULE_37__["MatStepperModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_41__["MatTableModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_42__["MatRippleModule"]],
           providers: [_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AuthGuard"], _reverse_auth_guard__WEBPACK_IMPORTED_MODULE_21__["ReverseAuthGuard"], _update_update_service__WEBPACK_IMPORTED_MODULE_36__["UpdateService"], _admin_auth_guard__WEBPACK_IMPORTED_MODULE_40__["AdminAuthGuard"]]
         }]
       }], function () {
@@ -3691,7 +4151,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this9 = this;
+          var _this11 = this;
 
           if (this.loginForm.valid) {
             var ticket = {
@@ -3699,9 +4159,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.loginForm.get("password").value
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this9.appVariables.fillMember(data, ticket);
+              _this11.appVariables.fillMember(data, ticket);
 
-              _this9.router.navigate(['layout/home']);
+              _this11.router.navigate(['layout/home']);
 
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -3709,7 +4169,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'success'
               };
 
-              _this9.appVariables.addAlert(alert_ticket);
+              _this11.appVariables.addAlert(alert_ticket);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -3717,7 +4177,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this9.appVariables.addAlert(alert_ticket);
+              _this11.appVariables.addAlert(alert_ticket);
             });
           }
         }
@@ -4083,7 +4543,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this10 = this;
+          var _this12 = this;
 
           var messageMedium = this.email_or_phone();
 
@@ -4101,13 +4561,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             this.glob.generateCode(member).subscribe(function (data) {
-              _this10.appvariables.temp_member = member;
-              _this10.appvariables.temp_ticket = {
+              _this12.appvariables.temp_member = member;
+              _this12.appvariables.temp_ticket = {
                 id: choice_id,
                 data: member.password
               };
 
-              _this10.router.navigate(['/layout/authenticate']);
+              _this12.router.navigate(['/layout/authenticate']);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_4__["Actions"].signup,
@@ -4115,7 +4575,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this10.appvariables.addAlert(alert_ticket);
+              _this12.appvariables.addAlert(alert_ticket);
             });
           } else {
             var alert_ticket = {
@@ -5403,7 +5863,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this11 = this;
+          var _this13 = this;
 
           var temp = new src_app_models_member__WEBPACK_IMPORTED_MODULE_1__["Member"](this.member.username, this.member.email, this.member.phone, this.member.verified, this.member.post_count, this.member.facebook, this.member.instagram, this.member.twitter, this.member.newsletter, this.member.messageMedium, this.member.notify, null);
 
@@ -5458,15 +5918,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.updateServe.updatePassword(ticket).subscribe(function (data) {
                 var alert_ticket = {
                   action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_5__["Actions"].signup,
-                  msg: 'Updated ' + _this11.choice.toLocaleUpperCase(),
+                  msg: 'Updated ' + _this13.choice.toLocaleUpperCase(),
                   type: 'success'
                 };
 
-                _this11.variables.addAlert(alert_ticket);
+                _this13.variables.addAlert(alert_ticket);
 
-                _this11.cancel();
+                _this13.cancel();
               }, function (error) {
-                _this11.message = "Failed";
+                _this13.message = "Failed";
               });
               return;
           }
@@ -5476,19 +5936,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             data: temp
           };
           this.updateServe.update(ticket).subscribe(function (data) {
-            _this11.variables.reloadBS(temp);
+            _this13.variables.reloadBS(temp);
 
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_5__["Actions"].signup,
-              msg: 'Updated ' + _this11.choice.toLocaleUpperCase(),
+              msg: 'Updated ' + _this13.choice.toLocaleUpperCase(),
               type: 'success'
             };
 
-            _this11.variables.addAlert(alert_ticket);
+            _this13.variables.addAlert(alert_ticket);
 
-            _this11.cancel();
+            _this13.cancel();
           }, function (error) {
-            _this11.message = "Failed";
+            _this13.message = "Failed";
           });
         }
       }, {
@@ -6326,7 +6786,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AppVariablesService, [{
         key: "setup",
         value: function setup() {
-          var _this12 = this;
+          var _this14 = this;
 
           if (this.current_member_id != null) {
             var ticket = {
@@ -6334,7 +6794,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.decrypt(this.current_member_encrypted_password)
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this12.fillMember(data, ticket);
+              _this14.fillMember(data, ticket);
 
               var alert_ticket = {
                 action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -6342,7 +6802,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'success'
               };
 
-              _this12.addAlert(alert_ticket);
+              _this14.addAlert(alert_ticket);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -6350,7 +6810,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this12.addAlert(alert_ticket);
+              _this14.addAlert(alert_ticket);
             });
           }
 
@@ -6359,10 +6819,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "reload_contest",
         value: function reload_contest() {
-          var _this13 = this;
+          var _this15 = this;
 
           this.glob.getContest().subscribe(function (data) {
-            _this13.populateContest(data);
+            _this15.populateContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -6370,10 +6830,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this13.addAlert(alert_ticket);
+            _this15.addAlert(alert_ticket);
           });
           this.glob.getPreviousContest().subscribe(function (data) {
-            _this13.populatePreviousContest(data);
+            _this15.populatePreviousContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -6381,7 +6841,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this13.addAlert(alert_ticket);
+            _this15.addAlert(alert_ticket);
           });
         }
       }, {
@@ -6437,7 +6897,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addAlert",
         value: function addAlert(alert_ticket) {
-          var _this14 = this;
+          var _this16 = this;
 
           var type;
 
@@ -6471,7 +6931,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           this.alerts.push(alert);
           setTimeout(function () {
-            _this14.closeAlert(alert);
+            _this16.closeAlert(alert);
           }, this.popup);
         }
       }, {
@@ -6667,7 +7127,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content, type, modalDimension) {
-          var _this15 = this;
+          var _this17 = this;
 
           if (modalDimension === 'sm' && type === 'modal_mini') {
             this.modalService.open(content, {
@@ -6675,26 +7135,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               size: 'sm',
               centered: true
             }).result.then(function (result) {
-              _this15.closeResult = "Closed with: ".concat(result);
+              _this17.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this15.closeResult = "Dismissed ".concat(_this15.getDismissReason(reason));
+              _this17.closeResult = "Dismissed ".concat(_this17.getDismissReason(reason));
             });
           } else if (modalDimension === '' && type === 'Notification') {
             this.modalService.open(content, {
               windowClass: 'modal-danger',
               centered: true
             }).result.then(function (result) {
-              _this15.closeResult = "Closed with: ".concat(result);
+              _this17.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this15.closeResult = "Dismissed ".concat(_this15.getDismissReason(reason));
+              _this17.closeResult = "Dismissed ".concat(_this17.getDismissReason(reason));
             });
           } else {
             this.modalService.open(content, {
               centered: true
             }).result.then(function (result) {
-              _this15.closeResult = "Closed with: ".concat(result);
+              _this17.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this15.closeResult = "Dismissed ".concat(_this15.getDismissReason(reason));
+              _this17.closeResult = "Dismissed ".concat(_this17.getDismissReason(reason));
             });
           }
         }

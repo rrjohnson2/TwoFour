@@ -7,4 +7,5 @@ export interface Submission {
 	content_extension:string;
 	content_type:string;
 	rolls:number;
+	id?:number
 }

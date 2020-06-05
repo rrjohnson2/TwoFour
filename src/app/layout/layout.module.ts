@@ -36,10 +36,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { UpdateService } from './update/update.service';
 import { MatStepperModule } from '@angular/material/stepper';
-import { AppVariablesService } from '../service/app-variables.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminAuthGuard } from './admin.auth.guard';
+import { MatTableModule } from '@angular/material/table';
+import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,9 @@ import { AdminAuthGuard } from './admin.auth.guard';
     MatCheckboxModule, MatChipsModule, MatTooltipModule,
     MatDialogModule, MatBadgeModule, MatMenuModule,
     NgbModule, FontAwesomeModule, MatExpansionModule,
-    MatStepperModule
+    MatStepperModule,MatTableModule,MatRippleModule
   ],
-  providers: [AuthGuard, ReverseAuthGuard, UpdateService,AdminAuthGuard]
+  providers: [AuthGuard, ReverseAuthGuard, UpdateService, AdminAuthGuard]
 })
 export class LayoutModule {
   constructor() {

@@ -1,1 +1,44 @@
-<p>admin works!</p>
+<div class="row justify-content-center two_four_card_holder">
+    <div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
+        <div *ngFor="let sub of subs; " class="card admin_card">
+            <app-bit-content [type]="sub.type" [src]="renderSrc(sub)"></app-bit-content>
+            <p>{{sub.description}}
+                <mat-chip *ngIf="sub.winner">Winner</mat-chip>
+                <button mat-mini-fab color="primary" (click)="choose( sub )" >
+                    <mat-icon>check</mat-icon>
+                </button>
+            </p>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon>account_circle</mat-icon>
+                            <strong>{{sub.member.username}}</strong>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <mat-selection-list [multiple]="false">
+                        <mat-list-option>
+                            <a mat-list-item target="_blank" href="https://facebook.com/{{sub.member.facebook}}">
+                                <fa-icon [icon]="facebook" size="lg"></fa-icon>
+                                <strong>{{sub.member.facebook}}</strong>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item target="_blank" href="https://instagram.com/{{sub.member.instagram}}">
+                                <fa-icon [icon]="instagram" size="lg"></fa-icon>
+                                <strong>{{sub.member.twitter}}</strong>
+                            </a>
+                        </mat-list-option>
+                        <mat-list-option>
+                            <a mat-list-item target="_blank" href="https://twitter.com/{{sub.member.twitter}}">
+                                <fa-icon [icon]="twitter" size="lg"></fa-icon>
+                                <strong>{{sub.member.instagram}}</strong>
+                            </a>
+                        </mat-list-option>
+                    </mat-selection-list>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>

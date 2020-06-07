@@ -70,7 +70,7 @@ export class AdminComponent implements OnInit {
   renderSrc(sub: Entry) {
     return image_server_url + "getSubmission?sub=" + sub.url;
   }
-  choose(i: Entry) {
+  choose(i: Entry = null) {
     var index;
     if (i.winner) {
       index = -1;

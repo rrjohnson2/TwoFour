@@ -41,6 +41,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminAuthGuard } from './admin.auth.guard';
 import { MatTableModule } from '@angular/material/table';
 import {MatRippleModule} from '@angular/material/core';
+import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import {MatRippleModule} from '@angular/material/core';
     MatCheckboxModule, MatChipsModule, MatTooltipModule,
     MatDialogModule, MatBadgeModule, MatMenuModule,
     NgbModule, FontAwesomeModule, MatExpansionModule,
-    MatStepperModule,MatTableModule,MatRippleModule
+    MatStepperModule,MatTableModule,MatRippleModule,
+    MatProgressSpinnerModule
   ],
   providers: [AuthGuard, ReverseAuthGuard, UpdateService, AdminAuthGuard]
 })

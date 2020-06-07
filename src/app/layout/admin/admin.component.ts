@@ -32,15 +32,16 @@ export class AdminComponent implements OnInit {
 
             this.subs.push(winner);
           }
-
-
-          data.backups.forEach(backup => {
-            this.subs.push(this.subToEntry(backup))
-          });
-
         }
-        console.log(data);
-        console.log(this.subs)
+      }
+    );
+
+    this.adminS.getBackups().subscribe(
+      data =>{
+        var res = <any> data;
+        res.forEach(element => {
+            this.subs.push(this.subToEntry(element))
+        });
       }
     )
   }

@@ -9,6 +9,5 @@ export class Contest {
     winning_content_url:string;
     winning_content_type:string;
     content_type:string;
-    backups:Submission[];
 
 }

@@ -4,7 +4,7 @@
             <div class="card-body">
 
                 <app-bit-content></app-bit-content>
-                <div class="row ">
+                <div class="row needs_margin_bottom ">
                     <div class="col-12">
                         <app-countdown (reload)="nextContest($event)"
                             [description]="previousContest?.winning_description" [winner]="previousContest?.winner"
@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="row ">
-                    <div class="col-12 ">
+                    <div class="col-12 needs_margin_bottom ">
                         <button class="long_12_button" mat-raised-button color="primary"
                             routerLink="/layout/submit">Submit Lottery</button>
                     </div>

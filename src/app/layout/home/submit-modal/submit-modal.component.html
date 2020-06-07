@@ -8,20 +8,20 @@
                             <legend>Description</legend>
                             <textarea formControlName="description" class="form-control textarea" rows="1"></textarea>
                         </fieldset>
-                        <div class=" offset-1 col-10  textarea_icon_container  ">
+                        <div class=" offset-1 col-10  textarea_icon_container needs_margin_bottom  ">
                             <app-bit-content [placeholder]="true"></app-bit-content>
                             <input hidden class="target_input" type="file" (change)="fileChangeEvent($event)" accept="
                             video/*,
                             audio/*,
                             image/*
                             " />
-                            <button class="long_12_button button_upload" mat-raised-button color="accent"
+                            <button class="long_12_button button_upload " mat-raised-button color="accent"
                                 matTooltip="Photo/Audio/Video" [matTooltipPosition]="'after'" #tooltip="matTooltip"
                                 (click)="tooltip.toggle()" type="button">
                                 Upload Photo/Image/Video
                             </button>
                         </div>
-                        <div class="col-12 ">
+                        <div class="col-12 needs_margin_bottom ">
                             <button type="submit" *ngIf="submitForm.valid" class="long_12_button" mat-raised-button
                                 color="primary">Submit</button>
                             <button *ngIf="submitForm.invalid" class="long_12_button" mat-raised-button

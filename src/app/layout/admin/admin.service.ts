@@ -14,5 +14,9 @@ export class AdminService {
   {
     return this.http.post(backendUrl+"chooseWinner",choice);
   }
+  getBackups()
+  {
+    return this.http.get(backendUrl+"getBackups");
+  }
   
 }

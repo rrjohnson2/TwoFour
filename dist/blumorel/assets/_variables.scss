@@ -59,9 +59,9 @@ $colors: map-merge((
 ), $colors);
 
 $default:       #172b4d !default;
-$primary:       #78BF91 !default;
-$primary-darker:rgb(89, 139, 107)  !default;
-$secondary:     #8AD2CF!default;
+$primary:       #2196f3 !default;
+$primary-darker:#1b7bc8  !default;
+$secondary:     #ffab40!default;
 $success:       $green !default;
 $info:          $teal !default;
 $warning:       $orange !default;
@@ -223,4 +223,5 @@ $fa-youtube: #e52d27;
 }
 .fa-instagram{
   color: $fa-instagram;
+  
 }

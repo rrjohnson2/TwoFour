@@ -1,11 +1,11 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push" opened="false">
         <mat-toolbar color="primary">
-            <a routerLink="/update">
+            <a routerLink="/update" class="mat-toolbar-a">
                 <mat-icon>account_circle</mat-icon>
                 <span>{{(member| async)?.username}}</span>
             </a>
-            <a *ngIf="(member | async) == null" routerLink="/update">Login</a>
+            <a class="mat-toolbar-a" *ngIf="(member | async) == null" routerLink="/update">Login</a>
         </mat-toolbar>
         <mat-selection-list #links [multiple]="false">
             <mat-list-option>
@@ -19,8 +19,8 @@
                 </a>
             </mat-list-option>
             <mat-list-option>
-                <a mat-list-item  *ngIf="(member | async)!=null && (member | async).role=='admin'" routerLink="/admin">
-                        <legend>Admin</legend>
+                <a mat-list-item *ngIf="(member | async)!=null && (member | async).role=='admin'" routerLink="/admin">
+                    <legend>Admin</legend>
                 </a>
             </mat-list-option>
         </mat-selection-list>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-4 text-center">
                         <a routerLink="/home">
-                            Two Four
+                            Blu Morel
                         </a>
                     </div>
                 </div>

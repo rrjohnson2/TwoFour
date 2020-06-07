@@ -3281,7 +3281,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _layout_component__WEBPACK_IMPORTED_MODULE_8__["LayoutComponent"],
       children: [{
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'about',
         pathMatch: "prefix"
       }, {
         path: "home",

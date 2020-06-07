@@ -20,7 +20,7 @@ const routes: Routes = [
         path:'',
         component: LayoutComponent,
         children:[
-                    { path: '', redirectTo:'home', pathMatch:"prefix"},
+                    { path: '', redirectTo:'about', pathMatch:"prefix"},
 
                     {
                         path:"home",

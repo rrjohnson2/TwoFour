@@ -1570,7 +1570,7 @@ const routes = [
         path: '',
         component: _layout_component__WEBPACK_IMPORTED_MODULE_8__["LayoutComponent"],
         children: [
-            { path: '', redirectTo: 'home', pathMatch: "prefix" },
+            { path: '', redirectTo: 'about', pathMatch: "prefix" },
             {
                 path: "home",
                 component: _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"],

@@ -13,16 +13,16 @@
                             <input matInput class="form-control" placeholder="Password" formControlName="password"
                                 type="password">
                         </fieldset>
-                        <div class="col-12">
-                            <button *ngIf="loginForm.valid" class="long_12_button needs_margin_bottom" type="" mat-raised-button
-                                color="primary">Login</button>
-                            <button *ngIf="loginForm.invalid" class="long_12_button needs_margin_bottom" mat-raised-button
-                                disabled>Login</button>
+                        <div class="col-12 needs_margin_bottom">
+                            <button *ngIf="loginForm.valid" class="long_12_button " type=""
+                                mat-raised-button color="primary">Login</button>
+                            <button *ngIf="loginForm.invalid" class="long_12_button"
+                                mat-raised-button disabled>Login</button>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-12 text-center needs_margin_bottom">
+                    <div class="row needs_margin_bottom">
+                        <div class="col-12 text-center ">
                             <button (click)="signUp()" mat-raised-button color="accent">Create Account</button>
                         </div>
                     </div>

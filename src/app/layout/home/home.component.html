@@ -1,11 +1,14 @@
 <div class="row justify-content-center two_four_card_holder">
-    <div class="col-lg-7 col-sm-12 sm_reduce_col_12_padding">
-        <div class="card two_four_card">
+    <div class="col-lg-8 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card ">
             <div class="card-body">
 
-                <app-bit-content></app-bit-content>
+               
                 <div class="row needs_margin_bottom ">
-                    <div class="col-12">
+                    <div class="col-lg-6">
+                        <app-bit-content></app-bit-content>
+                    </div>
+                    <div class=" col-lg-6 col-sm-12">
                         <app-countdown (reload)="nextContest($event)"
                             [description]="previousContest?.winning_description" [winner]="previousContest?.winner"
                             [subs]="contest?.sub_count" [time]="contest?.calendar"></app-countdown>
@@ -22,5 +25,21 @@
             </div>
         </div>
 
+    </div>
+    <div class="col-lg-4 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card two_four_card">
+            <div class="card-body">
+                <p>
+                    Welcome to Blu Morel, the first and only online showcase lottery.
+                    Users can submit a video, photo, and/or a status.
+                    Every day a user's submission is chosen at random.
+                    The chosen submission will be featured on the site for 24 hours,
+                    during which the next lottery will be running for the following day.
+                    One submission per lottery, and once the winner is picked, all users will be notified via text or
+                    email.
+                    So sign up, submit,and good luck.
+                </p>
+            </div>
+        </div>
     </div>
 </div>

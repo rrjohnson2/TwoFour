@@ -18,6 +18,7 @@ a{
     width: 100vw;
     overflow-y: hidden; 
     overflow-x: hidden;
+    background-image: url('/assets/icons/background.png');
     background-color: $gray-200;
 }
  
@@ -37,16 +38,15 @@ a{
   bottom: 10vh;
 }
 .preview {
-  width: -webkit-calc(100% + 40px);
-  width:    -moz-calc(100% + 40px);
-  width:         calc(100% + 40px);
-  margin-left: -$standard_size;
+  width: -webkit-calc(100%);
+  width:    -moz-calc(100%);
+  width:         calc(100%);
   max-height:400px;
 }
 .two_four_card_holder{
   position: relative;
   top : 50%;
-  height: 85vh;
+  height: 95vh;
   overflow-y: scroll;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */

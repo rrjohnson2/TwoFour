@@ -5,3 +5,10 @@ body {
 .sm_reduce_col_12_padding{
     padding: 0 !important;
 }
+.preview {
+    width: -webkit-calc(100% + 40px);
+    width:    -moz-calc(100% + 40px);
+    width:         calc(100% + 40px);
+    margin-left: -$standard_size;
+    max-height:400px;
+  }

@@ -1375,6 +1375,9 @@ class SubmitModalComponent {
                     this.submitService.uploadSubmission(winnerFile).subscribe(data => {
                         var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'File Uploaded', type: 'success' };
                         this.variables.addAlert(alert_ticket);
+                        if (!subTicket.backupSlot) {
+                            this.reset();
+                        }
                     }, error => {
                         var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'Could Not Submit Fieloo', type: 'danger' };
                         this.variables.addAlert(alert_ticket);
@@ -1385,16 +1388,18 @@ class SubmitModalComponent {
                     this.submitService.uploadSubmission(backupFile).subscribe(data => {
                         var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'File Uploaded', type: 'success' };
                         this.variables.addAlert(alert_ticket);
+                        this.reset();
                     }, error => {
                         var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'Could Not Submit', type: 'danger' };
                         this.variables.addAlert(alert_ticket);
                     });
                 }
             }
-            var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'Post submitted', type: 'success' };
-            this.variables.addAlert(alert_ticket);
-            this.variables.setup();
-            this.router.navigate(['/layout/home']);
+            if (!(subTicket.win || subTicket.backupSlot)) {
+                var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'Post submitted', type: 'success' };
+                this.variables.addAlert(alert_ticket);
+                this.reset();
+            }
         }, error => {
             var alert_ticket = { action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit, msg: 'Could Not Submit', type: 'danger' };
             this.variables.addAlert(alert_ticket);
@@ -1408,6 +1413,10 @@ class SubmitModalComponent {
         this.submission.content_type = old_file.type;
         this.bitComp.init(old_file);
         this.content_file = new File([old_file], "temp", { type: old_file.type });
+    }
+    reset() {
+        this.variables.setup();
+        this.router.navigate(['/layout/home']);
     }
 }
 SubmitModalComponent.ɵfac = function SubmitModalComponent_Factory(t) { return new (t || SubmitModalComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_ui_service__WEBPACK_IMPORTED_MODULE_5__["UIService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_6__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_submit_modal_service__WEBPACK_IMPORTED_MODULE_7__["SubmitModalService"])); };
@@ -3742,4 +3751,3 @@ module.exports = __webpack_require__(/*! C:\Users\rrjoh\Documents\JSWare\TwoFour
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main-es2015.js.map

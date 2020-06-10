@@ -36,7 +36,7 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
     this.uiService.upload_button();
     this.submission = {
       content_extension: "",
-      content_type:"",
+      content_type: "",
       content_url: "",
       description: "",
       member: this.member,
@@ -68,6 +68,9 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
                 var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
 
                 this.variables.addAlert(alert_ticket);
+                if(!subTicket.backupSlot){
+                  this.reset();
+                }
               },
               error => {
                 var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit Fieloo', type: 'danger' };
@@ -83,6 +86,7 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
                 var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
 
                 this.variables.addAlert(alert_ticket);
+                this.reset();
               },
               error => {
                 var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit', type: 'danger' };
@@ -92,11 +96,12 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
             );
           }
         }
-        var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Post submitted', type: 'success' };
+        if (!(subTicket.win || subTicket.backupSlot)) {
+          var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Post submitted', type: 'success' };
 
-        this.variables.addAlert(alert_ticket);
-        this.variables.setup();
-        this.router.navigate(['/layout/home']);
+          this.variables.addAlert(alert_ticket);
+          this.reset();
+        }
       },
       error => {
         var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit', type: 'danger' };
@@ -113,10 +118,15 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
 
     this.submission.content_extension = "." + old_file.name.split('.').pop();
 
-    this.submission.content_type=old_file.type;
+    this.submission.content_type = old_file.type;
     this.bitComp.init(old_file);
     this.content_file = new File([old_file], "temp", { type: old_file.type });
 
+  }
+  reset()
+  {
+    this.variables.setup();
+    this.router.navigate(['/layout/home']);
   }
 
 }

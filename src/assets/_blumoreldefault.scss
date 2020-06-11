@@ -18,8 +18,7 @@ a{
     width: 100vw;
     overflow-y: hidden; 
     overflow-x: hidden;
-    background-image: url('/assets/icons/background.png');
-    background-color: $gray-200;
+    
 }
  
 .nav_img{
@@ -85,4 +84,13 @@ a span, a strong{
 
 .needs_margin_bottom{
   margin-bottom: 10px;
+}
+.welcome_card{
+  color: $white;
+  background-color: $primary !important;
+}
+.background{
+  position: absolute;
+  z-index: -5;
+  display: none;
 }

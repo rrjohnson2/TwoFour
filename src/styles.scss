@@ -20,6 +20,19 @@ body {
   @import "./assets/blumorel_phone_landscape";
              
  }
+ @media only screen and (min-device-height:992px)
+    {
+      .layout{
+        //background-image: url('/assets/icons/background.png');
+        //background-color: $gray-200;
+        
+    }
+    .background{
+      display: block;
+      opacity: .7;
+      filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+    }
+ }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 

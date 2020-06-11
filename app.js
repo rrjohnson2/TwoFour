@@ -14,7 +14,7 @@ app.get('*', function(req, res) {
 });
 
 //Starting server on port 8081
-const port = process.env.port || 8080
+const port = 443
 app.listen(port, () => {
     console.log('Server started!');
     console.log(`on port ${port}`);

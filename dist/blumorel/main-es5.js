@@ -2531,7 +2531,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       decls: 18,
       vars: 4,
-      consts: [[1, "row", "justify-content-center", "two_four_card_holder"], [1, "col-lg-8", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card"], [1, "card-body"], [1, "row", "needs_margin_bottom"], [1, "col-lg-6"], [1, "col-lg-6", "col-sm-12"], [3, "description", "winner", "subs", "time", "reload"], [1, "row"], [1, "col-12", "needs_margin_bottom"], ["mat-raised-button", "", "color", "primary", "routerLink", "/layout/submit", 1, "long_12_button"], [1, "col-lg-10", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card", "welcome_card"]],
+      consts: [[1, "row", "justify-content-center", "two_four_card_holder"], [1, "col-lg-8", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card"], [1, "card-body"], [1, "row", "needs_margin_bottom"], [1, "col-lg-6"], [1, "col-lg-6", "col-sm-12"], [3, "description", "winner", "subs", "time", "reload"], [1, "row"], [1, "col-12", "needs_margin_bottom"], ["mat-raised-button", "", "color", "primary", "routerLink", "/layout/submit", 1, "long_12_button"], [1, "col-lg-4", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card", "welcome_card"]],
       template: function HomeComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);

@@ -169,7 +169,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "image_server_url", function() { return image_server_url; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Actions", function() { return Actions; });
 var isSmallScreen = window.screen.width < 992;
-var backendUrl = 'http://bakendtwofour-env.eba-2ezcpqfm.us-east-2.elasticbeanstalk.com/';
+var backendUrl = 'https://blumorelbackend.net/';
 // export var backendUrl = "http://localhost:5000/"
 var image_server_url = 'http://twoforpicturefix-env.eba-2aehqx9u.us-east-2.elasticbeanstalk.com/';
 // export var image_server_url = "http://localhost:8082/"

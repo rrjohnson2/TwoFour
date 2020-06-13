@@ -6,6 +6,7 @@ import { SubmitModalComponent } from './submit-modal/submit-modal.component';
 import { Actions, image_server_url } from 'src/app/constants/app.constant';
 import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 import { BitContentComponent } from '../bit-content/bit-content.component';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   previousContest: Contest;
   today: Date = new Date();
   hours_to_secs_24: number = 86400;
-  constructor(private variables: AppVariablesService, private glob: GlobalService) { }
+  constructor(private variables: AppVariablesService, private glob: GlobalService, private homeService:HomeService) { }
   ngAfterViewInit(): void {
 
   }
@@ -70,7 +71,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (data != null && data.winning_content_url != null) {
       if (this.bitComp != null) {
         this.bitComp.type = data.winning_content_type;
-        this.bitComp.src = image_server_url + "getSubmission?sub=" + data.winning_content_url;
+        this.homeService.getSubmission(data.winning_content_url).subscribe(
+          data =>{
+           
+            this.bitComp.src = data;
+          },error => {
+            console.log(error)
+            this.bitComp.type = null;
+            this.bitComp.src = null;
+            this.bitComp.placeholder=true;
+          }
+        )
       }
       else{
         setTimeout(()=>{

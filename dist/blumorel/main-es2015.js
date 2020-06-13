@@ -171,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 var isSmallScreen = window.screen.width < 992;
 var backendUrl = 'https://blumorelbackend.net/';
 // export var backendUrl = "http://localhost:5000/"
-var image_server_url = 'http://twoforpicturefix-env.eba-2aehqx9u.us-east-2.elasticbeanstalk.com/';
+var image_server_url = 'https://blumorelphoto.net/';
 // export var image_server_url = "http://localhost:8082/"
 var Actions;
 (function (Actions) {
@@ -1153,9 +1153,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../bit-content/bit-content.component */ "./src/app/layout/bit-content/bit-content.component.ts");
 /* harmony import */ var src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/app-variables.service */ "./src/app/service/app-variables.service.ts");
 /* harmony import */ var src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/global.service */ "./src/app/service/global.service.ts");
-/* harmony import */ var _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./countdown/countdown.component */ "./src/app/layout/home/countdown/countdown.component.ts");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _home_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home.service */ "./src/app/layout/home/home.service.ts");
+/* harmony import */ var _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./countdown/countdown.component */ "./src/app/layout/home/countdown/countdown.component.ts");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
 
 
 
@@ -1168,9 +1170,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class HomeComponent {
-    constructor(variables, glob) {
+    constructor(variables, glob, homeService) {
         this.variables = variables;
         this.glob = glob;
+        this.homeService = homeService;
         this.today = new Date();
         this.hours_to_secs_24 = 86400;
     }
@@ -1205,7 +1208,14 @@ class HomeComponent {
         if (data != null && data.winning_content_url != null) {
             if (this.bitComp != null) {
                 this.bitComp.type = data.winning_content_type;
-                this.bitComp.src = src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["image_server_url"] + "getSubmission?sub=" + data.winning_content_url;
+                this.homeService.getSubmission(data.winning_content_url).subscribe(data => {
+                    this.bitComp.src = data;
+                }, error => {
+                    console.log(error);
+                    this.bitComp.type = null;
+                    this.bitComp.src = null;
+                    this.bitComp.placeholder = true;
+                });
             }
             else {
                 setTimeout(() => {
@@ -1215,7 +1225,7 @@ class HomeComponent {
         }
     }
 }
-HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"])); };
+HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_home_service__WEBPACK_IMPORTED_MODULE_6__["HomeService"])); };
 HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["app-home"]], viewQuery: function HomeComponent_Query(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_1__["SubmitModalComponent"], true);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"], true);
@@ -1261,7 +1271,7 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("description", ctx.previousContest == null ? null : ctx.previousContest.winning_description)("winner", ctx.previousContest == null ? null : ctx.previousContest.winner)("subs", ctx.contest == null ? null : ctx.contest.sub_count)("time", ctx.contest == null ? null : ctx.contest.calendar);
-    } }, directives: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"], _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_6__["CountdownComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */"] });
+    } }, directives: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"], _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_7__["CountdownComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HomeComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -1269,13 +1279,50 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
                 templateUrl: './home.component.html',
                 styleUrls: ['./home.component.scss']
             }]
-    }], function () { return [{ type: src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"] }, { type: src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"] }]; }, { submit: [{
+    }], function () { return [{ type: src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"] }, { type: src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"] }, { type: _home_service__WEBPACK_IMPORTED_MODULE_6__["HomeService"] }]; }, { submit: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
             args: [_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_1__["SubmitModalComponent"]]
         }], bitComp: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
             args: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"]]
         }] }); })();
+
+
+/***/ }),
+
+/***/ "./src/app/layout/home/home.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/layout/home/home.service.ts ***!
+  \*********************************************/
+/*! exports provided: HomeService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeService", function() { return HomeService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/constants/app.constant */ "./src/app/constants/app.constant.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+
+
+
+
+class HomeService {
+    constructor(http) {
+        this.http = http;
+    }
+    getSubmission(sub) {
+        return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "getSubmission", { sub: sub });
+    }
+}
+HomeService.ɵfac = function HomeService_Factory(t) { return new (t || HomeService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
+HomeService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: HomeService, factory: HomeService.ɵfac, providedIn: 'root' });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HomeService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root'
+            }]
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),

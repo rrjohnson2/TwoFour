@@ -332,7 +332,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var isSmallScreen = window.screen.width < 992;
     var backendUrl = 'https://blumorelbackend.net/'; // export var backendUrl = "http://localhost:5000/"
 
-    var image_server_url = 'http://twoforpicturefix-env.eba-2aehqx9u.us-east-2.elasticbeanstalk.com/'; // export var image_server_url = "http://localhost:8082/"
+    var image_server_url = 'https://blumorelphoto.net/'; // export var image_server_url = "http://localhost:8082/"
 
     var Actions;
 
@@ -2408,28 +2408,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _home_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./home.service */
+    "./src/app/layout/home/home.service.ts");
+    /* harmony import */
+
+
+    var _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ./countdown/countdown.component */
     "./src/app/layout/home/countdown/countdown.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
     var HomeComponent = /*#__PURE__*/function () {
-      function HomeComponent(variables, glob) {
+      function HomeComponent(variables, glob, homeService) {
         _classCallCheck(this, HomeComponent);
 
         this.variables = variables;
         this.glob = glob;
+        this.homeService = homeService;
         this.today = new Date();
         this.hours_to_secs_24 = 86400;
       }
@@ -2495,7 +2502,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (data != null && data.winning_content_url != null) {
             if (this.bitComp != null) {
               this.bitComp.type = data.winning_content_type;
-              this.bitComp.src = src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["image_server_url"] + "getSubmission?sub=" + data.winning_content_url;
+              this.homeService.getSubmission(data.winning_content_url).subscribe(function (data) {
+                _this8.bitComp.src = data;
+              }, function (error) {
+                console.log(error);
+                _this8.bitComp.type = null;
+                _this8.bitComp.src = null;
+                _this8.bitComp.placeholder = true;
+              });
             } else {
               setTimeout(function () {
                 _this8.populateBit(data);
@@ -2509,7 +2523,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     HomeComponent.ɵfac = function HomeComponent_Factory(t) {
-      return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"]));
+      return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_home_service__WEBPACK_IMPORTED_MODULE_6__["HomeService"]));
     };
 
     HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -2611,7 +2625,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("description", ctx.previousContest == null ? null : ctx.previousContest.winning_description)("winner", ctx.previousContest == null ? null : ctx.previousContest.winner)("subs", ctx.contest == null ? null : ctx.contest.sub_count)("time", ctx.contest == null ? null : ctx.contest.calendar);
         }
       },
-      directives: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"], _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_6__["CountdownComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterLink"]],
+      directives: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"], _countdown_countdown_component__WEBPACK_IMPORTED_MODULE_7__["CountdownComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLink"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */"]
     });
     /*@__PURE__*/
@@ -2629,6 +2643,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_4__["AppVariablesService"]
         }, {
           type: src_app_service_global_service__WEBPACK_IMPORTED_MODULE_5__["GlobalService"]
+        }, {
+          type: _home_service__WEBPACK_IMPORTED_MODULE_6__["HomeService"]
         }];
       }, {
         submit: [{
@@ -2640,6 +2656,90 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           args: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_3__["BitContentComponent"]]
         }]
       });
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/layout/home/home.service.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/layout/home/home.service.ts ***!
+    \*********************************************/
+
+  /*! exports provided: HomeService */
+
+  /***/
+  function srcAppLayoutHomeHomeServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "HomeService", function () {
+      return HomeService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/constants/app.constant */
+    "./src/app/constants/app.constant.ts");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+
+    var HomeService = /*#__PURE__*/function () {
+      function HomeService(http) {
+        _classCallCheck(this, HomeService);
+
+        this.http = http;
+      }
+
+      _createClass(HomeService, [{
+        key: "getSubmission",
+        value: function getSubmission(sub) {
+          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "getSubmission", {
+            sub: sub
+          });
+        }
+      }]);
+
+      return HomeService;
+    }();
+
+    HomeService.ɵfac = function HomeService_Factory(t) {
+      return new (t || HomeService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]));
+    };
+
+    HomeService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: HomeService,
+      factory: HomeService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HomeService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [{
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+        }];
+      }, null);
     })();
     /***/
 

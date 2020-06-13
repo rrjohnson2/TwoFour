@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   previousContest: Contest;
   today: Date = new Date();
   hours_to_secs_24: number = 86400;
-  constructor(private variables: AppVariablesService, private glob: GlobalService, private homeService:HomeService) { }
+  constructor(private variables: AppVariablesService, private glob: GlobalService, private homeService: HomeService) { }
   ngAfterViewInit(): void {
 
   }
@@ -72,20 +72,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (this.bitComp != null) {
         this.bitComp.type = data.winning_content_type;
         this.homeService.getSubmission(data.winning_content_url).subscribe(
-          data =>{
-           
-            this.bitComp.src = data;
-          },error => {
+          data => {
+            this.bitComp.src = URL.createObjectURL(data);
+          }, error => {
             console.log(error)
             this.bitComp.type = null;
             this.bitComp.src = null;
-            this.bitComp.placeholder=true;
+            this.bitComp.placeholder = true;
           }
         )
       }
-      else{
-        setTimeout(()=>{
-            this.populateBit(data);
+      else {
+        setTimeout(() => {
+          this.populateBit(data);
         }, 1)
       }
     }

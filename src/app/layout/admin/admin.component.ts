@@ -6,6 +6,7 @@ import { image_server_url, Actions } from 'src/app/constants/app.constant';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { AdminService } from './admin.service';
 import { AlertTicket } from 'src/app/interfaces/alert-ticket';
+import { HomeService } from '../home/home.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AdminComponent implements OnInit {
   twitter = faTwitter;
   isLinear = false;
   subs = [];
-  constructor(private variables: AppVariablesService, private adminS: AdminService) { }
+  constructor(private variables: AppVariablesService, private adminS: AdminService, private homeServ: HomeService) { }
 
   ngOnInit(): void {
     this.variables.currentContest_ob.subscribe(
@@ -30,45 +31,54 @@ export class AdminComponent implements OnInit {
           if (data.winner != null) {
             let winner: Entry = this.dataToEntry(data, true);
 
-            this.subs.push(winner);
+            this.renderSrc(winner);
           }
         }
       }
     );
 
     this.adminS.getBackups().subscribe(
-      data =>{
-        var res = <any> data;
+      data => {
+        var res = <any>data;
         res.forEach(element => {
-            this.subs.push(this.subToEntry(element))
+          this.renderSrc(this.subToEntry(element))
         });
       }
     )
   }
   subToEntry(backup: Submission): any {
-    return {
+    let sub: Entry = {
       url: backup.content_url,
       type: backup.content_type,
       description: backup.description,
       member: backup.member,
       winner: false,
-      id: backup.id,
+      id: backup.id
     }
+    return sub;
   }
 
 
   dataToEntry(data, winner) {
-    return {
+    let sub: Entry = {
       url: data.winning_content_url,
       type: data.winning_content_type,
       description: data.winning_description,
       member: data.winner,
       winner: winner
     }
+    return sub;
+    
   }
 
   renderSrc(sub: Entry) {
-    return image_server_url + "getSubmission?sub=" + sub.url;
+    this.homeServ.getSubmission(sub.url).subscribe(
+      data => {
+       sub.file = URL.createObjectURL(data);
+       this.subs.push(sub)
+      }
+    )
+    
   }
   choose(i: Entry = null) {
     var index;
@@ -102,6 +112,7 @@ export interface Entry {
   type: string;
   winner: boolean,
   id?: number
+  file?: any
 }
 
 

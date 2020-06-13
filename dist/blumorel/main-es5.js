@@ -332,7 +332,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var isSmallScreen = window.screen.width < 992;
     var backendUrl = 'https://blumorelbackend.net/'; // export var backendUrl = "http://localhost:5000/"
 
-    var image_server_url = 'https://blumorelphoto.net/'; // export var image_server_url = "http://localhost:8082/"
+    var image_server_url = 'http://blumorelphoto.net/'; // export var image_server_url = "http://localhost:8082/"
 
     var Actions;
 
@@ -528,49 +528,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _home_home_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../home/home.service */
+    "./src/app/layout/home/home.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ../bit-content/bit-content.component */
     "./src/app/layout/bit-content/bit-content.component.ts");
     /* harmony import */
 
 
-    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @angular/material/icon */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
     /* harmony import */
 
 
-    var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @angular/material/expansion */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/expansion.js");
     /* harmony import */
 
 
-    var _angular_material_list__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _angular_material_list__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @angular/material/list */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/list.js");
     /* harmony import */
 
 
-    var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @fortawesome/angular-fontawesome */
     "./node_modules/@fortawesome/angular-fontawesome/__ivy_ngcc__/fesm2015/angular-fontawesome.js");
     /* harmony import */
 
 
-    var _angular_material_chips__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _angular_material_chips__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @angular/material/chips */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/chips.js");
 
@@ -730,7 +736,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("type", sub_r1.type)("src", ctx_r0.renderSrc(sub_r1));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("type", sub_r1.type)("src", sub_r1.file);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
@@ -787,11 +793,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
 
     var AdminComponent = /*#__PURE__*/function () {
-      function AdminComponent(variables, adminS) {
+      function AdminComponent(variables, adminS, homeServ) {
         _classCallCheck(this, AdminComponent);
 
         this.variables = variables;
         this.adminS = adminS;
+        this.homeServ = homeServ;
         this.facebook = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faFacebook"];
         this.instagram = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faInstagram"];
         this.twitter = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faTwitter"];
@@ -809,21 +816,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (data.winner != null) {
                 var winner = _this.dataToEntry(data, true);
 
-                _this.subs.push(winner);
+                _this.renderSrc(winner);
               }
             }
           });
           this.adminS.getBackups().subscribe(function (data) {
             var res = data;
             res.forEach(function (element) {
-              _this.subs.push(_this.subToEntry(element));
+              _this.renderSrc(_this.subToEntry(element));
             });
           });
         }
       }, {
         key: "subToEntry",
         value: function subToEntry(backup) {
-          return {
+          var sub = {
             url: backup.content_url,
             type: backup.content_type,
             description: backup.description,
@@ -831,27 +838,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             winner: false,
             id: backup.id
           };
+          return sub;
         }
       }, {
         key: "dataToEntry",
         value: function dataToEntry(data, winner) {
-          return {
+          var sub = {
             url: data.winning_content_url,
             type: data.winning_content_type,
             description: data.winning_description,
             member: data.winner,
             winner: winner
           };
+          return sub;
         }
       }, {
         key: "renderSrc",
         value: function renderSrc(sub) {
-          return src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "getSubmission?sub=" + sub.url;
+          var _this2 = this;
+
+          this.homeServ.getSubmission(sub.url).subscribe(function (data) {
+            sub.file = URL.createObjectURL(data);
+
+            _this2.subs.push(sub);
+          });
         }
       }, {
         key: "choose",
         value: function choose() {
-          var _this2 = this;
+          var _this3 = this;
 
           var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
           var index;
@@ -869,7 +884,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this2.variables.addAlert(alert_ticket);
+            _this3.variables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["Actions"].signup,
@@ -877,7 +892,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this2.variables.addAlert(alert_ticket);
+            _this3.variables.addAlert(alert_ticket);
           });
         }
       }]);
@@ -886,7 +901,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     AdminComponent.ɵfac = function AdminComponent_Factory(t) {
-      return new (t || AdminComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_3__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_admin_service__WEBPACK_IMPORTED_MODULE_4__["AdminService"]));
+      return new (t || AdminComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_3__["AppVariablesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_admin_service__WEBPACK_IMPORTED_MODULE_4__["AdminService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_home_home_service__WEBPACK_IMPORTED_MODULE_5__["HomeService"]));
     };
 
     AdminComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -940,7 +955,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.subs);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_6__["MatButton"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_7__["BitContentComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIcon"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatAccordion"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionPanel"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionPanelHeader"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionPanelTitle"], _angular_material_list__WEBPACK_IMPORTED_MODULE_10__["MatSelectionList"], _angular_material_list__WEBPACK_IMPORTED_MODULE_10__["MatListOption"], _angular_material_list__WEBPACK_IMPORTED_MODULE_10__["MatListItem"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FaIconComponent"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_12__["MatChip"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_8__["BitContentComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_9__["MatIcon"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatAccordion"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatExpansionPanel"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatExpansionPanelHeader"], _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatExpansionPanelTitle"], _angular_material_list__WEBPACK_IMPORTED_MODULE_11__["MatSelectionList"], _angular_material_list__WEBPACK_IMPORTED_MODULE_11__["MatListOption"], _angular_material_list__WEBPACK_IMPORTED_MODULE_11__["MatListItem"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_12__["FaIconComponent"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_13__["MatChip"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9hZG1pbi9hZG1pbi5jb21wb25lbnQuc2NzcyJ9 */"]
     });
     /*@__PURE__*/
@@ -958,6 +973,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: src_app_service_app_variables_service__WEBPACK_IMPORTED_MODULE_3__["AppVariablesService"]
         }, {
           type: _admin_service__WEBPACK_IMPORTED_MODULE_4__["AdminService"]
+        }, {
+          type: _home_home_service__WEBPACK_IMPORTED_MODULE_5__["HomeService"]
         }];
       }, null);
     })();
@@ -1187,10 +1204,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AlertManagerComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this3 = this;
+          var _this4 = this;
 
           this.variable.alerts_ob.subscribe(function (data) {
-            _this3.alerts = data;
+            _this4.alerts = data;
           });
         }
       }, {
@@ -1797,7 +1814,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this4 = this;
+          var _this5 = this;
 
           var ticket = {
             data: {
@@ -1806,9 +1823,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           };
           this.glob.authenticate(ticket).subscribe(function (data) {
-            _this4.appvariables.fillMember(_this4.appvariables.temp_member, _this4.appvariables.temp_ticket);
+            _this5.appvariables.fillMember(_this5.appvariables.temp_member, _this5.appvariables.temp_ticket);
 
-            _this4.router.navigate(['/layout/home']);
+            _this5.router.navigate(['/layout/home']);
 
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1816,7 +1833,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this4.appvariables.addAlert(alert_ticket);
+            _this5.appvariables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1824,13 +1841,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this4.appvariables.addAlert(alert_ticket);
+            _this5.appvariables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "resendCode",
         value: function resendCode() {
-          var _this5 = this;
+          var _this6 = this;
 
           this.glob.generateCode(this.appvariables.temp_member).subscribe(function (data) {
             var alert_ticket = {
@@ -1839,7 +1856,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this5.appvariables.addAlert(alert_ticket);
+            _this6.appvariables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1847,7 +1864,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this5.appvariables.addAlert(alert_ticket);
+            _this6.appvariables.addAlert(alert_ticket);
           });
         }
       }]);
@@ -2452,27 +2469,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "init",
         value: function init() {
-          var _this6 = this;
+          var _this7 = this;
 
           this.variables.currentContest_ob.subscribe(function (data) {
-            _this6.contest = data;
+            _this7.contest = data;
           });
           this.variables.previousContest_ob.subscribe(function (data) {
-            _this6.previousContest = data;
+            _this7.previousContest = data;
 
-            _this6.populateBit(data);
+            _this7.populateBit(data);
           });
         }
       }, {
         key: "nextContest",
         value: function nextContest(event) {
-          var _this7 = this;
+          var _this8 = this;
 
           console.log("here");
           this.variables.current_member.post_count = 0;
           this.variables.reloadBS(this.variables.current_member);
           this.glob.getPreviousContest().subscribe(function (data) {
-            _this7.variables.populatePreviousContest(data);
+            _this8.variables.populatePreviousContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -2480,10 +2497,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this7.variables.addAlert(alert_ticket);
+            _this8.variables.addAlert(alert_ticket);
           });
           this.glob.getContest().subscribe(function (data) {
-            _this7.variables.populateContest(data);
+            _this8.variables.populateContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -2491,28 +2508,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this7.variables.addAlert(alert_ticket);
+            _this8.variables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "populateBit",
         value: function populateBit(data) {
-          var _this8 = this;
+          var _this9 = this;
 
           if (data != null && data.winning_content_url != null) {
             if (this.bitComp != null) {
               this.bitComp.type = data.winning_content_type;
               this.homeService.getSubmission(data.winning_content_url).subscribe(function (data) {
-                _this8.bitComp.src = data;
+                _this9.bitComp.src = URL.createObjectURL(data);
               }, function (error) {
                 console.log(error);
-                _this8.bitComp.type = null;
-                _this8.bitComp.src = null;
-                _this8.bitComp.placeholder = true;
+                _this9.bitComp.type = null;
+                _this9.bitComp.src = null;
+                _this9.bitComp.placeholder = true;
               });
             } else {
               setTimeout(function () {
-                _this8.populateBit(data);
+                _this9.populateBit(data);
               }, 1);
             }
           }
@@ -2709,8 +2726,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeService, [{
         key: "getSubmission",
         value: function getSubmission(sub) {
-          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "getSubmission", {
+          var body = {
             sub: sub
+          };
+          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + 'getSubmission', body, {
+            headers: {
+              'Content-type': 'application/json'
+            },
+            responseType: 'blob'
           });
         }
       }]);
@@ -2880,10 +2903,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this9 = this;
+          var _this10 = this;
 
           this.variables.current_member_ob.subscribe(function (data) {
-            return _this9.member = data;
+            return _this10.member = data;
           });
           this.createForm();
         }
@@ -2897,29 +2920,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this10 = this;
+          var _this11 = this;
 
           this.submission.description = this.submitForm.get("description").value;
           this.submitService.submit(this.submission).subscribe(function (data) {
             var subTicket = data;
 
-            if (_this10.content_file != null) {
+            if (_this11.content_file != null) {
               if (subTicket.win) {
-                var winnerFile = new File([_this10.content_file], subTicket.win, {
-                  type: _this10.content_file.type
+                var winnerFile = new File([_this11.content_file], subTicket.win, {
+                  type: _this11.content_file.type
                 });
 
-                _this10.submitService.uploadSubmission(winnerFile).subscribe(function (data) {
+                _this11.submitService.uploadSubmission(winnerFile).subscribe(function (data) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
                     msg: 'File Uploaded',
                     type: 'success'
                   };
 
-                  _this10.variables.addAlert(alert_ticket);
+                  _this11.variables.addAlert(alert_ticket);
 
                   if (!subTicket.backupSlot) {
-                    _this10.reset();
+                    _this11.reset();
                   }
                 }, function (error) {
                   var alert_ticket = {
@@ -2928,25 +2951,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     type: 'danger'
                   };
 
-                  _this10.variables.addAlert(alert_ticket);
+                  _this11.variables.addAlert(alert_ticket);
                 });
               }
 
               if (subTicket.backupSlot) {
-                var backupFile = new File([_this10.content_file], subTicket.backupSlot, {
-                  type: _this10.content_file.type
+                var backupFile = new File([_this11.content_file], subTicket.backupSlot, {
+                  type: _this11.content_file.type
                 });
 
-                _this10.submitService.uploadSubmission(backupFile).subscribe(function (data) {
+                _this11.submitService.uploadSubmission(backupFile).subscribe(function (data) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
                     msg: 'File Uploaded',
                     type: 'success'
                   };
 
-                  _this10.variables.addAlert(alert_ticket);
+                  _this11.variables.addAlert(alert_ticket);
 
-                  _this10.reset();
+                  _this11.reset();
                 }, function (error) {
                   var alert_ticket = {
                     action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
@@ -2954,7 +2977,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     type: 'danger'
                   };
 
-                  _this10.variables.addAlert(alert_ticket);
+                  _this11.variables.addAlert(alert_ticket);
                 });
               }
             }
@@ -2966,9 +2989,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'success'
               };
 
-              _this10.variables.addAlert(alert_ticket);
+              _this11.variables.addAlert(alert_ticket);
 
-              _this10.reset();
+              _this11.reset();
             }
           }, function (error) {
             var alert_ticket = {
@@ -2977,11 +3000,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this10.variables.addAlert(alert_ticket);
+            _this11.variables.addAlert(alert_ticket);
 
-            _this10.submitForm.reset();
+            _this11.submitForm.reset();
 
-            _this10.bitComp.init(null);
+            _this11.bitComp.init(null);
           });
         }
       }, {
@@ -4322,7 +4345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this11 = this;
+          var _this12 = this;
 
           if (this.loginForm.valid) {
             var ticket = {
@@ -4330,9 +4353,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.loginForm.get("password").value
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this11.appVariables.fillMember(data, ticket);
+              _this12.appVariables.fillMember(data, ticket);
 
-              _this11.router.navigate(['layout/home']);
+              _this12.router.navigate(['layout/home']);
 
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -4340,7 +4363,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'success'
               };
 
-              _this11.appVariables.addAlert(alert_ticket);
+              _this12.appVariables.addAlert(alert_ticket);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -4348,7 +4371,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this11.appVariables.addAlert(alert_ticket);
+              _this12.appVariables.addAlert(alert_ticket);
             });
           }
         }
@@ -4714,7 +4737,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this12 = this;
+          var _this13 = this;
 
           var messageMedium = this.email_or_phone();
 
@@ -4732,13 +4755,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             this.glob.generateCode(member).subscribe(function (data) {
-              _this12.appvariables.temp_member = member;
-              _this12.appvariables.temp_ticket = {
+              _this13.appvariables.temp_member = member;
+              _this13.appvariables.temp_ticket = {
                 id: choice_id,
                 data: member.password
               };
 
-              _this12.router.navigate(['/layout/authenticate']);
+              _this13.router.navigate(['/layout/authenticate']);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_4__["Actions"].signup,
@@ -4746,7 +4769,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this12.appvariables.addAlert(alert_ticket);
+              _this13.appvariables.addAlert(alert_ticket);
             });
           } else {
             var alert_ticket = {
@@ -6040,7 +6063,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this13 = this;
+          var _this14 = this;
 
           var temp = new src_app_models_member__WEBPACK_IMPORTED_MODULE_1__["Member"](this.member.username, this.member.email, this.member.phone, this.member.verified, this.member.post_count, this.member.facebook, this.member.instagram, this.member.twitter, this.member.newsletter, this.member.messageMedium, this.member.notify, null);
 
@@ -6095,15 +6118,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.updateServe.updatePassword(ticket).subscribe(function (data) {
                 var alert_ticket = {
                   action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_5__["Actions"].signup,
-                  msg: 'Updated ' + _this13.choice.toLocaleUpperCase(),
+                  msg: 'Updated ' + _this14.choice.toLocaleUpperCase(),
                   type: 'success'
                 };
 
-                _this13.variables.addAlert(alert_ticket);
+                _this14.variables.addAlert(alert_ticket);
 
-                _this13.cancel();
+                _this14.cancel();
               }, function (error) {
-                _this13.message = "Failed";
+                _this14.message = "Failed";
               });
               return;
           }
@@ -6113,19 +6136,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             data: temp
           };
           this.updateServe.update(ticket).subscribe(function (data) {
-            _this13.variables.reloadBS(temp);
+            _this14.variables.reloadBS(temp);
 
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_5__["Actions"].signup,
-              msg: 'Updated ' + _this13.choice.toLocaleUpperCase(),
+              msg: 'Updated ' + _this14.choice.toLocaleUpperCase(),
               type: 'success'
             };
 
-            _this13.variables.addAlert(alert_ticket);
+            _this14.variables.addAlert(alert_ticket);
 
-            _this13.cancel();
+            _this14.cancel();
           }, function (error) {
-            _this13.message = "Failed";
+            _this14.message = "Failed";
           });
         }
       }, {
@@ -6995,7 +7018,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AppVariablesService, [{
         key: "setup",
         value: function setup() {
-          var _this14 = this;
+          var _this15 = this;
 
           if (this.current_member_id != null) {
             var ticket = {
@@ -7003,7 +7026,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.decrypt(this.current_member_encrypted_password)
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this14.fillMember(data, ticket);
+              _this15.fillMember(data, ticket);
 
               var alert_ticket = {
                 action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -7011,7 +7034,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'success'
               };
 
-              _this14.addAlert(alert_ticket);
+              _this15.addAlert(alert_ticket);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -7019,7 +7042,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this14.addAlert(alert_ticket);
+              _this15.addAlert(alert_ticket);
             });
           }
 
@@ -7028,10 +7051,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "reload_contest",
         value: function reload_contest() {
-          var _this15 = this;
+          var _this16 = this;
 
           this.glob.getContest().subscribe(function (data) {
-            _this15.populateContest(data);
+            _this16.populateContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -7039,10 +7062,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this15.addAlert(alert_ticket);
+            _this16.addAlert(alert_ticket);
           });
           this.glob.getPreviousContest().subscribe(function (data) {
-            _this15.populatePreviousContest(data);
+            _this16.populatePreviousContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -7050,7 +7073,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this15.addAlert(alert_ticket);
+            _this16.addAlert(alert_ticket);
           });
         }
       }, {
@@ -7106,7 +7129,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addAlert",
         value: function addAlert(alert_ticket) {
-          var _this16 = this;
+          var _this17 = this;
 
           var type;
 
@@ -7140,7 +7163,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           this.alerts.push(alert);
           setTimeout(function () {
-            _this16.closeAlert(alert);
+            _this17.closeAlert(alert);
           }, this.popup);
         }
       }, {
@@ -7336,7 +7359,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content, type, modalDimension) {
-          var _this17 = this;
+          var _this18 = this;
 
           if (modalDimension === 'sm' && type === 'modal_mini') {
             this.modalService.open(content, {
@@ -7344,26 +7367,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               size: 'sm',
               centered: true
             }).result.then(function (result) {
-              _this17.closeResult = "Closed with: ".concat(result);
+              _this18.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this17.closeResult = "Dismissed ".concat(_this17.getDismissReason(reason));
+              _this18.closeResult = "Dismissed ".concat(_this18.getDismissReason(reason));
             });
           } else if (modalDimension === '' && type === 'Notification') {
             this.modalService.open(content, {
               windowClass: 'modal-danger',
               centered: true
             }).result.then(function (result) {
-              _this17.closeResult = "Closed with: ".concat(result);
+              _this18.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this17.closeResult = "Dismissed ".concat(_this17.getDismissReason(reason));
+              _this18.closeResult = "Dismissed ".concat(_this18.getDismissReason(reason));
             });
           } else {
             this.modalService.open(content, {
               centered: true
             }).result.then(function (result) {
-              _this17.closeResult = "Closed with: ".concat(result);
+              _this18.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this17.closeResult = "Dismissed ".concat(_this17.getDismissReason(reason));
+              _this18.closeResult = "Dismissed ".concat(_this18.getDismissReason(reason));
             });
           }
         }

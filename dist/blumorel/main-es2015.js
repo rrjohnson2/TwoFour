@@ -171,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 var isSmallScreen = window.screen.width < 992;
 var backendUrl = 'https://blumorelbackend.net/';
 // export var backendUrl = "http://localhost:5000/"
-var image_server_url = 'https://blumorelphoto.net/';
+var image_server_url = 'http://blumorelphoto.net/';
 // export var image_server_url = "http://localhost:8082/"
 var Actions;
 (function (Actions) {

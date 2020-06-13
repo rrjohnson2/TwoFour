@@ -332,7 +332,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var isSmallScreen = window.screen.width < 992;
     var backendUrl = 'https://blumorelbackend.net/'; // export var backendUrl = "http://localhost:5000/"
 
-    var image_server_url = 'https://blumorelphoto.net/'; // export var image_server_url = "http://localhost:8082/"
+    var image_server_url = 'http://blumorelphoto.net/'; // export var image_server_url = "http://localhost:8082/"
 
     var Actions;
 

@@ -3588,7 +3588,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function LayoutComponent_mat_list_option_22_Template(rf, ctx) {
+    function LayoutComponent_mat_list_option_18_Template(rf, ctx) {
       if (rf & 1) {
         var _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
@@ -3596,7 +3596,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 20);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function LayoutComponent_mat_list_option_22_Template_a_click_1_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function LayoutComponent_mat_list_option_18_Template_a_click_1_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6);
 
           var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -3616,7 +3616,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function LayoutComponent_a_25_Template(rf, ctx) {
+    function LayoutComponent_a_21_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 21);
 
@@ -3701,7 +3701,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-layout"]],
       decls: 44,
       vars: 17,
-      consts: [["mode", "push", "opened", "false"], ["sidenav", ""], ["color", "primary"], ["routerLink", "/update", 1, "mat-toolbar-a"], ["class", "mat-toolbar-a", "routerLink", "/update", 4, "ngIf"], [3, "multiple"], ["links", ""], ["mat-list-item", "", "routerLink", "/home"], ["mat-list-item", "", "routerLink", "/team"], [4, "ngIf"], ["mat-list-item", "", "routerLink", "/admin", 4, "ngIf"], [1, "layout"], ["src", "../../assets/icons/background.png", "alt", "background", 1, "background"], [1, "custom_navbar"], [1, "row"], [1, "col-4"], ["mat-icon-button", "", "color", "primary", 3, "click"], [1, "col-4", "text-center"], ["routerLink", "/home"], [3, "activate"], ["mat-list-item", "", 3, "click"], ["mat-list-item", "", "routerLink", "/admin"]],
+      consts: [["mode", "push", "opened", "false"], ["sidenav", ""], ["color", "primary"], ["routerLink", "/update", 1, "mat-toolbar-a"], ["class", "mat-toolbar-a", "routerLink", "/update", 4, "ngIf"], [3, "multiple"], ["links", ""], ["mat-list-item", "", "routerLink", "/home"], [4, "ngIf"], ["mat-list-item", "", "routerLink", "/admin", 4, "ngIf"], ["mat-list-item", "", "routerLink", "/team"], [1, "layout"], ["src", "../../assets/icons/background.png", "alt", "background", 1, "background"], [1, "custom_navbar"], [1, "row"], [1, "col-4"], ["mat-icon-button", "", "color", "primary", 3, "click"], [1, "col-4", "text-center"], ["routerLink", "/home"], [3, "activate"], ["mat-list-item", "", 3, "click"], ["mat-list-item", "", "routerLink", "/admin"]],
       template: function LayoutComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -3752,31 +3752,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "mat-list-option");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, LayoutComponent_mat_list_option_18_Template, 4, 0, "mat-list-option", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "a", 8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](19, "async");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "legend");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "mat-list-option");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Meet The Team");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, LayoutComponent_a_21_Template, 3, 0, "a", 9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](22, LayoutComponent_mat_list_option_22_Template, 4, 0, "mat-list-option", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](22, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "async");
 
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "mat-list-option");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, LayoutComponent_a_25_Template, 3, 0, "a", 10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "a", 10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](26, "async");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "legend");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "async");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, "Meet The Team");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3868,15 +3868,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("multiple", false);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.member) != null);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](19, 11, ctx.member) != null);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](26, 13, ctx.member) != null && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 15, ctx.member).role == "admin");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](22, 13, ctx.member) != null && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 15, ctx.member).role == "admin");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](16);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](20);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMap"](ctx.render_class);
         }

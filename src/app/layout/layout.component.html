@@ -13,11 +13,6 @@
                     <legend>Contest</legend>
                 </a>
             </mat-list-option>
-            <mat-list-option>
-                <a mat-list-item routerLink="/team">
-                    <legend>Meet The Team</legend>
-                </a>
-            </mat-list-option>
             <mat-list-option *ngIf="(member | async) != null">
                 <a mat-list-item (click)="logOff()">
                     <legend>Log Off</legend>
@@ -26,6 +21,12 @@
             <mat-list-option>
                 <a mat-list-item *ngIf="(member | async)!=null && (member | async).role=='admin'" routerLink="/admin">
                     <legend>Admin</legend>
+                </a>
+            </mat-list-option>
+
+            <mat-list-option>
+                <a mat-list-item routerLink="/team">
+                    <legend>Meet The Team</legend>
                 </a>
             </mat-list-option>
         </mat-selection-list>

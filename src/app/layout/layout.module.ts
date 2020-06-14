@@ -40,8 +40,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminAuthGuard } from './admin.auth.guard';
 import { MatTableModule } from '@angular/material/table';
-import {MatRippleModule} from '@angular/material/core';
-import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-spinner';
+import { MatRippleModule } from '@angular/material/core';
+import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-s
     BitContentComponent,
     AlertManagerComponent,
     WelcomeComponent,
-    AdminComponent
+    AdminComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -67,10 +69,15 @@ import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-s
     MatCheckboxModule, MatChipsModule, MatTooltipModule,
     MatDialogModule, MatBadgeModule, MatMenuModule,
     NgbModule, FontAwesomeModule, MatExpansionModule,
-    MatStepperModule,MatTableModule,MatRippleModule,
+    MatStepperModule, MatTableModule, MatRippleModule,
     MatProgressSpinnerModule
   ],
-  providers: [AuthGuard, ReverseAuthGuard, UpdateService, AdminAuthGuard]
+  providers: [
+    AuthGuard,
+    ReverseAuthGuard,
+    UpdateService,
+    AdminAuthGuard,
+  ]
 })
 export class LayoutModule {
   constructor() {

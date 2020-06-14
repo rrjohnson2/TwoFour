@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 import { AppVariablesService } from 'src/app/service/app-variables.service';
 
 @Component({

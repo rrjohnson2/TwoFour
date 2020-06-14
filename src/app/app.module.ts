@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderinterceptService } from './layout/loader/loaderintercept.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS,
+      useClass: LoaderinterceptService,
+      multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

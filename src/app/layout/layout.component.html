@@ -51,6 +51,8 @@
                 </div>
             </nav>
 
+            <app-loader></app-loader>
+
             <div [class]="render_class">
                 <router-outlet (activate)='onActivate($event)'></router-outlet>
             </div>
@@ -61,3 +63,4 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppVariablesService } from 'src/app/service/app-variables.service';
 import { Member } from 'src/app/models/member';
 import { Submission } from 'src/app/interfaces/submission';
-import { image_server_url, Actions } from 'src/app/constants/app.constant';
+import { Actions } from 'src/app/constants/app.constant';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { AdminService } from './admin.service';
 import { AlertTicket } from 'src/app/interfaces/alert-ticket';

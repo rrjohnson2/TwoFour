@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AppVariablesService } from 'src/app/service/app-variables.service';
 import { Contest } from 'src/app/models/contest';
 import { GlobalService } from 'src/app/service/global.service';
 import { SubmitModalComponent } from './submit-modal/submit-modal.component';
-import { Actions, image_server_url } from 'src/app/constants/app.constant';
+import { Actions } from 'src/app/constants/app.constant';
 import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 import { BitContentComponent } from '../bit-content/bit-content.component';
 import { HomeService } from './home.service';

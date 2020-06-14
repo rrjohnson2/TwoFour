@@ -1,20 +1,52 @@
 <div class="row justify-content-center two_four_card_holder">
-    <div class="col-lg-7 col-sm-12 sm_reduce_col_12_padding">
-        <div class="card two_four_card">
+    <div class="col-lg-9 col-sm-12 sm_reduce_col_12_padding">
+        <div class="card">
             <div class="card-body">
-                <app-bit-content [placeholder]="placeholder"></app-bit-content>
-                <p>
-                    Welcome to Blu Morel, the first and only online showcase lottery.
-                    Users can submit a video, photo, and/or a status.
-                    Every day a user's submission is chosen at random.
-                    The chosen submission will be featured on the site for 24 hours,
-                    during which the next lottery will be running for the following day.
-                    One submission per lottery, and once the winner is picked, all users will be notified via text or
-                    email.
-                    So sign up, submit,and good luck.
-                </p>
+                <div class="row ">
+                    <div class="col-lg-3 ">
+                        <img class="about_image" src="assets/icons/roice.jpg" alt="RoiceJohnson">
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="card welcome_card">
+                            <div class="card-header">
+                                ROCE JOHNSON CEO & LEAD ENGINEER
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    Roice graduated from University of North Carolina at Charlotte in 2018, with a B.S
+                                    degree in Computer Science. Shortly after graduation, he joined  
+                                    Fidelity Investments as a Software Engineer, During this time he founded a software
+                                    company Loop, and is now the owner and operator of the company.
+                                </p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <mat-chip-list>
+                                    <mat-chip>
+                                        <a mat-list-item target="_blank" href="https://facebook.com/kuruma.jinchuuriki">
+                                            <fa-icon [icon]="facebook" size="lg"></fa-icon>
+                                            <strong>kuruma.jinchuuriki</strong>
+                                        </a>
+                                    </mat-chip>
+                                    <mat-chip>
+                                        <a mat-list-item target="_blank" href="https://twitter.com/RoiceJohnson">
+                                            <fa-icon [icon]="twitter" size="lg"></fa-icon>
+                                            <strong>RoiceJohnson</strong>
+                                        </a>
+                                    </mat-chip>
+                                    <mat-chip>
+                                        <a mat-list-item target="_blank"
+                                            href="https://instagram.com/really_narutouszamki">
+                                            <fa-icon [icon]="instagram" size="lg"></fa-icon>
+                                            <strong>really_narutouszamki</strong>
+                                        </a>
+                                    </mat-chip>
+
+                                </mat-chip-list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>

@@ -857,11 +857,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function renderSrc(sub) {
           var _this2 = this;
 
-          this.homeServ.getSubmission(sub.url).subscribe(function (data) {
-            sub.file = URL.createObjectURL(data);
+          if (sub.url) {
+            this.homeServ.getSubmission(sub.url).subscribe(function (data) {
+              sub.file = URL.createObjectURL(data);
 
-            _this2.subs.push(sub);
-          });
+              _this2.subs.push(sub);
+            }, function (error) {
+              sub.type = 'image';
+              sub.file = "assets/icons/failed.jpg";
+
+              _this2.subs.push(sub);
+            });
+          } else {
+            this.subs.push();
+          }
         }
       }, {
         key: "choose",
@@ -2485,7 +2494,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function nextContest(event) {
           var _this8 = this;
 
-          console.log("here");
           this.variables.current_member.post_count = 0;
           this.variables.reloadBS(this.variables.current_member);
           this.glob.getPreviousContest().subscribe(function (data) {
@@ -2523,9 +2531,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this9.bitComp.src = URL.createObjectURL(data);
               }, function (error) {
                 console.log(error);
-                _this9.bitComp.type = null;
-                _this9.bitComp.src = null;
-                _this9.bitComp.placeholder = true;
+                _this9.bitComp.type = 'image';
+                _this9.bitComp.src = 'assets/icons/failed.jpg';
               });
             } else {
               setTimeout(function () {
@@ -3392,7 +3399,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _layout_component__WEBPACK_IMPORTED_MODULE_8__["LayoutComponent"],
       children: [{
         path: '',
-        redirectTo: 'about',
+        redirectTo: 'home',
         pathMatch: "prefix"
       }, {
         path: "home",
@@ -3418,7 +3425,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         component: _home_submit_modal_submit_modal_component__WEBPACK_IMPORTED_MODULE_10__["SubmitModalComponent"],
         canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_4__["AuthGuard"]]
       }, {
-        path: "about",
+        path: "team",
         component: _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_11__["WelcomeComponent"]
       }, {
         path: "admin",
@@ -3694,7 +3701,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-layout"]],
       decls: 44,
       vars: 17,
-      consts: [["mode", "push", "opened", "false"], ["sidenav", ""], ["color", "primary"], ["routerLink", "/update", 1, "mat-toolbar-a"], ["class", "mat-toolbar-a", "routerLink", "/update", 4, "ngIf"], [3, "multiple"], ["links", ""], ["mat-list-item", "", "routerLink", "/home"], ["mat-list-item", "", "routerLink", "/about"], [4, "ngIf"], ["mat-list-item", "", "routerLink", "/admin", 4, "ngIf"], [1, "layout"], ["src", "../../assets/icons/background.png", "alt", "background", 1, "background"], [1, "custom_navbar"], [1, "row"], [1, "col-4"], ["mat-icon-button", "", "color", "primary", 3, "click"], [1, "col-4", "text-center"], ["routerLink", "/home"], [3, "activate"], ["mat-list-item", "", 3, "click"], ["mat-list-item", "", "routerLink", "/admin"]],
+      consts: [["mode", "push", "opened", "false"], ["sidenav", ""], ["color", "primary"], ["routerLink", "/update", 1, "mat-toolbar-a"], ["class", "mat-toolbar-a", "routerLink", "/update", 4, "ngIf"], [3, "multiple"], ["links", ""], ["mat-list-item", "", "routerLink", "/home"], ["mat-list-item", "", "routerLink", "/team"], [4, "ngIf"], ["mat-list-item", "", "routerLink", "/admin", 4, "ngIf"], [1, "layout"], ["src", "../../assets/icons/background.png", "alt", "background", 1, "background"], [1, "custom_navbar"], [1, "row"], [1, "col-4"], ["mat-icon-button", "", "color", "primary", 3, "click"], [1, "col-4", "text-center"], ["routerLink", "/home"], [3, "activate"], ["mat-list-item", "", 3, "click"], ["mat-list-item", "", "routerLink", "/admin"]],
       template: function LayoutComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -3751,7 +3758,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "legend");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "About");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Meet The Team");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6626,15 +6633,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ../bit-content/bit-content.component */
-    "./src/app/layout/bit-content/bit-content.component.ts");
+    var _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @fortawesome/free-brands-svg-icons */
+    "./node_modules/@fortawesome/free-brands-svg-icons/index.es.js");
+    /* harmony import */
+
+
+    var _angular_material_chips__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material/chips */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/chips.js");
+    /* harmony import */
+
+
+    var _angular_material_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/material/list */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/list.js");
+    /* harmony import */
+
+
+    var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @fortawesome/angular-fontawesome */
+    "./node_modules/@fortawesome/angular-fontawesome/__ivy_ngcc__/fesm2015/angular-fontawesome.js");
 
     var WelcomeComponent = /*#__PURE__*/function () {
       function WelcomeComponent() {
         _classCallCheck(this, WelcomeComponent);
 
         this.placeholder = false;
+        this.facebook = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faFacebook"];
+        this.instagram = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faInstagram"];
+        this.twitter = _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faTwitter"];
       }
 
       _createClass(WelcomeComponent, [{
@@ -6655,9 +6683,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       inputs: {
         placeholder: "placeholder"
       },
-      decls: 7,
-      vars: 1,
-      consts: [[1, "row", "justify-content-center", "two_four_card_holder"], [1, "col-lg-7", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card", "two_four_card"], [1, "card-body"], [3, "placeholder"]],
+      decls: 31,
+      vars: 3,
+      consts: [[1, "row", "justify-content-center", "two_four_card_holder"], [1, "col-lg-9", "col-sm-12", "sm_reduce_col_12_padding"], [1, "card"], [1, "card-body"], [1, "row"], [1, "col-lg-3"], ["src", "assets/icons/roice.jpg", "alt", "RoiceJohnson", 1, "about_image"], [1, "col-lg-9"], [1, "card", "welcome_card"], [1, "card-header"], [1, "card-footer", "text-center"], ["mat-list-item", "", "target", "_blank", "href", "https://facebook.com/kuruma.jinchuuriki"], ["size", "lg", 3, "icon"], ["mat-list-item", "", "target", "_blank", "href", "https://twitter.com/RoiceJohnson"], ["mat-list-item", "", "target", "_blank", "href", "https://instagram.com/really_narutouszamki"]],
       template: function WelcomeComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -6668,11 +6696,93 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-bit-content", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 5);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Welcome to Blu Morel, the first and only online showcase lottery. Users can submit a video, photo, and/or a status. Every day a user's submission is chosen at random. The chosen submission will be featured on the site for 24 hours, during which the next lottery will be running for the following day. One submission per lottery, and once the winner is picked, all users will be notified via text or email. So sign up, submit,and good luck. ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "img", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " ROCE JOHNSON CEO & LEAD ENGINEER ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Roice graduated from University of North Carolina at Charlotte in 2018, with a B.S degree in Computer Science. Shortly after graduation, he joined Fidelity Investments as a Software Engineer, During this time he founded a software company Loop, and is now the owner and operator of the company. ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "mat-chip-list");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-chip");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "a", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](18, "fa-icon", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "strong");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "kuruma.jinchuuriki");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "mat-chip");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "a", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "fa-icon", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "strong");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "RoiceJohnson");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "mat-chip");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "a", 14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "fa-icon", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "strong");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "really_narutouszamki");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6686,12 +6796,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](18);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("placeholder", ctx.placeholder);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", ctx.facebook);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", ctx.twitter);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", ctx.instagram);
         }
       },
-      directives: [_bit_content_bit_content_component__WEBPACK_IMPORTED_MODULE_1__["BitContentComponent"]],
+      directives: [_angular_material_chips__WEBPACK_IMPORTED_MODULE_2__["MatChipList"], _angular_material_chips__WEBPACK_IMPORTED_MODULE_2__["MatChip"], _angular_material_list__WEBPACK_IMPORTED_MODULE_3__["MatListItem"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FaIconComponent"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xheW91dC93ZWxjb21lL3dlbGNvbWUuY29tcG9uZW50LnNjc3MifQ== */"]
     });
     /*@__PURE__*/

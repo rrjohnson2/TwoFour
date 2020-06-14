@@ -72,12 +72,23 @@ export class AdminComponent implements OnInit {
   }
 
   renderSrc(sub: Entry) {
-    this.homeServ.getSubmission(sub.url).subscribe(
+   if(sub.url) 
+   {
+     this.homeServ.getSubmission(sub.url).subscribe(
       data => {
        sub.file = URL.createObjectURL(data);
        this.subs.push(sub)
+      },
+      error =>{
+          sub.type ='image';
+          sub.file = "assets/icons/failed.jpg"
+          this.subs.push(sub);
       }
     )
+   }
+   else{
+     this.subs.push();
+   }
     
   }
   choose(i: Entry = null) {

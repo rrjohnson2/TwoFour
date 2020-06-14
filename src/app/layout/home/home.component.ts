@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   nextContest(event) {
-    console.log("here");
     this.variables.current_member.post_count = 0;
     this.variables.reloadBS(this.variables.current_member);
 
@@ -76,9 +75,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
             this.bitComp.src = URL.createObjectURL(data);
           }, error => {
             console.log(error)
-            this.bitComp.type = null;
-            this.bitComp.src = null;
-            this.bitComp.placeholder = true;
+            this.bitComp.type = 'image';
+            this.bitComp.src = 'assets/icons/failed.jpg';
           }
         )
       }

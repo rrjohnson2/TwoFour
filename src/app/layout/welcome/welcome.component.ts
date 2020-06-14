@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {  faFacebook, faTwitter,faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-welcome',
@@ -8,6 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WelcomeComponent implements OnInit {
 
   @Input() placeholder =false;
+  facebook = faFacebook;
+  instagram = faInstagram;
+  twitter = faTwitter;
   constructor() { }
 
   ngOnInit(): void {

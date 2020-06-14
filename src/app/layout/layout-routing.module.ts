@@ -20,7 +20,7 @@ const routes: Routes = [
         path:'',
         component: LayoutComponent,
         children:[
-                    { path: '', redirectTo:'about', pathMatch:"prefix"},
+                    { path: '', redirectTo:'home', pathMatch:"prefix"},
 
                     {
                         path:"home",
@@ -53,7 +53,7 @@ const routes: Routes = [
                         canActivate: [AuthGuard]
                     },
                     {
-                        path:"about",
+                        path:"team",
                         component:WelcomeComponent
                     },
                     {

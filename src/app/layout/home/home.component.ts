@@ -7,6 +7,7 @@ import { Actions } from 'src/app/constants/app.constant';
 import { AlertTicket } from 'src/app/interfaces/alert-ticket';
 import { BitContentComponent } from '../bit-content/bit-content.component';
 import { HomeService } from './home.service';
+import { Submission } from 'src/app/interfaces/submission';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild(SubmitModalComponent) submit: SubmitModalComponent;
   @ViewChild(BitContentComponent) bitComp: BitContentComponent
   contest: Contest;
-  previousContest: Contest;
+  previousWinner: Submission;
   today: Date = new Date();
   hours_to_secs_24: number = 86400;
   constructor(private variables: AppVariablesService, private glob: GlobalService, private homeService: HomeService) { }
@@ -35,9 +36,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.variables.currentContest_ob.subscribe(data => {
       this.contest = data
     });
-    this.variables.previousContest_ob.subscribe(data => {
-      this.previousContest = data;
-      this.populateBit(<Contest>data);
+    this.variables.previousWinner_ob.subscribe(data => {
+      this.previousWinner = data;
+      this.populateBit(<Submission>data);
 
     });
   }
@@ -48,7 +49,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.variables.current_member.post_count = 0;
     this.variables.reloadBS(this.variables.current_member);
 
-    this.glob.getPreviousContest().subscribe(data => { this.variables.populatePreviousContest(data) },
+    this.glob.getPreviousWinner().subscribe(data => { this.variables.populatePreviousWinner(data) },
       error => {
         var alert_ticket: AlertTicket = { action_attempted: Actions.currrentContest, msg: 'Could Load Current Contest', type: 'danger' };
 
@@ -66,11 +67,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   }
-  populateBit(data: Contest) {
-    if (data != null && data.winning_content_url != null) {
+  populateBit(data: Submission) {
+    if (data != null && data.content_url != null) {
       if (this.bitComp != null) {
-        this.bitComp.type = data.winning_content_type;
-        this.homeService.getSubmission(data.winning_content_url).subscribe(
+        this.bitComp.type = data.content_type;
+        this.homeService.getSubmission(data.content_url+ data.content_extension).subscribe(
           data => {
             this.bitComp.src = URL.createObjectURL(data);
           }, error => {

@@ -12,11 +12,11 @@ export class AdminService {
 
   choose(choice)
   {
-    return this.http.post(backendUrl+"chooseWinner",choice);
+    return this.http.post(backendUrl+"approveWinner",choice);
   }
-  getBackups()
+  getWinner()
   {
-    return this.http.get(backendUrl+"getBackups");
+    return this.http.get(backendUrl+"getWinner");
   }
   
 }

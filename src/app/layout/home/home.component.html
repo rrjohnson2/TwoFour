@@ -10,7 +10,7 @@
                     </div>
                     <div class=" col-lg-6 col-sm-12">
                         <app-countdown (reload)="nextContest($event)"
-                            [description]="previousContest?.winning_description" [winner]="previousContest?.winner"
+                            [description]="previousWinner?.description" [winner]="previousWinner?.member"
                             [subs]="contest?.sub_count" [time]="contest?.calendar"></app-countdown>
 
                     </div>

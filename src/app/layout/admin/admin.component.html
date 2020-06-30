@@ -1,10 +1,10 @@
 <div class="row justify-content-center two_four_card_holder">
     <div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
-        <div *ngFor="let sub of subs; " class="card admin_card">
+        <div class="card admin_card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <app-bit-content  [type]="sub.type" [src]="sub.file"></app-bit-content>
+                        <app-bit-content [type]="sub.type" [src]="sub.file"></app-bit-content>
                     </div>
 
                     <div class="col-12">
@@ -58,7 +58,8 @@
             <div class="card-body">
                 <div class=" row ">
                     <div class="col-12">
-                        <button (click)="choose()" mat-raised-button color="primary" class="long_12_button">No Winner Contest</button>
+                        <button (click)="choose()" mat-raised-button color="primary" class="long_12_button">No Winner
+                            Contest</button>
                     </div>
                 </div>
             </div>

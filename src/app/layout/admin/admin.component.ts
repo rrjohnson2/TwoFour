@@ -20,31 +20,18 @@ export class AdminComponent implements OnInit {
   instagram = faInstagram;
   twitter = faTwitter;
   isLinear = false;
-  subs = [];
-  constructor(private variables: AppVariablesService, private adminS: AdminService, private homeServ: HomeService) { }
+  sub;
+  constructor(private variables: AppVariablesService,
+     private adminS: AdminService,
+      private homeServ: HomeService,
+      ) { }
 
   ngOnInit(): void {
-    this.variables.currentContest_ob.subscribe(
+    this.adminS.getWinner().subscribe(
       data => {
-        if (data != null) {
-
-          if (data.winner != null) {
-            let winner: Entry = this.dataToEntry(data, true);
-
-            this.renderSrc(winner);
-          }
-        }
+        this.renderSrc(this.subToEntry(<any>data))
       }
     );
-
-    this.adminS.getBackups().subscribe(
-      data => {
-        var res = <any>data;
-        res.forEach(element => {
-          this.renderSrc(this.subToEntry(element))
-        });
-      }
-    )
   }
   subToEntry(backup: Submission): any {
     let sub: Entry = {
@@ -52,66 +39,33 @@ export class AdminComponent implements OnInit {
       type: backup.content_type,
       description: backup.description,
       member: backup.member,
-      winner: false,
-      id: backup.id
+      extension: backup.content_extension
     }
     return sub;
-  }
-
-
-  dataToEntry(data, winner) {
-    let sub: Entry = {
-      url: data.winning_content_url,
-      type: data.winning_content_type,
-      description: data.winning_description,
-      member: data.winner,
-      winner: winner
-    }
-    return sub;
-    
   }
 
   renderSrc(sub: Entry) {
    if(sub.url) 
    {
-     this.homeServ.getSubmission(sub.url).subscribe(
+     this.homeServ.getSubmission(sub.url+sub.extension).subscribe(
       data => {
        sub.file = URL.createObjectURL(data);
-       this.subs.push(sub)
+       this.sub = sub
       },
       error =>{
           sub.type ='image';
           sub.file = "assets/icons/failed.jpg"
-          this.subs.push(sub);
+          this.sub=sub;
       }
     )
    }
    else{
-     this.subs.push();
+     this.sub = sub;
    }
     
   }
   choose(i: Entry = null) {
-    var index;
-    if (i.winner) {
-      index = -1;
-    }
-    else {
-      index = i.id;
-    }
-
-    this.adminS.choose(index).subscribe(
-      data => {
-        var alert_ticket: AlertTicket = { action_attempted: Actions.signup, msg: `${i.description} was choosen`, type: 'success' };
-
-        this.variables.addAlert(alert_ticket);
-      },
-      error => {
-        var alert_ticket: AlertTicket = { action_attempted: Actions.signup, msg: 'Did Not Work', type: 'danger' };
-
-        this.variables.addAlert(alert_ticket);
-      }
-    )
+   
   }
 
 
@@ -120,10 +74,9 @@ export interface Entry {
   description: string;
   member: Member;
   url: string;
-  type: string;
-  winner: boolean,
-  id?: number
-  file?: any
+  type: string,
+  file?: any,
+  extension:string
 }
 
 

@@ -6,6 +6,5 @@ export interface Submission {
 	content_url:string;
 	content_extension:string;
 	content_type:string;
-	rolls:number;
 	id?:number
 }

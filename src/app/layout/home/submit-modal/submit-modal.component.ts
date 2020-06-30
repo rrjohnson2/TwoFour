@@ -35,12 +35,11 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
     this.uiService.auto_size_text_area();
     this.uiService.upload_button();
     this.submission = {
-      content_extension: "",
-      content_type: "",
-      content_url: "",
-      description: "",
+      content_extension: null,
+      content_type: null,
+      content_url: null,
+      description: null,
       member: this.member,
-      rolls: 1
     };
   }
 
@@ -59,51 +58,33 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
     this.submission.description = this.submitForm.get("description").value;
     this.submitService.submit(this.submission).subscribe(
       data => {
-        var subTicket: SubmissionTicket = <SubmissionTicket>data;
-        if (this.content_file != null) {
-          if (subTicket.win) {
-            var winnerFile: File = new File([this.content_file], subTicket.win, { type: this.content_file.type });
-            this.submitService.uploadSubmission(winnerFile).subscribe(
-              data => {
-                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
+        var filename: string = <string>data;
+        if (filename != null && this.content_file !=null) {
+          var FileNew: File = new File([this.content_file], filename +this.submission.content_extension, { type: this.content_file.type });
+          this.submitService.uploadSubmission(FileNew).subscribe(
+            data => {
+              var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
 
-                this.variables.addAlert(alert_ticket);
-                if(!subTicket.backupSlot){
-                  this.reset();
-                }
-              },
-              error => {
-                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit Fieloo', type: 'danger' };
+              this.variables.addAlert(alert_ticket);
+            },
+            error => {
+              var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit File', type: 'danger' };
 
-                this.variables.addAlert(alert_ticket);
-              }
-            );
-          }
-          if (subTicket.backupSlot) {
-            var backupFile: File = new File([this.content_file], subTicket.backupSlot, { type: this.content_file.type });
-            this.submitService.uploadSubmission(backupFile).subscribe(
-              data => {
-                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'File Uploaded', type: 'success' };
-
-                this.variables.addAlert(alert_ticket);
-                this.reset();
-              },
-              error => {
-                var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit', type: 'danger' };
-
-                this.variables.addAlert(alert_ticket);
-              }
-            );
-          }
+              this.variables.addAlert(alert_ticket);
+            }
+          );
         }
-        if (!(subTicket.win || subTicket.backupSlot)) {
-          var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Post submitted', type: 'success' };
+          var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Post Uploaded', type: 'success' };
 
           this.variables.addAlert(alert_ticket);
-          this.reset();
-        }
+          this.router.navigate(['/layout/home']);
+          this.submitForm.reset();
+
+
+
       },
       error => {
+        console.log(error)
         var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Could Not Submit', type: 'danger' };
 
         this.variables.addAlert(alert_ticket);
@@ -123,8 +104,7 @@ export class SubmitModalComponent implements OnInit, AfterViewInit {
     this.content_file = new File([old_file], "temp", { type: old_file.type });
 
   }
-  reset()
-  {
+  reset() {
     this.variables.setup();
     this.router.navigate(['/layout/home']);
   }

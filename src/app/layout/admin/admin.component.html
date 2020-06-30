@@ -60,6 +60,9 @@
                     <div class="col-12">
                         <button (click)="forceWinner()" mat-raised-button color="primary" class="long_12_button">Force Winner</button>
                     </div>
+                    <div *ngIf="!sub" class="col-12">
+                        <button (click)="approveWinner()" mat-raised-button color="primary" class="long_12_button">Skip Winner</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -64,8 +64,23 @@ export class AdminComponent implements OnInit {
    }
     
   }
-  choose(i: Entry = null) {
-   
+  approveWinner() {
+    this.adminS.approveWinner().subscribe(
+      data =>
+      {
+        var alert_ticket: AlertTicket = { action_attempted: Actions.submit, msg: 'Selected', type: 'success' };
+
+        this.variables.addAlert(alert_ticket);
+      }
+    )
+  }
+
+  forceWinner(){
+    this.adminS.forceWinner().subscribe(
+      data =>{
+        this.renderSrc(this.subToEntry(<any>data));
+      }
+    )
   }
 
 

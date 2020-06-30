@@ -1,6 +1,6 @@
 <div class="row justify-content-center two_four_card_holder">
     <div class="col-lg-6 col-sm-12 sm_reduce_col_12_padding">
-        <div class="card admin_card">
+        <div *ngIf="sub" class="card admin_card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
@@ -10,7 +10,7 @@
                     <div class="col-12">
                         <p>{{sub.description}}
                             <mat-chip *ngIf="sub.winner">Winner</mat-chip>
-                            <button mat-mini-fab color="primary" (click)="choose( sub )">
+                            <button mat-mini-fab color="primary" (click)="approveWinner()">
                                 <mat-icon>check</mat-icon>
                             </button>
                         </p>
@@ -58,8 +58,7 @@
             <div class="card-body">
                 <div class=" row ">
                     <div class="col-12">
-                        <button (click)="choose()" mat-raised-button color="primary" class="long_12_button">No Winner
-                            Contest</button>
+                        <button (click)="forceWinner()" mat-raised-button color="primary" class="long_12_button">Force Winner</button>
                     </div>
                 </div>
             </div>

@@ -10,13 +10,17 @@ export class AdminService {
   constructor(private http : HttpClient) { }
 
 
-  choose(choice)
+  approveWinner()
   {
-    return this.http.post(backendUrl+"approveWinner",choice);
+    return this.http.get(backendUrl+"approveWinner");
   }
   getWinner()
   {
     return this.http.get(backendUrl+"getWinner");
+  }
+  forceWinner()
+  {
+    return this.http.get(backendUrl+"forceWinner");
   }
   
 }

@@ -41,7 +41,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminAuthGuard } from './admin.auth.guard';
 import { MatTableModule } from '@angular/material/table';
 import { MatRippleModule } from '@angular/material/core';
-import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule, } from '@angular/material/progress-spinner';
 import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({

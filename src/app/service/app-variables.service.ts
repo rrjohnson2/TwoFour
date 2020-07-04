@@ -68,7 +68,7 @@ export class AppVariablesService {
 
 
   constructor(private glob: GlobalService) {
-    this.setup();
+   
   }
 
   setup() {
@@ -79,14 +79,14 @@ export class AppVariablesService {
       }
       this.glob.login(ticket).subscribe(data => {
         this.fillMember(<Member>data, ticket)
-        var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Succesful', type: 'success' };
+        // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Succesful', type: 'success' };
 
-        this.addAlert(alert_ticket)
+        // this.addAlert(alert_ticket)
       },
         error => {
-          var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Failed', type: 'danger' };
+          // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Failed', type: 'danger' };
 
-          this.addAlert(alert_ticket)
+          // this.addAlert(alert_ticket)
         })
     }
 

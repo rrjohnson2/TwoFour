@@ -16,12 +16,14 @@ export class LayoutComponent implements OnInit {
 
   member: Observable<Member> = new Observable<Member>();
   init_boolean = false;
-  constructor(private router: Router, private ui: UIService, private variables: AppVariablesService) { }
-
-  ngOnInit(): void {
+  constructor(private router: Router, private ui: UIService, private variables: AppVariablesService) { 
     this.init();
   }
+
+  ngOnInit(): void {
+  }
   init() {
+    this.variables.setup();
     this.getMember();
   }
   toggle(sidenav) {
@@ -40,7 +42,6 @@ export class LayoutComponent implements OnInit {
   }
   onActivate(event) {
     if (event instanceof UpdateComponent) {
-      this.init();
       let thing = <UpdateComponent>event;
       this.member.subscribe(data => thing.member= data );
     }

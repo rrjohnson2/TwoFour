@@ -12,7 +12,6 @@ export class LoaderinterceptService implements HttpInterceptor {
   constructor(private  loaderServe:LoaderService ) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loaderServe.showOrHide(true);
-    console.log("here")
     return next.handle(req).pipe(tap((event: HttpEvent<any>) => { 
       if (event instanceof HttpResponse) {
         this.loaderServe.showOrHide(false);

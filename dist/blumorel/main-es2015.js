@@ -116,6 +116,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 /* harmony import */ var _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./layout/loader/loaderintercept.service */ "./src/app/layout/loader/loaderintercept.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
 
 
 
@@ -130,7 +132,8 @@ AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
         { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
             useClass: _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__["LoaderinterceptService"],
-            multi: true }
+            multi: true },
+        { provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["HashLocationStrategy"] }
     ], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
@@ -156,7 +159,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                 providers: [
                     { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
                         useClass: _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__["LoaderinterceptService"],
-                        multi: true }
+                        multi: true },
+                    { provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["HashLocationStrategy"] }
                 ],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
             }]
@@ -1748,11 +1752,12 @@ class LayoutComponent {
         this.variables = variables;
         this.member = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]();
         this.init_boolean = false;
-    }
-    ngOnInit() {
         this.init();
     }
+    ngOnInit() {
+    }
     init() {
+        this.variables.setup();
         this.getMember();
     }
     toggle(sidenav) {
@@ -1771,7 +1776,6 @@ class LayoutComponent {
     }
     onActivate(event) {
         if (event instanceof _update_update_component__WEBPACK_IMPORTED_MODULE_1__["UpdateComponent"]) {
-            this.init();
             let thing = event;
             this.member.subscribe(data => thing.member = data);
         }
@@ -2180,7 +2184,6 @@ class LoaderinterceptService {
     }
     intercept(req, next) {
         this.loaderServe.showOrHide(true);
-        console.log("here");
         return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((event) => {
             if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
                 this.loaderServe.showOrHide(false);
@@ -3648,7 +3651,6 @@ class AppVariablesService {
                 strong: 'Warning!',
             }
         };
-        this.setup();
     }
     setup() {
         if (this.current_member_id != null) {
@@ -3658,11 +3660,11 @@ class AppVariablesService {
             };
             this.glob.login(ticket).subscribe(data => {
                 this.fillMember(data, ticket);
-                var alert_ticket = { action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login, msg: 'Login Succesful', type: 'success' };
-                this.addAlert(alert_ticket);
+                // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Succesful', type: 'success' };
+                // this.addAlert(alert_ticket)
             }, error => {
-                var alert_ticket = { action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login, msg: 'Login Failed', type: 'danger' };
-                this.addAlert(alert_ticket);
+                // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Failed', type: 'danger' };
+                // this.addAlert(alert_ticket)
             });
         }
         this.reload_contest();

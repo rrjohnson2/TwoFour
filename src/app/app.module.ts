@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderinterceptService } from './layout/loader/loaderintercept.service';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,9 @@ import { LoaderinterceptService } from './layout/loader/loaderintercept.service'
   providers: [
     {provide: HTTP_INTERCEPTORS,
       useClass: LoaderinterceptService,
-      multi: true}
+      multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+
   ],
   bootstrap: [AppComponent]
 })

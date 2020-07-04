@@ -256,6 +256,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./layout/loader/loaderintercept.service */
     "./src/app/layout/loader/loaderintercept.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -273,6 +279,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
         useClass: _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__["LoaderinterceptService"],
         multi: true
+      }, {
+        provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"],
+        useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["HashLocationStrategy"]
       }],
       imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]]]
     });
@@ -296,6 +305,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
             useClass: _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__["LoaderinterceptService"],
             multi: true
+          }, {
+            provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"],
+            useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["HashLocationStrategy"]
           }],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         }]
@@ -3626,16 +3638,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.variables = variables;
         this.member = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]();
         this.init_boolean = false;
+        this.init();
       }
 
       _createClass(LayoutComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          this.init();
-        }
+        value: function ngOnInit() {}
       }, {
         key: "init",
         value: function init() {
+          this.variables.setup();
           this.getMember();
         }
       }, {
@@ -3656,7 +3668,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "onActivate",
         value: function onActivate(event) {
           if (event instanceof _update_update_component__WEBPACK_IMPORTED_MODULE_1__["UpdateComponent"]) {
-            this.init();
             var thing = event;
             this.member.subscribe(function (data) {
               return thing.member = data;
@@ -4475,7 +4486,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this14 = this;
 
           this.loaderServe.showOrHide(true);
-          console.log("here");
           return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (event) {
             if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               _this14.loaderServe.showOrHide(false);
@@ -7413,7 +7423,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             strong: 'Warning!'
           }
         };
-        this.setup();
       }
 
       _createClass(AppVariablesService, [{
@@ -7427,23 +7436,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.decrypt(this.current_member_encrypted_password)
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this18.fillMember(data, ticket);
+              _this18.fillMember(data, ticket); // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Succesful', type: 'success' };
+              // this.addAlert(alert_ticket)
 
-              var alert_ticket = {
-                action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
-                msg: 'Login Succesful',
-                type: 'success'
-              };
-
-              _this18.addAlert(alert_ticket);
-            }, function (error) {
-              var alert_ticket = {
-                action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
-                msg: 'Login Failed',
-                type: 'danger'
-              };
-
-              _this18.addAlert(alert_ticket);
+            }, function (error) {// var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Failed', type: 'danger' };
+              // this.addAlert(alert_ticket)
             });
           }
 

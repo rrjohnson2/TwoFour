@@ -183,9 +183,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "image_server_url", function() { return image_server_url; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Actions", function() { return Actions; });
 var isSmallScreen = window.screen.width < 992;
-var backendUrl = 'https://blumorelbackend.net/';
+var backendUrl = 'https://blumorel-backend.herokuapp.com/';
 // export var backendUrl = "http://localhost:5000/"
-var image_server_url = 'https://blumorelphoto.net/';
+var image_server_url = 'https://blumorel-content.herokuapp.com/';
 //export var image_server_url = "http://localhost:8082/"
 var Actions;
 (function (Actions) {

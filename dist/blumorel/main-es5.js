@@ -358,7 +358,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var isSmallScreen = window.screen.width < 992;
     var backendUrl = 'https://blumorel-backend.herokuapp.com/'; // export var backendUrl = "http://localhost:5000/"
 
-    var image_server_url = 'https://blumorel-content.herokuapp.com/'; //export var image_server_url = "http://localhost:8082/"
+    var image_server_url = 'https://app-loop-content-server.herokuapp.com/'; //export var image_server_url = "http://localhost:8082/"
 
     var Actions;
 
@@ -2752,14 +2752,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeService, [{
         key: "getSubmission",
         value: function getSubmission(sub) {
-          var body = {
-            sub: sub
-          };
-          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + 'getSubmission', body, {
+          return this.http.get("".concat(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"], "download"), {
             headers: {
               'Content-type': 'application/json'
             },
-            responseType: 'blob'
+            responseType: 'blob',
+            params: {
+              content: sub
+            }
           });
         }
       }]);
@@ -3242,8 +3242,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "uploadSubmission",
         value: function uploadSubmission(file) {
           var formData = new FormData();
-          formData.append('sub', file);
-          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "uploadSubmission", formData);
+          formData.append('content', file);
+          return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "upload", formData);
         }
       }]);
 

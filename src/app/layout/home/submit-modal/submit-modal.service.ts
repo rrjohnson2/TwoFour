@@ -18,7 +18,7 @@ export class SubmitModalService {
   uploadSubmission(file:File)
   {
     const formData = new FormData();
-    formData.append('sub',file);
-    return this.http.post(image_server_url +"uploadSubmission",formData);
+    formData.append('content',file);
+    return this.http.post(image_server_url +"upload",formData);
   }
 }

@@ -11,12 +11,11 @@ export class HomeService {
 
 
   getSubmission(sub: string) {
-    let body = {
-      sub: sub
-    }
-    return this.http.post(image_server_url + 'getSubmission', body, {
+    
+    return this.http.get(`${image_server_url}download`, {
       headers: { 'Content-type': 'application/json' },
-      responseType:'blob'
+      responseType:'blob', 
+      params: { content: sub } 
     });
   }
 }

@@ -185,7 +185,7 @@ __webpack_require__.r(__webpack_exports__);
 var isSmallScreen = window.screen.width < 992;
 var backendUrl = 'https://blumorel-backend.herokuapp.com/';
 // export var backendUrl = "http://localhost:5000/"
-var image_server_url = 'https://blumorel-content.herokuapp.com/';
+var image_server_url = 'https://app-loop-content-server.herokuapp.com/';
 //export var image_server_url = "http://localhost:8082/"
 var Actions;
 (function (Actions) {
@@ -1326,12 +1326,10 @@ class HomeService {
         this.http = http;
     }
     getSubmission(sub) {
-        let body = {
-            sub: sub
-        };
-        return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + 'getSubmission', body, {
+        return this.http.get(`${src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"]}download`, {
             headers: { 'Content-type': 'application/json' },
-            responseType: 'blob'
+            responseType: 'blob',
+            params: { content: sub }
         });
     }
 }
@@ -1557,8 +1555,8 @@ class SubmitModalService {
     }
     uploadSubmission(file) {
         const formData = new FormData();
-        formData.append('sub', file);
-        return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "uploadSubmission", formData);
+        formData.append('content', file);
+        return this.http.post(src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["image_server_url"] + "upload", formData);
     }
 }
 SubmitModalService.ɵfac = function SubmitModalService_Factory(t) { return new (t || SubmitModalService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };

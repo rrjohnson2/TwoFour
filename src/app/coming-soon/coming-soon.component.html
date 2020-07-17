@@ -1,0 +1,66 @@
+<img class="background" src="../../assets/images/background.jpg" alt="background">
+
+<div>
+    <div class="row justify-content-center">
+        <div class=" coming_soon_block col-8 text-center">
+            <h1>Comming Soon</h1>
+        </div>
+
+        <div class=" coming_soon_block col-8 text-center">
+            <audio id="audioplayer" src="../../assets/music/background.mp3" autoplay="true" controls
+                loop="true"></audio>
+            <small>Volume</small>
+            <mat-slider #slider (change)="volume($event)" [value]="100" color="primary"></mat-slider>
+        </div>
+
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class=" text-center card-header">
+                            <img class="logo_img" src="../../assets/icons/loop.png" alt="Logo">
+                            <div class="card-body">
+                                Loop is the first free web appication that allows users
+                                to get contructive feedback on their work
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card">
+                        <div class=" text-center card-header">
+                            <img class="logo_img" src="../../assets/icons/blu morel.png" alt="Logo">
+                            <div class="card-body">
+                                Blu Morel is the first free showcase raffle, where a luck post is selected every day to
+                                be the daily showcase
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coming_soon_block col-8 text-center " style="margin-top: 10px">
+            <form [formGroup]="emailForm" (ngSubmit)="submit()">
+                <input type="email" formControlName="email" placeholder="Enter Email">
+
+                <fieldset>
+                    <label for="">Loop </label>
+                    <input type="checkbox" formControlName="loop">
+
+                    <br>
+
+                    <label for="blumorel">Blu Morel</label>
+                    <input id="blumorel" type="checkbox" formControlName="blumorel">
+                </fieldset>
+
+                <button *ngIf="emailForm.valid">Notify</button>
+                <button *ngIf="emailForm.invalid" disabled>Notify</button>
+            </form>
+
+        </div>
+
+
+
+    </div>
+</div>

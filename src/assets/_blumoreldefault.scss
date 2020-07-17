@@ -90,8 +90,17 @@ a span, a strong{
   background-color: $primary !important;
 }
 .background{
-  position: absolute;
-  z-index: -5;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1000;
+    position: fixed;
+    left: 0;
+    right : 0;
+}
+.coming_soon_block{
+  color: white;
+}
+#audioplayer{
   display: none;
 }
 .about_image{

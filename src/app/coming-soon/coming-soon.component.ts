@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, EventEmitter } from '@angular/core';
 import { MatSlider, MatSliderChange } from '@angular/material/slider';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ComingSoonService } from './coming-soon.service';
 
 @Component({
   selector: 'app-coming-soon',
@@ -11,7 +12,8 @@ export class ComingSoonComponent implements OnInit, AfterViewInit {
 
   player: HTMLAudioElement;
   emailForm: FormGroup;
-  constructor() { }
+  msg: string;
+  constructor(private soonServirce: ComingSoonService) { }
 
   ngAfterViewInit(): void {
     this.player = <HTMLAudioElement>document.getElementById("audioplayer");
@@ -21,7 +23,7 @@ export class ComingSoonComponent implements OnInit, AfterViewInit {
 
     this.emailForm = new FormGroup(
       {
-        email: new FormControl(null,Validators.required),
+        email: new FormControl(null, Validators.required),
         loop: new FormControl(true),
         blumorel: new FormControl(true)
       }
@@ -31,32 +33,38 @@ export class ComingSoonComponent implements OnInit, AfterViewInit {
 
     this.player.volume = slider.value / 100;
   }
-  submit()
-  {
+  submit() {
     let loop = this.emailForm.get("loop").value;
     let blumorel = this.emailForm.get("blumorel").value;
     let res = "both";
-    
-    if(loop && ! blumorel)
-    {
+
+    if (loop && !blumorel) {
       res = "loop"
     }
-    if(blumorel && !loop)
-    {
+    if (blumorel && !loop) {
       res = "blumorel";
     }
-    var seed:SeedMember = {
-      email:this.emailForm.get("email").value,
+    var seed: SeedMember = {
+      email: this.emailForm.get("email").value,
       reason: res
     }
 
-    console.log(seed);
+    this.soonServirce.addToMailList(seed).subscribe(
+      data => {
+        this.msg = "";
+        this.emailForm.reset();
+      },
+
+      error => {
+        this.msg = "Something Wnet Wrong Try Again";
+      }
+    )
   }
 
-  
+
 }
 
-  export interface SeedMember{
-    email:string,
-    reason:string;
-  }
+export interface SeedMember {
+  email: string,
+  reason: string;
+}

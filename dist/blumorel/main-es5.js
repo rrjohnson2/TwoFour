@@ -72,6 +72,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _layout_layout_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./layout/layout.module */
     "./src/app/layout/layout.module.ts");
+    /* harmony import */
+
+
+    var _coming_soon_coming_soon_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./coming-soon/coming-soon.component */
+    "./src/app/coming-soon/coming-soon.component.ts");
 
     var routes = [{
       path: 'layout',
@@ -79,12 +85,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return _layout_layout_module__WEBPACK_IMPORTED_MODULE_2__["LayoutModule"];
       }
     }, {
+      path: 'commingsoon',
+      component: _coming_soon_coming_soon_component__WEBPACK_IMPORTED_MODULE_3__["ComingSoonComponent"]
+    }, {
       path: '',
-      redirectTo: 'layout',
+      redirectTo: 'commingsoon',
       pathMatch: 'prefix'
     }, {
       path: '**',
-      redirectTo: 'layout',
+      redirectTo: 'commingsoon',
       pathMatch: 'prefix'
     }];
 
@@ -262,6 +271,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _coming_soon_coming_soon_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ./coming-soon/coming-soon.component */
+    "./src/app/coming-soon/coming-soon.component.ts");
+    /* harmony import */
+
+
+    var _angular_material_slider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/material/slider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -283,13 +310,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["LocationStrategy"],
         useClass: _angular_common__WEBPACK_IMPORTED_MODULE_7__["HashLocationStrategy"]
       }],
-      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]]]
+      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"], _angular_material_slider__WEBPACK_IMPORTED_MODULE_9__["MatSliderModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]]
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _coming_soon_coming_soon_component__WEBPACK_IMPORTED_MODULE_8__["ComingSoonComponent"]],
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"], _angular_material_slider__WEBPACK_IMPORTED_MODULE_9__["MatSliderModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]]
       });
     })();
     /*@__PURE__*/
@@ -299,8 +326,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]],
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _coming_soon_coming_soon_component__WEBPACK_IMPORTED_MODULE_8__["ComingSoonComponent"]],
+          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"], _angular_material_slider__WEBPACK_IMPORTED_MODULE_9__["MatSliderModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]],
           providers: [{
             provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HTTP_INTERCEPTORS"],
             useClass: _layout_loader_loaderintercept_service__WEBPACK_IMPORTED_MODULE_6__["LoaderinterceptService"],
@@ -318,12 +345,406 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/coming-soon/coming-soon.component.ts":
+  /*!******************************************************!*\
+    !*** ./src/app/coming-soon/coming-soon.component.ts ***!
+    \******************************************************/
+
+  /*! exports provided: ComingSoonComponent */
+
+  /***/
+  function srcAppComingSoonComingSoonComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ComingSoonComponent", function () {
+      return ComingSoonComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _coming_soon_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./coming-soon.service */
+    "./src/app/coming-soon/coming-soon.service.ts");
+    /* harmony import */
+
+
+    var _angular_material_slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/material/slider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/slider.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
+    function ComingSoonComponent_button_37_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Notify");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+    }
+
+    function ComingSoonComponent_button_38_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 22);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Notify");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+    }
+
+    var ComingSoonComponent = /*#__PURE__*/function () {
+      function ComingSoonComponent(soonServirce) {
+        _classCallCheck(this, ComingSoonComponent);
+
+        this.soonServirce = soonServirce;
+      }
+
+      _createClass(ComingSoonComponent, [{
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
+          this.player = document.getElementById("audioplayer");
+        }
+      }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.emailForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
+            loop: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](true),
+            blumorel: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](true)
+          });
+        }
+      }, {
+        key: "volume",
+        value: function volume(slider) {
+          this.player.volume = slider.value / 100;
+        }
+      }, {
+        key: "submit",
+        value: function submit() {
+          var _this = this;
+
+          var loop = this.emailForm.get("loop").value;
+          var blumorel = this.emailForm.get("blumorel").value;
+          var res = "both";
+
+          if (loop && !blumorel) {
+            res = "loop";
+          }
+
+          if (blumorel && !loop) {
+            res = "blumorel";
+          }
+
+          var seed = {
+            email: this.emailForm.get("email").value,
+            reason: res
+          };
+          this.soonServirce.addToMailList(seed).subscribe(function (data) {
+            _this.msg = "";
+
+            _this.emailForm.reset();
+          }, function (error) {
+            _this.msg = "Something Wnet Wrong Try Again";
+          });
+        }
+      }]);
+
+      return ComingSoonComponent;
+    }();
+
+    ComingSoonComponent.ɵfac = function ComingSoonComponent_Factory(t) {
+      return new (t || ComingSoonComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_coming_soon_service__WEBPACK_IMPORTED_MODULE_2__["ComingSoonService"]));
+    };
+
+    ComingSoonComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: ComingSoonComponent,
+      selectors: [["app-coming-soon"]],
+      decls: 39,
+      vars: 4,
+      consts: [["src", "../../assets/images/background.jpg", "alt", "background", 1, "background"], [1, "row", "justify-content-center"], [1, "coming_soon_block", "col-8", "text-center"], ["id", "audioplayer", "src", "../../assets/music/background.mp3", "autoplay", "", "controls", "", "muted", "", "loop", ""], ["color", "primary", 3, "value", "change"], ["slider", ""], [1, "col-8"], [1, "col-lg-6", "col-sm-8"], [1, "card"], [1, "text-center", "card-header"], ["src", "../../assets/icons/loop.png", "alt", "Logo", 1, "logo_img"], [1, "card-body"], ["src", "../../assets/icons/blu morel.png", "alt", "Logo", 1, "logo_img"], [1, "coming_soon_block", "col-8", "text-center", 2, "margin-top", "10px"], [3, "formGroup", "ngSubmit"], ["type", "email", "formControlName", "email", "placeholder", "Enter Email"], ["for", ""], ["type", "checkbox", "formControlName", "loop"], ["for", "blumorel"], ["id", "blumorel", "type", "checkbox", "formControlName", "blumorel"], [4, "ngIf"], ["disabled", "", 4, "ngIf"], ["disabled", ""]],
+      template: function ComingSoonComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h1");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Comming Soon");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "audio", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "small");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Volume");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-slider", 4, 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ComingSoonComponent_Template_mat_slider_change_10_listener($event) {
+            return ctx.volume($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "img", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, " Loop is the first free web appication that allows users to get contructive feedback on their work ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "img", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, " Blu Morel is the first free showcase raffle, where a luck post is selected every day to be the daily showcase ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "form", 14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function ComingSoonComponent_Template_form_ngSubmit_27_listener() {
+            return ctx.submit();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "input", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "fieldset");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "label", 16);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Loop ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](32, "input", 17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "label", 18);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, "Blu Morel");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](36, "input", 19);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](37, ComingSoonComponent_button_37_Template, 2, 0, "button", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, ComingSoonComponent_button_38_Template, 2, 0, "button", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", 100);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.emailForm);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.emailForm.valid);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.emailForm.invalid);
+        }
+      },
+      directives: [_angular_material_slider__WEBPACK_IMPORTED_MODULE_3__["MatSlider"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["CheckboxControlValueAccessor"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"]],
+      styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbWluZy1zb29uL2NvbWluZy1zb29uLmNvbXBvbmVudC5zY3NzIn0= */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ComingSoonComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-coming-soon',
+          templateUrl: './coming-soon.component.html',
+          styleUrls: ['./coming-soon.component.scss']
+        }]
+      }], function () {
+        return [{
+          type: _coming_soon_service__WEBPACK_IMPORTED_MODULE_2__["ComingSoonService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/coming-soon/coming-soon.service.ts":
+  /*!****************************************************!*\
+    !*** ./src/app/coming-soon/coming-soon.service.ts ***!
+    \****************************************************/
+
+  /*! exports provided: ComingSoonService */
+
+  /***/
+  function srcAppComingSoonComingSoonServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ComingSoonService", function () {
+      return ComingSoonService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _constants_app_constant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ../constants/app.constant */
+    "./src/app/constants/app.constant.ts");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+
+    var ComingSoonService = /*#__PURE__*/function () {
+      function ComingSoonService(http) {
+        _classCallCheck(this, ComingSoonService);
+
+        this.http = http;
+      }
+
+      _createClass(ComingSoonService, [{
+        key: "addToMailList",
+        value: function addToMailList(seed) {
+          return this.http.post(_constants_app_constant__WEBPACK_IMPORTED_MODULE_1__["seedUrl"] + "addToMailList", seed);
+        }
+      }]);
+
+      return ComingSoonService;
+    }();
+
+    ComingSoonService.ɵfac = function ComingSoonService_Factory(t) {
+      return new (t || ComingSoonService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]));
+    };
+
+    ComingSoonService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: ComingSoonService,
+      factory: ComingSoonService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ComingSoonService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], function () {
+        return [{
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
   "./src/app/constants/app.constant.ts":
   /*!*******************************************!*\
     !*** ./src/app/constants/app.constant.ts ***!
     \*******************************************/
 
-  /*! exports provided: isSmallScreen, backendUrl, image_server_url, Actions */
+  /*! exports provided: isSmallScreen, backendUrl, image_server_url, seedUrl, Actions */
 
   /***/
   function srcAppConstantsAppConstantTs(module, __webpack_exports__, __webpack_require__) {
@@ -351,6 +772,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
+    __webpack_require__.d(__webpack_exports__, "seedUrl", function () {
+      return seedUrl;
+    });
+    /* harmony export (binding) */
+
+
     __webpack_require__.d(__webpack_exports__, "Actions", function () {
       return Actions;
     });
@@ -359,6 +786,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var backendUrl = 'https://blumorel-backend.herokuapp.com/'; // export var backendUrl = "http://localhost:5000/"
 
     var image_server_url = 'https://app-loop-content-server.herokuapp.com/'; //export var image_server_url = "http://localhost:8082/"
+
+    var seedUrl = 'https://seed-app-api.herokuapp.com/'; // export var seedUrl = "http://localhost:8080/"
 
     var Actions;
 
@@ -854,10 +1283,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AdminComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this2 = this;
 
           this.adminS.getWinner().subscribe(function (data) {
-            _this.renderSrc(_this.subToEntry(data));
+            _this2.renderSrc(_this2.subToEntry(data));
           });
         }
       }, {
@@ -875,16 +1304,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "renderSrc",
         value: function renderSrc(sub) {
-          var _this2 = this;
+          var _this3 = this;
 
           if (sub.url) {
             this.homeServ.getSubmission(sub.url + sub.extension).subscribe(function (data) {
               sub.file = URL.createObjectURL(data);
-              _this2.sub = sub;
+              _this3.sub = sub;
             }, function (error) {
               sub.type = 'image';
               sub.file = "assets/icons/failed.jpg";
-              _this2.sub = sub;
+              _this3.sub = sub;
             });
           } else {
             this.sub = sub;
@@ -893,7 +1322,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "approveWinner",
         value: function approveWinner() {
-          var _this3 = this;
+          var _this4 = this;
 
           this.adminS.approveWinner().subscribe(function (data) {
             var alert_ticket = {
@@ -902,16 +1331,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this3.variables.addAlert(alert_ticket);
+            _this4.variables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "forceWinner",
         value: function forceWinner() {
-          var _this4 = this;
+          var _this5 = this;
 
           this.adminS.forceWinner().subscribe(function (data) {
-            _this4.renderSrc(_this4.subToEntry(data));
+            _this5.renderSrc(_this5.subToEntry(data));
           });
         }
       }]);
@@ -1234,10 +1663,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AlertManagerComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this5 = this;
+          var _this6 = this;
 
           this.variable.alerts_ob.subscribe(function (data) {
-            _this5.alerts = data;
+            _this6.alerts = data;
           });
         }
       }, {
@@ -1842,7 +2271,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this6 = this;
+          var _this7 = this;
 
           var ticket = {
             data: {
@@ -1851,9 +2280,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           };
           this.glob.authenticate(ticket).subscribe(function (data) {
-            _this6.appvariables.fillMember(_this6.appvariables.temp_member, _this6.appvariables.temp_ticket);
+            _this7.appvariables.fillMember(_this7.appvariables.temp_member, _this7.appvariables.temp_ticket);
 
-            _this6.router.navigate(['/layout/home']);
+            _this7.router.navigate(['/layout/home']);
 
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1861,7 +2290,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this6.appvariables.addAlert(alert_ticket);
+            _this7.appvariables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1869,13 +2298,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this6.appvariables.addAlert(alert_ticket);
+            _this7.appvariables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "resendCode",
         value: function resendCode() {
-          var _this7 = this;
+          var _this8 = this;
 
           this.glob.generateCode(this.appvariables.temp_member).subscribe(function (data) {
             var alert_ticket = {
@@ -1884,7 +2313,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this7.appvariables.addAlert(alert_ticket);
+            _this8.appvariables.addAlert(alert_ticket);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].authenicateCode,
@@ -1892,7 +2321,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this7.appvariables.addAlert(alert_ticket);
+            _this8.appvariables.addAlert(alert_ticket);
           });
         }
       }]);
@@ -2497,26 +2926,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "init",
         value: function init() {
-          var _this8 = this;
+          var _this9 = this;
 
           this.variables.currentContest_ob.subscribe(function (data) {
-            _this8.contest = data;
+            _this9.contest = data;
           });
           this.variables.previousWinner_ob.subscribe(function (data) {
-            _this8.previousWinner = data;
+            _this9.previousWinner = data;
 
-            _this8.populateBit(data);
+            _this9.populateBit(data);
           });
         }
       }, {
         key: "nextContest",
         value: function nextContest(event) {
-          var _this9 = this;
+          var _this10 = this;
 
           this.variables.current_member.post_count = 0;
           this.variables.reloadBS(this.variables.current_member);
           this.glob.getPreviousWinner().subscribe(function (data) {
-            _this9.variables.populatePreviousWinner(data);
+            _this10.variables.populatePreviousWinner(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -2524,10 +2953,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this9.variables.addAlert(alert_ticket);
+            _this10.variables.addAlert(alert_ticket);
           });
           this.glob.getContest().subscribe(function (data) {
-            _this9.variables.populateContest(data);
+            _this10.variables.populateContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -2535,27 +2964,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this9.variables.addAlert(alert_ticket);
+            _this10.variables.addAlert(alert_ticket);
           });
         }
       }, {
         key: "populateBit",
         value: function populateBit(data) {
-          var _this10 = this;
+          var _this11 = this;
 
           if (data != null && data.content_url != null) {
             if (this.bitComp != null) {
               this.bitComp.type = data.content_type;
               this.homeService.getSubmission(data.content_url + data.content_extension).subscribe(function (data) {
-                _this10.bitComp.src = URL.createObjectURL(data);
+                _this11.bitComp.src = URL.createObjectURL(data);
               }, function (error) {
                 console.log(error);
-                _this10.bitComp.type = 'image';
-                _this10.bitComp.src = 'assets/icons/failed.jpg';
+                _this11.bitComp.type = 'image';
+                _this11.bitComp.src = 'assets/icons/failed.jpg';
               });
             } else {
               setTimeout(function () {
-                _this10.populateBit(data);
+                _this11.populateBit(data);
               }, 1);
             }
           }
@@ -2928,10 +3357,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this11 = this;
+          var _this12 = this;
 
           this.variables.current_member_ob.subscribe(function (data) {
-            return _this11.member = data;
+            return _this12.member = data;
           });
           this.createForm();
         }
@@ -2945,25 +3374,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this12 = this;
+          var _this13 = this;
 
           this.submission.description = this.submitForm.get("description").value;
           this.submitService.submit(this.submission).subscribe(function (data) {
             var filename = data;
 
-            if (filename != null && _this12.content_file != null) {
-              var FileNew = new File([_this12.content_file], filename + _this12.submission.content_extension, {
-                type: _this12.content_file.type
+            if (filename != null && _this13.content_file != null) {
+              var FileNew = new File([_this13.content_file], filename + _this13.submission.content_extension, {
+                type: _this13.content_file.type
               });
 
-              _this12.submitService.uploadSubmission(FileNew).subscribe(function (data) {
+              _this13.submitService.uploadSubmission(FileNew).subscribe(function (data) {
                 var alert_ticket = {
                   action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
                   msg: 'File Uploaded',
                   type: 'success'
                 };
 
-                _this12.variables.addAlert(alert_ticket);
+                _this13.variables.addAlert(alert_ticket);
               }, function (error) {
                 var alert_ticket = {
                   action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_3__["Actions"].submit,
@@ -2971,7 +3400,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   type: 'danger'
                 };
 
-                _this12.variables.addAlert(alert_ticket);
+                _this13.variables.addAlert(alert_ticket);
               });
             }
 
@@ -2981,11 +3410,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'success'
             };
 
-            _this12.variables.addAlert(alert_ticket);
+            _this13.variables.addAlert(alert_ticket);
 
-            _this12.router.navigate(['/layout/home']);
+            _this13.router.navigate(['/layout/home']);
 
-            _this12.submitForm.reset();
+            _this13.submitForm.reset();
           }, function (error) {
             console.log(error);
             var alert_ticket = {
@@ -2994,11 +3423,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this12.variables.addAlert(alert_ticket);
+            _this13.variables.addAlert(alert_ticket);
 
-            _this12.submitForm.reset();
+            _this13.submitForm.reset();
 
-            _this12.bitComp.init(null);
+            _this13.bitComp.init(null);
           });
         }
       }, {
@@ -4297,10 +4726,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(LoaderComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.loaderServe.loaderOB.subscribe(function (data) {
-            return _this13.show = data;
+            return _this14.show = data;
           });
         }
       }]);
@@ -4481,15 +4910,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(LoaderinterceptService, [{
         key: "intercept",
         value: function intercept(req, next) {
-          var _this14 = this;
+          var _this15 = this;
 
           this.loaderServe.showOrHide(true);
           return next.handle(req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (event) {
             if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
-              _this14.loaderServe.showOrHide(false);
+              _this15.loaderServe.showOrHide(false);
             }
           }, function (err) {
-            _this14.loaderServe.showOrHide(false);
+            _this15.loaderServe.showOrHide(false);
           }));
         }
       }]);
@@ -4643,7 +5072,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this15 = this;
+          var _this16 = this;
 
           if (this.loginForm.valid) {
             var ticket = {
@@ -4651,9 +5080,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.loginForm.get("password").value
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this15.appVariables.fillMember(data, ticket);
+              _this16.appVariables.fillMember(data, ticket);
 
-              _this15.router.navigate(['layout/home']);
+              _this16.router.navigate(['layout/home']);
 
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -4661,7 +5090,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'success'
               };
 
-              _this15.appVariables.addAlert(alert_ticket);
+              _this16.appVariables.addAlert(alert_ticket);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].login,
@@ -4669,7 +5098,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this15.appVariables.addAlert(alert_ticket);
+              _this16.appVariables.addAlert(alert_ticket);
             });
           }
         }
@@ -5035,7 +5464,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this16 = this;
+          var _this17 = this;
 
           var messageMedium = this.email_or_phone();
 
@@ -5053,13 +5482,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             this.glob.generateCode(member).subscribe(function (data) {
-              _this16.appvariables.temp_member = member;
-              _this16.appvariables.temp_ticket = {
+              _this17.appvariables.temp_member = member;
+              _this17.appvariables.temp_ticket = {
                 id: choice_id,
                 data: member.password
               };
 
-              _this16.router.navigate(['/layout/authenticate']);
+              _this17.router.navigate(['/layout/authenticate']);
             }, function (error) {
               var alert_ticket = {
                 action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_4__["Actions"].signup,
@@ -5067,7 +5496,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 type: 'danger'
               };
 
-              _this16.appvariables.addAlert(alert_ticket);
+              _this17.appvariables.addAlert(alert_ticket);
             });
           } else {
             var alert_ticket = {
@@ -6361,7 +6790,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this17 = this;
+          var _this18 = this;
 
           var temp = new src_app_models_member__WEBPACK_IMPORTED_MODULE_1__["Member"](this.member.username, this.member.email, this.member.phone, this.member.verified, this.member.post_count, this.member.facebook, this.member.instagram, this.member.twitter, this.member.newsletter, this.member.messageMedium, this.member.notify, null);
 
@@ -6416,15 +6845,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.updateServe.updatePassword(ticket).subscribe(function (data) {
                 var alert_ticket = {
                   action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_5__["Actions"].signup,
-                  msg: 'Updated ' + _this17.choice.toLocaleUpperCase(),
+                  msg: 'Updated ' + _this18.choice.toLocaleUpperCase(),
                   type: 'success'
                 };
 
-                _this17.variables.addAlert(alert_ticket);
+                _this18.variables.addAlert(alert_ticket);
 
-                _this17.cancel();
+                _this18.cancel();
               }, function (error) {
-                _this17.message = "Failed";
+                _this18.message = "Failed";
               });
               return;
           }
@@ -6434,19 +6863,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             data: temp
           };
           this.updateServe.update(ticket).subscribe(function (data) {
-            _this17.variables.reloadBS(temp);
+            _this18.variables.reloadBS(temp);
 
             var alert_ticket = {
               action_attempted: src_app_constants_app_constant__WEBPACK_IMPORTED_MODULE_5__["Actions"].signup,
-              msg: 'Updated ' + _this17.choice.toLocaleUpperCase(),
+              msg: 'Updated ' + _this18.choice.toLocaleUpperCase(),
               type: 'success'
             };
 
-            _this17.variables.addAlert(alert_ticket);
+            _this18.variables.addAlert(alert_ticket);
 
-            _this17.cancel();
+            _this18.cancel();
           }, function (error) {
-            _this17.message = "Failed";
+            _this18.message = "Failed";
           });
         }
       }, {
@@ -7426,7 +7855,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AppVariablesService, [{
         key: "setup",
         value: function setup() {
-          var _this18 = this;
+          var _this19 = this;
 
           if (this.current_member_id != null) {
             var ticket = {
@@ -7434,7 +7863,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               data: this.decrypt(this.current_member_encrypted_password)
             };
             this.glob.login(ticket).subscribe(function (data) {
-              _this18.fillMember(data, ticket); // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Succesful', type: 'success' };
+              _this19.fillMember(data, ticket); // var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Succesful', type: 'success' };
               // this.addAlert(alert_ticket)
 
             }, function (error) {// var alert_ticket: AlertTicket = { action_attempted: Actions.login, msg: 'Login Failed', type: 'danger' };
@@ -7447,10 +7876,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "reload_contest",
         value: function reload_contest() {
-          var _this19 = this;
+          var _this20 = this;
 
           this.glob.getContest().subscribe(function (data) {
-            _this19.populateContest(data);
+            _this20.populateContest(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -7458,10 +7887,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this19.addAlert(alert_ticket);
+            _this20.addAlert(alert_ticket);
           });
           this.glob.getPreviousWinner().subscribe(function (data) {
-            _this19.populatePreviousWinner(data);
+            _this20.populatePreviousWinner(data);
           }, function (error) {
             var alert_ticket = {
               action_attempted: _constants_app_constant__WEBPACK_IMPORTED_MODULE_2__["Actions"].currrentContest,
@@ -7469,7 +7898,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               type: 'danger'
             };
 
-            _this19.addAlert(alert_ticket);
+            _this20.addAlert(alert_ticket);
           });
         }
       }, {
@@ -7525,7 +7954,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addAlert",
         value: function addAlert(alert_ticket) {
-          var _this20 = this;
+          var _this21 = this;
 
           var type;
 
@@ -7559,7 +7988,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           this.alerts.push(alert);
           setTimeout(function () {
-            _this20.closeAlert(alert);
+            _this21.closeAlert(alert);
           }, this.popup);
         }
       }, {
@@ -7755,7 +8184,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content, type, modalDimension) {
-          var _this21 = this;
+          var _this22 = this;
 
           if (modalDimension === 'sm' && type === 'modal_mini') {
             this.modalService.open(content, {
@@ -7763,26 +8192,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               size: 'sm',
               centered: true
             }).result.then(function (result) {
-              _this21.closeResult = "Closed with: ".concat(result);
+              _this22.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this21.closeResult = "Dismissed ".concat(_this21.getDismissReason(reason));
+              _this22.closeResult = "Dismissed ".concat(_this22.getDismissReason(reason));
             });
           } else if (modalDimension === '' && type === 'Notification') {
             this.modalService.open(content, {
               windowClass: 'modal-danger',
               centered: true
             }).result.then(function (result) {
-              _this21.closeResult = "Closed with: ".concat(result);
+              _this22.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this21.closeResult = "Dismissed ".concat(_this21.getDismissReason(reason));
+              _this22.closeResult = "Dismissed ".concat(_this22.getDismissReason(reason));
             });
           } else {
             this.modalService.open(content, {
               centered: true
             }).result.then(function (result) {
-              _this21.closeResult = "Closed with: ".concat(result);
+              _this22.closeResult = "Closed with: ".concat(result);
             }, function (reason) {
-              _this21.closeResult = "Dismissed ".concat(_this21.getDismissReason(reason));
+              _this22.closeResult = "Dismissed ".concat(_this22.getDismissReason(reason));
             });
           }
         }

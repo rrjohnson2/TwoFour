@@ -14,6 +14,6 @@ export class ComingSoonService {
     return this.http.post(
       seedUrl + "addToMailList",
       seed
-    )
+    );
   }
 }

@@ -8,8 +8,8 @@ export var backendUrl = 'https://blumorel-backend.herokuapp.com/'
 export var image_server_url = 'https://app-loop-content-server.herokuapp.com/'
 //export var image_server_url = "http://localhost:8082/"
 
-export var seedUrl = 'https://blumorel-backend.herokuapp.com/'
-// export var backendUrl = "http://localhost:5000/"
+export var seedUrl = 'https://seed-app-api.herokuapp.com/'
+// export var seedUrl = "http://localhost:8080/"
 
 export enum Actions {
   logOff,

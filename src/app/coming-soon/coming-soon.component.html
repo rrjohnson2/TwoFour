@@ -7,16 +7,15 @@
         </div>
 
         <div class=" coming_soon_block col-8 text-center">
-            <audio id="audioplayer" src="../../assets/music/background.mp3" autoplay="true" controls
-                loop="true"></audio>
+            <audio id="audioplayer" src="../../assets/music/background.mp3" autoplay controls muted loop></audio>
             <small>Volume</small>
             <mat-slider #slider (change)="volume($event)" [value]="100" color="primary"></mat-slider>
         </div>
 
         <div class="col-8">
-            <div class="row">
-                <div class="col-6">
-                    <div class="card">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-sm-8">
+                    <div class="card ">
                         <div class=" text-center card-header">
                             <img class="logo_img" src="../../assets/icons/loop.png" alt="Logo">
                             <div class="card-body">
@@ -26,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6 col-sm-8">
                     <div class="card">
                         <div class=" text-center card-header">
                             <img class="logo_img" src="../../assets/icons/blu morel.png" alt="Logo">
